@@ -1,0 +1,24 @@
+<mat-toolbar>
+
+    <a href="/"><span>Sistema TVT</span></a>
+    <button mat-button [matMenuTriggerFor]="menurelatorios">
+        Relatorios
+    </button>
+
+    <mat-menu #menurelatorios="matMenu">
+        <a mat-menu-item href="">Emitir relatorio</a>
+        <a mat-menu-item href="">Imprimir relatorio</a>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menusistema">
+        Sistema
+    </button>
+
+    <mat-menu #menusistema="matMenu">
+        <a mat-menu-item href="">Atualizar Sistema</a>
+        <a mat-menu-item href="">Gerenciar Funcionarios e Veiculos</a>
+        <a mat-menu-item href="">Buscar CTe</a>
+    </mat-menu>
+    <span class="spacer"></span>
+    <a mat-menu-item href="">Sair</a>
+</mat-toolbar>
