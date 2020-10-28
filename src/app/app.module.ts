@@ -11,14 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 
-import { GerarRelatorioComponent } from './gerar-relatorio/gerar-relatorio.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GerarRelatorioComponent,
     NavbarComponent,
   ],
   imports: [
