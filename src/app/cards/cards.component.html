@@ -1,0 +1,13 @@
+<mat-card href="wwww.google.com.br"
+*ngFor = 'let card of _cardlist'>
+    <mat-card-header>
+        <mat-card-title>{{ card.name }}</mat-card-title>
+    </mat-card-header>
+    <img matCardImage src="Card wide image source">
+    <mat-card-content>
+        {{ card.description }}
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <button mat-button (click)="onAction1">Action1</button>
+    </mat-card-actions>
+</mat-card>
