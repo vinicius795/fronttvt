@@ -5,9 +5,14 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="/"><mat-icon>home</mat-icon>  Inicio</a>
-      <a mat-list-item href="#"><mat-icon>format_list_bulleted</mat-icon> Relatorios</a>
-      <a mat-list-item href="#"><mat-icon>input</mat-icon>  Atualizar sistema</a>
+      <mat-expansion-panel *ngFor="let menus of _menulist" class="mat-elevation-z">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ menus.title }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ menus | json }}</p>
+      </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

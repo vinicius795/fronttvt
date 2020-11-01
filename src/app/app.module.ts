@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MediaQueryStatusComponent } from './cards/media-query-status.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -25,7 +27,8 @@ import { CardsComponent } from './cards/cards.component';
   declarations: [
     AppComponent,
     NavigationComponent,
-    CardsComponent
+    CardsComponent,
+    MediaQueryStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { CardsComponent } from './cards/cards.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

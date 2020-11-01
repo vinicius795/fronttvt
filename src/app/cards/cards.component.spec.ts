@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CardsComponent } from './cards.component';
 
@@ -17,6 +18,7 @@ describe('CardsComponent', () => {
       imports:[
         MatCardModule,
         LayoutModule,
+        FlexLayoutModule,
       ]
     })
     .compileComponents();
