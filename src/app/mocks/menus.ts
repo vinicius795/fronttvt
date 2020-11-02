@@ -2,21 +2,35 @@ import { menus, submenus } from "../navigation/navigation.inteface"
 
 
 export const submenuslist: submenus[] = [
-    { id: 0, title: "Submenu 1", url: "#" },
-    { id: 1, title: "Submenu 2", url: "#" },
-    { id: 2, title: "Submenu 3", url: "#" },
-    { id: 3, title: "Submenu 4", url: "#" },
+    { id: 0, title: "Novo Relatório de entregas", url: "#" },
+    { id: 1, title: "Reimprimir relatorio", url: "#" },
+    { id: 2, title: "Buscar relatorio", url: "#" },
+    { id: 3, title: "Gerenciar funcionários", url: "#" },
+    { id: 3, title: "Atualizar Banco de dados", url: "#" },
+    { id: 3, title: "Carregar XML", url: "#" },
+    { id: 3, title: "Gerar arquivo do SSWsistema", url: "#" },
+    { id: 3, title: "Gerando relatório de entrega", url: "#" },
 ]
 
 export const menulist: menus [] = [
+    {
+        id: 0,
+        title: "Minha Conta",
+        submenus: [submenuslist[0], submenuslist[3]],
+    },
     {    
         id: 0,
-        title: "Menu 1",
+        title: "Relatorios",
         submenus: [submenuslist[0], submenuslist[1]],
     },
     {
         id: 1,
-        title: "Menu 2",
+        title: "Banco de Dados",
+        submenus: [submenuslist[2], submenuslist[3]],
+    },
+    {
+        id: 1,
+        title: "Ajuda",
         submenus: [submenuslist[2], submenuslist[3]],
     },
 ]
