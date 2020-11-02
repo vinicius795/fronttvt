@@ -11,8 +11,6 @@ import { menulist, submenuslist } from "../mocks/menus"
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
-  _submenulist = submenuslist;
-  submenubase: submenus;
   _menulist = menulist;
   menubase: menus;
 

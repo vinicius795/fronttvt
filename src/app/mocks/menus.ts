@@ -1,4 +1,3 @@
-import { from } from 'rxjs';
 import { menus, submenus } from "../navigation/navigation.inteface"
 
 
@@ -13,11 +12,11 @@ export const menulist: menus [] = [
     {    
         id: 0,
         title: "Menu 1",
-        submenus: (submenuslist[0], submenuslist[1]),
+        submenus: [submenuslist[0], submenuslist[1]],
     },
     {
         id: 1,
         title: "Menu 2",
-        submenus: (submenuslist[2], submenuslist[3]),
+        submenus: [submenuslist[2], submenuslist[3]],
     },
 ]
