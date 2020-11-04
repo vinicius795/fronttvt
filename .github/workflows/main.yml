@@ -11,6 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+        
+      - name: Autotag
+        uses: Klemensas/action-autotag@stable
+        with:
+          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -30,7 +35,6 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          tag: "workflow"
           artifacts: "dist/*"
           token: ${{ secrets.TOKEN }}
       - name: Deploy 🚀
