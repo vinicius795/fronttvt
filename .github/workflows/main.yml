@@ -37,7 +37,6 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          tag: "$tagname"
           artifacts: "dist/*"
           token: ${{ secrets.TOKEN }}
       - name: Deploy 🚀
