@@ -16,21 +16,21 @@ export const menulist: menus [] = [
     {
         id: 0,
         title: "Minha Conta",
-        submenus: [submenuslist[0], submenuslist[3]],
+        submenus: [],
     },
     {    
         id: 0,
         title: "Relatorios",
-        submenus: [submenuslist[0], submenuslist[1]],
+        submenus: [submenuslist[0], submenuslist[1], submenuslist[2]],
     },
     {
         id: 1,
         title: "Banco de Dados",
-        submenus: [submenuslist[2], submenuslist[3]],
+        submenus: [submenuslist[3], submenuslist[4], submenuslist[5]],
     },
     {
         id: 1,
         title: "Ajuda",
-        submenus: [submenuslist[2], submenuslist[3]],
+        submenus: [submenuslist[6], submenuslist[7]],
     },
 ]
