@@ -1,17 +1,15 @@
+name: Create Tag
+
 on:
   push:
-    branches: [ master ]
-name: Auto tag
+    branches:
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     steps:
-      - uses: actions/checkout@v1
-        
-      - name: Autotag
-        uses: Klemensas/action-autotag@stable
-        with:
-          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+    - uses: actions/checkout@v2
+    - uses: Klemensas/action-autotag@stable
+      with:
+        GITHUB_TOKEN: "${{ secrets.TOKEN }}"
