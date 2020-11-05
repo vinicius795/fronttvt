@@ -1,8 +1,8 @@
 <div class="bounds">
     <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxFlexFill>
         <div *ngFor='let card of _cardlist' class="sec1" fxFlex.xs="55">
-            <mat-card>
-                <mat-card-title>{{ card.name }}</mat-card-title>
+            <mat-card >
+                <mat-card-title [ngClass]="card-title">{{ card.name }}</mat-card-title>
                 <mat-card-content>
                     {{ card.description }}
                 </mat-card-content>

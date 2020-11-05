@@ -11,7 +11,11 @@
             {{ menus.title }}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p *ngFor="let submenus of menus?.submenus">{{ submenus.title }}</p>
+        <p *ngFor="let submenus of menus?.submenus">
+          <a href="{{ submenus.url }}">
+            {{ submenus.title }}
+          </a>
+        </p>
       </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
