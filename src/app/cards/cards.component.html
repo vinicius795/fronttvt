@@ -1,15 +1,16 @@
 <div class="bounds">
     <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxFlexFill>
-        <div *ngFor='let card of _cardlist' class="sec1" fxFlex.xs="55">
-            <mat-card >
-                <mat-card-title [ngClass]="card-title">{{ card.name }}</mat-card-title>
-                <mat-card-content>
-                    {{ card.description }}
-                </mat-card-content>
-                <mat-card-footer>
-                        <button mat-button>Action1</button>
-                </mat-card-footer>    
-            </mat-card>
+        <div *ngFor='let card of _cardlist' class="sec1" fxFlex.xs="55" style="padding-top: 20px; padding-left: 20px;">
+            <a class="acard" href="{{ card.url }}">
+                <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}" >
+                    <mat-card-title class="card-title">{{ card.name }}</mat-card-title>
+                    <mat-card-content>
+                        {{ card.description }}
+                    </mat-card-content>
+                    <mat-card-footer>
+                    </mat-card-footer>    
+                </mat-card>
+            </a>
         </div>
     </div>
 </div>

@@ -1,14 +1,11 @@
 @mixin card {
-    width: 260px;
-    height: 150px;
-    margin-top: 20px;
-    margin-left: 20px;
     text-align: center;
+    height: 150px;
 }
-.card-modile{
+.card-mobile{
     @include card;
-    width: max-content;
-    margin: 20px;
+    width: auto;
+    margin-right: 20px;
 }
 .card-pc{
     @include card;
@@ -16,4 +13,7 @@
 }
 .card-title{
     margin: 10px;
+}
+.acard{
+    text-decoration: none;
 }
