@@ -1,7 +1,9 @@
+name: Buil Angular
+
 on:
   push:
-    branches: [ master ]
-name: Angular Build
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,12 +12,7 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v1
-        
-      - name: Autotag
-        uses: Klemensas/action-autotag@stable
-        with:
-          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+      - uses: actions/checkout@v2
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -35,6 +32,7 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
+          tag: "workflow"
           artifacts: "dist/*"
           token: ${{ secrets.TOKEN }}
       - name: Deploy 🚀
@@ -44,3 +42,11 @@ jobs:
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
+
+      - name: Delete tag
+        uses: dev-drprasad/delete-tag-and-release@v0.1.2
+        with:
+          delete_release: true # default: false
+          tag_name: workflow # tag name to delete
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

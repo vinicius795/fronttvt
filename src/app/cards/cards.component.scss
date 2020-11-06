@@ -1,11 +1,19 @@
-.mat-card {
+@mixin card {
     width: 260px;
     height: 150px;
     margin-top: 20px;
     margin-left: 20px;
     text-align: center;
 }
-
-.mat-card-title{
+.card-modile{
+    @include card;
+    width: max-content;
+    margin: 20px;
+}
+.card-pc{
+    @include card;
+    width: 260px;
+}
+.card-title{
     margin: 10px;
 }
