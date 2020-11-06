@@ -23,14 +23,14 @@ module.exports = __webpack_require__(/*! /home/runner/work/fronttvt/fronttvt/src
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cardlist", function() { return cardlist; });
 const cardlist = [
-    { id: 0, name: "Relatorio", description: "Emicao de relatorios de viagem", state: true },
-    { id: 1, name: "Atualizacao", description: "Atualiza banco de dados com os dados das empresas parceiras", state: true },
-    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", state: true },
-    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", state: true },
-    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", state: true },
-    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", state: true },
-    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", state: true },
-    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", state: true },
+    { id: 0, name: "Relatorio", description: "Emicao de relatorios de viagem", url: "#", state: true },
+    { id: 1, name: "Atualizacao", description: "Atualiza banco de dados com os dados das empresas parceiras", url: "#", state: true },
+    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", url: "#", state: true },
+    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", url: "#", state: true },
+    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", url: "#", state: true },
+    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", url: "#", state: true },
+    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", url: "#", state: true },
+    { id: 2, name: "Ajuda", description: "Guias de utilizacao deste sistema", url: "#", state: true },
 ];
 
 
@@ -82,7 +82,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
 /* harmony import */ var _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/flex-layout/extended */ "znSr");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
 
 
 
@@ -93,29 +92,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+const _c0 = function (a0, a1) { return { "card-pc": a0, "card-mobile": a1 }; };
 function CardsComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-card");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-card-title", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-card", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "async");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "async");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "mat-card-title", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "mat-card-content");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "mat-card-content");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-card-footer");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Action1");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "mat-card-footer");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const card_r1 = ctx.$implicit;
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", card_r1 - ctx_r0.title);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("href", card_r1.url, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](8, _c0, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 4, ctx_r0.ismobile$) === false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 6, ctx_r0.ismobile$)));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](card_r1.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", card_r1.description, " ");
@@ -131,16 +132,16 @@ class CardsComponent {
     }
 }
 CardsComponent.ɵfac = function CardsComponent_Factory(t) { return new (t || CardsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_3__["BreakpointObserver"])); };
-CardsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CardsComponent, selectors: [["app-cards"]], decls: 3, vars: 1, consts: [[1, "bounds"], ["fxLayout", "row wrap", "fxLayout.xs", "column", "fxFlexFill", "", 1, "content"], ["class", "sec1", "fxFlex.xs", "55", 4, "ngFor", "ngForOf"], ["fxFlex.xs", "55", 1, "sec1"], [3, "ngClass"], ["mat-button", ""]], template: function CardsComponent_Template(rf, ctx) { if (rf & 1) {
+CardsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CardsComponent, selectors: [["app-cards"]], decls: 3, vars: 1, consts: [[1, "bounds"], ["fxLayout", "row wrap", "fxLayout.xs", "column", "fxFlexFill", "", 1, "content"], ["class", "sec1", "fxFlex.xs", "55", "style", "padding-top: 20px; padding-left: 20px;", 4, "ngFor", "ngForOf"], ["fxFlex.xs", "55", 1, "sec1", 2, "padding-top", "20px", "padding-left", "20px"], [1, "acard", 3, "href"], [3, "ngClass"], [1, "card-title"]], template: function CardsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, CardsComponent_div_2_Template, 9, 3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, CardsComponent_div_2_Template, 10, 11, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx._cardlist);
-    } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["FlexFillDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultFlexDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardTitle"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_7__["DefaultClassDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardContent"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardFooter"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"]], styles: [".card-modile[_ngcontent-%COMP%] {\n  width: 260px;\n  height: 150px;\n  margin-top: 20px;\n  margin-left: 20px;\n  text-align: center;\n  width: -webkit-max-content;\n  width: max-content;\n  margin: 20px;\n}\n\n.card-pc[_ngcontent-%COMP%] {\n  width: 260px;\n  height: 150px;\n  margin-top: 20px;\n  margin-left: 20px;\n  text-align: center;\n  width: 260px;\n}\n\n.card-title[_ngcontent-%COMP%] {\n  margin: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FyZHMvY2FyZHMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFOSSxZQUFBO0VBQ0EsYUFBQTtFQUNBLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUlBLDBCQUFBO0VBQUEsa0JBQUE7RUFDQSxZQUFBO0FBRko7O0FBSUE7RUFYSSxZQUFBO0VBQ0EsYUFBQTtFQUNBLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQVNBLFlBQUE7QUFHSjs7QUFEQTtFQUNJLFlBQUE7QUFJSiIsImZpbGUiOiJzcmMvYXBwL2NhcmRzL2NhcmRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQG1peGluIGNhcmQge1xuICAgIHdpZHRoOiAyNjBweDtcbiAgICBoZWlnaHQ6IDE1MHB4O1xuICAgIG1hcmdpbi10b3A6IDIwcHg7XG4gICAgbWFyZ2luLWxlZnQ6IDIwcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLmNhcmQtbW9kaWxle1xuICAgIEBpbmNsdWRlIGNhcmQ7XG4gICAgd2lkdGg6IG1heC1jb250ZW50O1xuICAgIG1hcmdpbjogMjBweDtcbn1cbi5jYXJkLXBje1xuICAgIEBpbmNsdWRlIGNhcmQ7XG4gICAgd2lkdGg6IDI2MHB4O1xufVxuLmNhcmQtdGl0bGV7XG4gICAgbWFyZ2luOiAxMHB4O1xufSJdfQ== */"] });
+    } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["FlexFillDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultFlexDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCard"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_7__["DefaultClassDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardContent"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardFooter"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["AsyncPipe"]], styles: [".card-mobile[_ngcontent-%COMP%] {\n  text-align: center;\n  height: 150px;\n  width: auto;\n  margin-right: 20px;\n}\n\n.card-pc[_ngcontent-%COMP%] {\n  text-align: center;\n  height: 150px;\n  width: 260px;\n}\n\n.card-title[_ngcontent-%COMP%] {\n  margin: 10px;\n}\n\n.acard[_ngcontent-%COMP%] {\n  text-decoration: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FyZHMvY2FyZHMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSUE7RUFISSxrQkFBQTtFQUNBLGFBQUE7RUFJQSxXQUFBO0VBQ0Esa0JBQUE7QUFGSjs7QUFJQTtFQVJJLGtCQUFBO0VBQ0EsYUFBQTtFQVNBLFlBQUE7QUFBSjs7QUFFQTtFQUNJLFlBQUE7QUFDSjs7QUFDQTtFQUNJLHFCQUFBO0FBRUoiLCJmaWxlIjoic3JjL2FwcC9jYXJkcy9jYXJkcy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBtaXhpbiBjYXJkIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgaGVpZ2h0OiAxNTBweDtcbn1cbi5jYXJkLW1vYmlsZXtcbiAgICBAaW5jbHVkZSBjYXJkO1xuICAgIHdpZHRoOiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogMjBweDtcbn1cbi5jYXJkLXBje1xuICAgIEBpbmNsdWRlIGNhcmQ7XG4gICAgd2lkdGg6IDI2MHB4O1xufVxuLmNhcmQtdGl0bGV7XG4gICAgbWFyZ2luOiAxMHB4O1xufVxuLmFjYXJke1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn0iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CardsComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -541,19 +542,24 @@ const menulist = [
         submenus: [],
     },
     {
-        id: 0,
+        id: 1,
         title: "Relatorios",
         submenus: [submenuslist[0], submenuslist[1], submenuslist[2]],
     },
     {
-        id: 1,
+        id: 2,
         title: "Banco de Dados",
         submenus: [submenuslist[3], submenuslist[4], submenuslist[5]],
     },
     {
-        id: 1,
+        id: 3,
         title: "Ajuda",
         submenus: [submenuslist[6], submenuslist[7]],
+    },
+    {
+        id: 4,
+        title: "Links Uteis",
+        submenus: [],
     },
 ];
 
