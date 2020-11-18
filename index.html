@@ -21,7 +21,7 @@
           return response || fetch(event.request);
         })
         .catch(() => {
-          return caches.match('/assets/offline-page.html');
+          return caches.match('assets/offline-page.html');
         })
     )
   });
