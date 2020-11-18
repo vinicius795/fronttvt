@@ -11,21 +11,8 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="/src/assets/icons/icon-192x192.png">
   <meta name="theme-color" content="#1976d2">
-<link rel="stylesheet" href="styles.bc2a02f8fb5ed8676887.css"></head>
+</head>
 <body class="mat-typography">
-  <script>
-  this.addEventListener("fetch", event => {
-    event.respondWith(
-      caches.match(event.request)
-        .then(response => {
-          return response || fetch(event.request);
-        })
-        .catch(() => {
-          return caches.match('/assets/offline-page.html');
-        })
-    )
-  });
-  </script>
   <app-root>
     <nav style="background-color:#3f51b5; height: 56px; width: 100%">
     </nav>
@@ -41,5 +28,5 @@
     </h3>
   </noscript>
 
-<script src="runtime.acf0dec4155e77772545.js" defer></script><script src="polyfills.35a5ca1855eb057f016a.js" defer></script><script src="main.d74381fd1d975f7b7aa5.js" defer></script></body>
+<script src="runtime.js" defer></script><script src="polyfills.js" defer></script><script src="styles.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
 </html>
