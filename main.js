@@ -302,6 +302,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/grid-list */ "zkoq");
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
 /* harmony import */ var _cards_cards_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./cards/cards.component */ "E3Wl");
+/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/service-worker */ "Jho9");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../environments/environment */ "AytR");
 
 
 
@@ -310,6 +312,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //material import
+
+
+
 
 
 
@@ -341,6 +346,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
             _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_16__["MatGridListModule"],
             _angular_material_card__WEBPACK_IMPORTED_MODULE_17__["MatCardModule"],
             _angular_flex_layout__WEBPACK_IMPORTED_MODULE_2__["FlexLayoutModule"],
+            _angular_service_worker__WEBPACK_IMPORTED_MODULE_19__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_20__["environment"].production }),
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
         _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_12__["NavigationComponent"],
@@ -358,7 +364,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _angular_material_list__WEBPACK_IMPORTED_MODULE_15__["MatListModule"],
         _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_16__["MatGridListModule"],
         _angular_material_card__WEBPACK_IMPORTED_MODULE_17__["MatCardModule"],
-        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_2__["FlexLayoutModule"]] }); })();
+        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_2__["FlexLayoutModule"], _angular_service_worker__WEBPACK_IMPORTED_MODULE_19__["ServiceWorkerModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
@@ -383,6 +389,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_16__["MatGridListModule"],
                     _angular_material_card__WEBPACK_IMPORTED_MODULE_17__["MatCardModule"],
                     _angular_flex_layout__WEBPACK_IMPORTED_MODULE_2__["FlexLayoutModule"],
+                    _angular_service_worker__WEBPACK_IMPORTED_MODULE_19__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_20__["environment"].production }),
                 ],
                 providers: [],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
