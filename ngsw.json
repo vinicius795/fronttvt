@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605673150574,
+  "timestamp": 1605674980971,
   "index": "https://vinicius795.github.io/fronttvt/index.html",
   "assetGroups": [
     {
@@ -11,9 +11,10 @@
         "ignoreVary": true
       },
       "urls": [
+        "https://vinicius795.github.io/fronttvt/assets/offline-page.html",
         "https://vinicius795.github.io/fronttvt/favicon.ico",
         "https://vinicius795.github.io/fronttvt/index.html",
-        "https://vinicius795.github.io/fronttvt/main.2cb769fe48c0567ee831.js",
+        "https://vinicius795.github.io/fronttvt/main.d74381fd1d975f7b7aa5.js",
         "https://vinicius795.github.io/fronttvt/manifest.webmanifest",
         "https://vinicius795.github.io/fronttvt/polyfills.35a5ca1855eb057f016a.js",
         "https://vinicius795.github.io/fronttvt/runtime.acf0dec4155e77772545.js",
@@ -51,9 +52,10 @@
     "https://vinicius795.github.io/fronttvt/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "https://vinicius795.github.io/fronttvt/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://vinicius795.github.io/fronttvt/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://vinicius795.github.io/fronttvt/assets/offline-page.html": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     "https://vinicius795.github.io/fronttvt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://vinicius795.github.io/fronttvt/index.html": "0f463c5dc4be44c73c0279fd39520d6142f13415",
-    "https://vinicius795.github.io/fronttvt/main.2cb769fe48c0567ee831.js": "c68d004a72458102edf68ecdc86287f18777303f",
+    "https://vinicius795.github.io/fronttvt/index.html": "6b7be3c2f1198e7805ff98ee0585dee4eed57f50",
+    "https://vinicius795.github.io/fronttvt/main.d74381fd1d975f7b7aa5.js": "cdd4bbe04647fcd7128f07aad77605ddffea5127",
     "https://vinicius795.github.io/fronttvt/manifest.webmanifest": "9e4963ff9a946f1933be421df7cb80003bdd890b",
     "https://vinicius795.github.io/fronttvt/polyfills.35a5ca1855eb057f016a.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
     "https://vinicius795.github.io/fronttvt/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
