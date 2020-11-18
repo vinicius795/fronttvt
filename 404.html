@@ -13,6 +13,24 @@
   <meta name="theme-color" content="#1976d2">
 <link rel="stylesheet" href="styles.bc2a02f8fb5ed8676887.css"></head>
 <body class="mat-typography">
+  <script>
+    self.addEventListener('fetch', function (event) {
+      return event.respondWith(
+        caches.match(event.request)
+          .then(function (response) {
+            let requestToCache = event.request.clone();
+
+            return fetch(requestToCache).then().catch(error => {
+              // Check if the user is offline first and is trying to navigate to a web page
+              if (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')) {
+                // Return the offline page
+                return caches.match("/assets/offline-page.html");
+              }
+            });
+          })
+      );
+    });
+  </script>
   <app-root>
     <nav style="background-color:#3f51b5; height: 56px; width: 100%">
     </nav>
