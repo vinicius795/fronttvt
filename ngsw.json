@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605676608714,
+  "timestamp": 1605678362725,
   "index": "https://vinicius795.github.io/fronttvt/index.html",
   "assetGroups": [
     {
@@ -56,7 +56,7 @@
     "https://vinicius795.github.io/fronttvt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "https://vinicius795.github.io/fronttvt/index.html": "8290ad7374652b396f3aef99280f02e7edef6802",
     "https://vinicius795.github.io/fronttvt/main.d74381fd1d975f7b7aa5.js": "cdd4bbe04647fcd7128f07aad77605ddffea5127",
-    "https://vinicius795.github.io/fronttvt/manifest.webmanifest": "9e4963ff9a946f1933be421df7cb80003bdd890b",
+    "https://vinicius795.github.io/fronttvt/manifest.webmanifest": "938ec946ffe27decf5fbc83043afc8f11491d338",
     "https://vinicius795.github.io/fronttvt/polyfills.35a5ca1855eb057f016a.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
     "https://vinicius795.github.io/fronttvt/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "https://vinicius795.github.io/fronttvt/styles.bc2a02f8fb5ed8676887.css": "c18ca19c032fdd3059a657bad97b386e41c3d7de"
