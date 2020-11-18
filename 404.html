@@ -24,7 +24,7 @@
               // Check if the user is offline first and is trying to navigate to a web page
               if (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')) {
                 // Return the offline page
-                return caches.match("/assets/offline-page.html");
+                return caches.match("assets/offline-page.html");
               }
             });
           })
