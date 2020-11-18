@@ -13,19 +13,6 @@
   <meta name="theme-color" content="#1976d2">
 <link rel="stylesheet" href="styles.bc2a02f8fb5ed8676887.css"></head>
 <body class="mat-typography">
-  <script>
-  this.addEventListener("fetch", event => {
-    event.respondWith(
-      caches.match(event.request)
-        .then(response => {
-          return response || fetch(event.request);
-        })
-        .catch(() => {
-          return caches.match('assets/offline-page.html');
-        })
-    )
-  });
-  </script>
   <app-root>
     <nav style="background-color:#3f51b5; height: 56px; width: 100%">
     </nav>
