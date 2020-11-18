@@ -1,11 +1,11 @@
 {
-  "name": "fronttvt",
-  "short_name": "fronttvt",
+  "name": "Sistema TvT",
+  "short_name": "TvT",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "https://vinicius795.github.io/fronttvt/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

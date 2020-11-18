@@ -47,7 +47,7 @@ import { environment } from '../environments/environment';
     MatGridListModule,
     MatCardModule,
     FlexLayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
   ],
   providers: [],
   bootstrap: [AppComponent]
