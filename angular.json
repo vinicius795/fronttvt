@@ -55,7 +55,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "baseHref": "https://vinicius795.github.io/fronttvt/",
               "budgets": [
                 {
                   "type": "initial",
