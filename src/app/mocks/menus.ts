@@ -2,7 +2,7 @@ import { menus, submenus } from "../navigation/navigation.inteface"
 
 
 export const submenuslist: submenus[] = [
-    { id: 0, title: "Novo Relatório de entregas", url: "#" },
+    { id: 0, title: "Novo Relatório de entregas", url: "/relatorio-entrega" },
     { id: 1, title: "Reimprimir relatorio", url: "#" },
     { id: 2, title: "Buscar relatorio", url: "#" },
     { id: 3, title: "Gerenciar funcionários", url: "#" },

@@ -5,6 +5,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <p class="mat-elevation-z">
+        <a routerLink="" routerLinkActive="router-link-active"> Inicio </a>
+      </p>
       <mat-expansion-panel *ngFor="let menus of _menulist" class="mat-elevation-z">
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -12,7 +15,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <p *ngFor="let submenus of menus?.submenus">
-          <a href="{{ submenus.url }}">
+          <a routerLink="{{ submenus.url }}">
             {{ submenus.title }}
           </a>
         </p>
@@ -31,6 +34,6 @@
       <span>Transvacari Transportes</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <app-cards></app-cards>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

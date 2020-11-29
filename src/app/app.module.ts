@@ -28,6 +28,7 @@ import { environment } from '../environments/environment';
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
 import { CardsComponent } from './cards/cards.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { REntregasComponent } from './r-entregas/r-entregas.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     CardsComponent,
     MediaQueryStatusComponent,
     EtiquetaComponent,
+    REntregasComponent,
   ],
   imports: [
     BrowserModule,
