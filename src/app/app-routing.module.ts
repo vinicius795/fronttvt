@@ -5,11 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {REntregasComponent} from './r-entregas/r-entregas.component'
 import {CardsComponent} from './cards/cards.component'
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
+import { UpdatecteComponent } from "./updatecte/updatecte.component"
 
 const routes: Routes = [
   { path: 'cards', component: CardsComponent},
   { path: 'relatorio-entrega', component: REntregasComponent},
   { path: 'etiquetas', component: EtiquetaComponent },
+  { path: 'atualizar', component: UpdatecteComponent},
   { path: '', redirectTo: '/cards', pathMatch: 'full' },
   
 ];
