@@ -6,8 +6,8 @@ export interface card{
     state: boolean,
 }
 
-export interface Parametro {
-    id: number,
-    parametro: string,
-    valor: string,
+export class Parametro {
+    id: number
+    parametro: string
+    valor: string
 }

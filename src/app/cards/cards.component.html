@@ -19,7 +19,8 @@
                     <mat-card-subtitle>Sincronizar o Banco de dados com o Banco de Dados de Sao Paulo</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    Ultima Sincronizacao: 
+                    Ultima Sincronizacao: {{ _parametro ? _parametro.valor : "" }}
+
                 </mat-card-content>
                 <mat-card-actions align="start">
                     <button mat-button>Atualizar Agora</button>

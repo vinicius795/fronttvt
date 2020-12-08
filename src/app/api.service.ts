@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 import { Parametro } from "./cards/cards.interface"
 
 const baseUrl = 'http://localhost:8000/api';

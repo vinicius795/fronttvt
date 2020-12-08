@@ -13,11 +13,9 @@ import { ApiService } from '../api.service'
 })
 
 export class CardsComponent implements OnInit {
-  teste: any;
-  _parametro: Parametro;
   _cardlist = cardlist;
   cardbase: card;
-  error: any;
+  _parametro: Parametro;
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -31,9 +29,6 @@ export class CardsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getdata()
-  }
-  getdata(): void{
-    this.apiservice.getparametro("lastsincsp").subscribe(res => (this._parametro = res, console.log(res)));
+    this.apiservice.getparametro("lastsincsp").subscribe(res => {this._parametro = res});
   }
 }
