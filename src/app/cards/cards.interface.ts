@@ -5,9 +5,3 @@ export interface card{
     url: string,
     state: boolean,
 }
-
-export class Parametro {
-    id: number
-    parametro: string
-    valor: string
-}

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { card, Parametro } from "./cards.interface"
+import { card } from "./cards.interface"
 import { cardlist} from '../mocks/cards'
 import { from, Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ApiService } from '../api.service'
+import { ApiService, SystemSetings } from '../api.service'
 
 @Component({
   selector: 'app-cards',
@@ -13,9 +13,11 @@ import { ApiService } from '../api.service'
 })
 
 export class CardsComponent implements OnInit {
+
   _cardlist = cardlist;
   cardbase: card;
-  _parametro: Parametro;
+  lastupdatesp: SystemSetings;
+  teste: any;
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,6 +31,13 @@ export class CardsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.apiservice.getparametro("lastsincsp").subscribe(res => {this._parametro = res});
+    this.getlastsincsp()
+  }
+  sincsp(): void{
+    this.apiservice.sincsp().subscribe(res => { if (res == null) this.getlastsincsp()});
+  }
+  
+  getlastsincsp(): void{
+    this.apiservice.getseting("lastsincsp").subscribe(res => { this.lastupdatesp = res });
   }
 }

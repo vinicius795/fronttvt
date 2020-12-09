@@ -12,18 +12,17 @@
                 </mat-card>
             </a>
         </div>
-        <div class="sec1" fxFlex.xs="55" style="padding-top: 20px; padding-left: 20px;">
-            <mat-card>
+        <div class="sec1" fxFlex.xs="55" style="padding: 20px;">
+            <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}">
                 <mat-card-header>
                     <mat-card-title>Sincronizar com Sao Paulo</mat-card-title>
                     <mat-card-subtitle>Sincronizar o Banco de dados com o Banco de Dados de Sao Paulo</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    Ultima Sincronizacao: {{ _parametro ? _parametro.valor : "" }}
-
+                    Ultima Sincronizacao: {{ lastupdatesp ? lastupdatesp.valor : "" }}
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <button mat-button>Atualizar Agora</button>
+                    <button mat-button (click) ="sincsp()" >Atualizar Agora</button>
                 </mat-card-actions>
                 <mat-card-footer>
                 </mat-card-footer>
