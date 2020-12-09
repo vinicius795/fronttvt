@@ -47,9 +47,19 @@ export class ApiService {
     this.funcao = 'add'
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
-  getfuncionario(cargo: string,): Observable<any> {
-    this.funcao = 'cte/add'
-    return this.http.get<any>(`${baseUrl}/${this.funcao}`)
+  getfunc([args]): Observable<any> {
+    if ((cargo in args) !== (id in args)){
+    if (cargo in args){
+     this.funcao = 'funcionarios/cargo'
+     return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.cargo}`)
+    }else if(id in args){
+      this.funcao = 'funcionarios'
+      return this.http.get < any > (`${baseUrl}/${this.funcao}/${args.id}`)
+    }
+    }else if(Object.entries(args).length === 0){
+      this.funcao = 'funcionarios'
+     return this.http.get<any>(`${baseUrl}/${this.funcao}`)
+    }
   }
 }
 
