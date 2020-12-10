@@ -25,7 +25,6 @@ const baseUrl = 'http://localhost:8000/api';
 })
 export class ApiService {
   private funcao: string;
-  private response: any;
   constructor(
     private http: HttpClient,
     ) { }
@@ -47,19 +46,27 @@ export class ApiService {
     this.funcao = 'add'
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
-  getfunc([args]): Observable<any> {
-    if ((cargo in args) !== (id in args)){
-    if (cargo in args){
-     this.funcao = 'funcionarios/cargo'
-     return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.cargo}`)
-    }else if(id in args){
-      this.funcao = 'funcionarios'
-      return this.http.get < any > (`${baseUrl}/${this.funcao}/${args.id}`)
+  getfunc(args: any): Observable<any> {
+    if (("cargo" in args) !== ("id" in args)){
+      if ("cargo" in args){
+       this.funcao = 'funcionarios/cargos'
+       return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.cargo}`)
+      }else if("id" in args){
+        this.funcao = 'funcionarios/id'
+        return this.http.get < any > (`${baseUrl}/${this.funcao}/${args.id}`)
+      }
+      }else if(Object.entries(args).length === 0){
+        this.funcao = 'funcionarios'
+       return this.http.get<any>(`${baseUrl}/${this.funcao}`)
     }
-    }else if(Object.entries(args).length === 0){
-      this.funcao = 'funcionarios'
-     return this.http.get<any>(`${baseUrl}/${this.funcao}`)
-    }
+  }
+  getrelatorioentrega(id: number): Observable<any>{
+    this.funcao = 'relatorios/entrega'
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}`)
+  }
+  saverelatorioentrega(dados: any): Observable<any>{
+    this.funcao = 'relatorios/entrega/save'
+    return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
 }
 

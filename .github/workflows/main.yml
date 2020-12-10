@@ -27,7 +27,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm i
       - run: npm install -g @angular/cli > /dev/null
-      - run: ng build --prod
+      - run: ng build --prod --base-href "https://vinicius795.github.io/fronttvt/"
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
