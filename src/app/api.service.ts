@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
-export class addcte {
+@Injectable({
+  providedIn: 'root'
+})
+export class AddCTe {
+  
   nr_dacte: string;
   remetente: string;
   destinatario: string;
@@ -11,6 +14,39 @@ export class addcte {
   valor: number;
   volumes: string;
   nfe: string;
+  
+  constructor (
+    private header = [],
+    private line = []
+    ){}
+    
+  xml(arquivo: any){
+    
+  }
+  csv(arquivo: FileList){
+    let file: File = arquivo.item(0);
+    let reader: FileReader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = (e) => {
+      let csv: any = reader.result;
+      let allTextLines = [];
+      allTextLines = csv.split(/\r|\n|\r/);
+    }
+    let headers = allTextLines[1].split(';');
+    let data = headers;
+    let tarr = [];
+    for (let j = 0; j < headers.length; j++){
+      tarr.push(data[j]);
+    }
+    this.header.push(tarr);
+    return this.header
+ 
+
+  }
+  sswweb(arquivo: any){
+    return this.csv(arquivo)
+    
+  }
 }
 
 export class SystemSetings {
@@ -69,4 +105,3 @@ export class ApiService {
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
 }
-
