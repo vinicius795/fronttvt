@@ -18,5 +18,4 @@ export class UpdatecteComponent implements OnInit {
   ngOnInit(): void {
     this.apiservice.getfunc({cargo:"motorista", id:3}).subscribe(res => console.log(res))
   }
-
 }
