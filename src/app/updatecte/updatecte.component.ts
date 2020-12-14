@@ -13,7 +13,7 @@ export class UpdatecteComponent implements OnInit {
     private addcte : AddCTe
   ) { }
   updatecsv(file: FileList){
-    teste = this.addcte.csv(file)
+    this.teste = this.addcte.csv(file)
   }
   ngOnInit(): void {
     this.apiservice.getfunc({cargo:"motorista", id:3}).subscribe(res => console.log(res))

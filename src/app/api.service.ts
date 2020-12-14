@@ -31,14 +31,14 @@ export class AddCTe {
       let csv: any = reader.result;
       let allTextLines = [];
       allTextLines = csv.split(/\r|\n|\r/);
-    }
-    let headers = allTextLines[1].split(';');
-    let data = headers;
-    let tarr = [];
-    for (let j = 0; j < headers.length; j++){
-      tarr.push(data[j]);
-    }
-    this.header.push(tarr);
+      let headers = allTextLines[1].split(';');
+      let data = headers;
+      let tarr = [];
+      for (let j = 0; j < headers.length; j++){
+        tarr.push(data[j]);
+      }
+      this.header.push(tarr);
+    } 
     return this.header
  
 
