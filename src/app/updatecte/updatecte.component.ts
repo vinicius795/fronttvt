@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service'
+import { ApiService, AddCTe} from '../api.service'
 
 @Component({
   selector: 'app-updatecte',
@@ -7,13 +7,14 @@ import { ApiService } from '../api.service'
   styleUrls: ['./updatecte.component.scss']
 })
 export class UpdatecteComponent implements OnInit {
-
+  teste: any
   constructor(
-    private apiservice : ApiService
+    private apiservice : ApiService, 
+    private addcte : AddCTe
   ) { }
-
-  ngOnInit(): void {
-    this.apiservice.getfunc({cargo:"motorista", id:3}).subscribe(res => console.log(res))
+  updatecsv(file: FileList){
+    console.log(this.addcte.csv(file))
   }
-
+  ngOnInit(): void {
+  }
 }
