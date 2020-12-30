@@ -43,7 +43,7 @@ export class ApiService {
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}`)
   }
   addcte(dados: any): Observable<any>{
-    this.funcao = 'add'
+    this.funcao = 'cte/add'
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
   getfunc(args: any): Observable<any> {

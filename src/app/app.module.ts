@@ -21,6 +21,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 //components
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
@@ -59,6 +61,8 @@ import { environment } from '../environments/environment';
     MatCardModule,
     FlexLayoutModule,
     HttpClientModule,
+    MatSelectModule,
+    MatInputModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
   ],
   providers: [],
