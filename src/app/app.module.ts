@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //addins
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +35,10 @@ import { UpdatecteComponent } from './updatecte/updatecte.component';
 //pwa
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { TablectesComponent } from './tablectes/tablectes.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,7 @@ import { environment } from '../environments/environment';
     EtiquetaComponent,
     REntregasComponent,
     UpdatecteComponent,
+    TablectesComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +70,10 @@ import { environment } from '../environments/environment';
     MatSelectModule,
     MatInputModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

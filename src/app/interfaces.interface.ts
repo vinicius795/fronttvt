@@ -15,3 +15,13 @@ export interface CTE{
     n_cte: number,
 
 }
+export interface TablectesItem {
+    id: number
+    NR_DACTE: number
+    REMETENTE: string
+    DESTINATARIO: string
+    NR_CONTROLE: string
+    VALOR: number
+    VOLUMES: number
+    NFE: string
+}

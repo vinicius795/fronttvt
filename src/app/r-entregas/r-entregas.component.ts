@@ -13,14 +13,18 @@ export class REntregasComponent implements OnInit {
   select_motorista: string
   ajudantes = []
   select_ajudante: Funcionario
-  all_cte: CTE[]
+  all_cte = []
   cte: number
 
   constructor(
     private api: ApiService,
   ) { }
   getCTE(){
-    this.api.getcte("dacte", this.cte).subscribe(res => this.all_cte.push(res))
+    console.log(this.cte)
+    if (this.cte.toString().length == 44 ){
+      this.api.getcte("dacte", this.cte).subscribe(res => this.all_cte.push(res))
+    }
+    console.log(this.all_cte)
   }
   getFuncionarios(){
     var x: any

@@ -20,7 +20,9 @@
     <form class="example-form">
         <mat-form-field class="example-full-width">
             <mat-label>DACTe</mat-label>
-            <input matInput placeholder="Codigo DACTe de 44 digitos" (ngModelChange)="getCTE()" type="tel" pattern="[0-9]*" inputmode="numeric">
+            <input matInput placeholder="Codigo DACTe de 44 digitos" type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cte" name="cte" (change)='getCTE()'>
         </mat-form-field>
     </form>
+    <p>{{ cte }}</p>
 </div>
+<app-tablectes [all_cte]='all_cte'></app-tablectes>
