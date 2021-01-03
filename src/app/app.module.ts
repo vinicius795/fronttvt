@@ -39,6 +39,8 @@ import { TablectesComponent } from './tablectes/tablectes.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PrintLayoutComponent } from './print-layout/print-layout.component';
+import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { MatSortModule } from '@angular/material/sort';
     REntregasComponent,
     UpdatecteComponent,
     TablectesComponent,
+    PrintLayoutComponent,
+    PrintREntregasComponent,
   ],
   imports: [
     BrowserModule,
