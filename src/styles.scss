@@ -102,7 +102,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
   }
 
-  @media print {
-  app-root > * { display: none; }
-  app-root app-print-layout { display: block; }
+@media print {
+  .isPrinting > * { display: none; }
+  .isPrinting app-print-layout { display: block; }
 }
