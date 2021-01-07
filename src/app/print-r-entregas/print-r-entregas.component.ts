@@ -11,18 +11,33 @@ import { PrintService } from '../print.service';
 export class PrintREntregasComponent implements OnInit {
   invoiceIds: string[];
   invoiceDetails: Promise<any>[];
+  report: any;
+  report2: Promise<any>[];
 
   constructor(route: ActivatedRoute,
+    private api: ApiService,
     private printService: PrintService) {
     this.invoiceIds = route.snapshot.params['invoiceIds']
       .split(',');
   }
 
   ngOnInit() {
-    this.invoiceDetails = this.invoiceIds
+    /*this.invoiceDetails = this.invoiceIds
       .map(id => this.getInvoiceDetails(id));
     Promise.all(this.invoiceDetails)
-      .then(() => this.printService.onDataReady());
+      .then();*/
+    this.report2 = this.invoiceIds
+    .map(id => this.getInfRela(id));
+    Promise.all(this.report2).then()
+
+  }
+  getInfRela(id){
+    return new Promise(resolve =>
+      setTimeout(() => resolve(
+        this.api.getrelatorioentrega(id).subscribe(res => this.report = res)
+        )
+      )
+    )
   }
 
   getInvoiceDetails(invoiceId) {

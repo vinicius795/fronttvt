@@ -96,7 +96,7 @@ export class ApiService {
        return this.http.get<any>(`${baseUrl}/${this.funcao}`)
     }
   }
-  getrelatorioentrega(id: number): Observable<any>{
+  getrelatorioentrega(id): Observable<any>{
     this.funcao = 'relatorios/entrega'
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}`)
   }

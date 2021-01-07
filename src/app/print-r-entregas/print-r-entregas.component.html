@@ -1,6 +1,74 @@
-<div [class.isPrinting]="printService.isPrinting">
-    <div class="invoice" *ngFor="let invoice of invoiceIds; let i = index">
-        <h1>Invoice Num. {{ invoice }}</h1>
-        Amount: {{ (invoiceDetails[i] | async)?.amount }}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" id="titulo"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <p id="moto"></p>
+            <p id="ajud"></p>
+            <p id="plac">Veiculo : {{ report.VEICULO.PLACA }}</p>
+        </div>
+        <div class="col-xs-6" align="right">
+            <p id="oper">Usuario:  {{ report.USUARIO.username }}</p>
+            <p id="data">Data: {{ report.DATA }}</p>
+            <p id="saidachegada"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="dados" class="table table-bordered" class="print-friendly">
+                <tbody>
+                    <tr>
+                        <th>Remetente</th>
+                        <th>Destinatario</th>
+                        <th>Valor</th>
+                        <th>N Controle</th>
+                        <th>Receber</th>
+                    </tr>
+                    <tr *ngFor="let cte of report.CTE_FPag">
+                        <td>{{cte.CTE.REMETENTE}}</td>
+                        <td>{{cte.CTE.DESTINATARIO}}</td>
+                        <td>{{cte.CTE.VALOR}}</td>
+                        <td>{{cte.CTE.NR_CONTROLE}}</td>
+                        <td>{{cte.F_PAGAMENTO.metodo}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <label for="comment">Observa&ccedil;&otilde;es:</label>
+            <div id="obs" class="well">
+                {{ report.OBS }}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <p id="acina"></p>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="center">
+            <p id="moto2"></p>
+        </div>
+        <div class="col-xs-6" align="center">
+            <p id="ajud2"></p>
+        </div>
     </div>
 </div>

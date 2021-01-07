@@ -1,17 +1,16 @@
-.header, .header-space, .footer, .footer-space { height: 100px; }
-.header { position: fixed; top: 0; }
-.footer { position: fixed; bottom: 0; }
+.header, .header-space, .footer, .footer-space { 
+  height: 100px; 
+}
+.header { 
+  position: fixed; 
+  top: 0; 
+}
+.footer { 
+  position: fixed; 
+  bottom: 0; 
+}
 @media screen {
   :host {
     display: none;
-  }
-}
-
-@page {
-  size: A4 landscape;
-}
-@page:right{
-  @bottom-right {
-    content: counter(page);
   }
 }
