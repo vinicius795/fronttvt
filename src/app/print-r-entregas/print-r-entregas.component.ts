@@ -13,6 +13,8 @@ export class PrintREntregasComponent implements OnInit {
   invoiceDetails: Promise<any>[];
   report: any;
   report2: Promise<any>[];
+  reldate: any
+  aviso: any 
 
   constructor(route: ActivatedRoute,
     private api: ApiService,
@@ -29,12 +31,13 @@ export class PrintREntregasComponent implements OnInit {
     this.report2 = this.invoiceIds
     .map(id => this.getInfRela(id));
     Promise.all(this.report2).then()
+    this.api.getseting("aviso-rel-entregas").subscribe(res => this.aviso = res)
 
   }
   getInfRela(id){
     return new Promise(resolve =>
       setTimeout(() => resolve(
-        this.api.getrelatorioentrega(id).subscribe(res => this.report = res)
+        this.api.getrelatorioentrega(id).subscribe(res => {this.report = res, this.reldate = Date.parse(res.DATA)})
         )
       )
     )

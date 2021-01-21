@@ -1,32 +1,69 @@
 <div class="container">
+    <div class="titulo">
+        <p>Relatorio N&#176; {{report.id}}</p>
+    </div>
     <div class="rowinfos">
-        <div class="funcionarios" *ngFor="let func of report.FUNCIONARIOS">
-            <p>{{ func.FUNCAO.CARGO }}: {{ func.FUNCIONARIO.NOME }} {{ func.FUNCIONARIO.SOBRENOME }}</p>
+        <div class="funcionarios">
+            <p *ngFor="let func of report.FUNCIONARIOS">{{ func.FUNCAO.CARGO }}: {{ func.FUNCIONARIO.NOME }} {{ func.FUNCIONARIO.SOBRENOME }}</p>
+        </div>
+        <div class="data">
+            <p>
+                Data: {{ reldate | date}}
+            </p>
+            <p>
+                Operador: {{ report.USUARIO.username }}
+            </p>
         </div>
     </div>
-    <div class="rowctecontainer" *ngFor="let cte of report.CTE_FPag" >
-        <div class="ncontrole">
-            <p>N&#176; Controle</p>
-            <p>{{cte.CTE.NR_CONTROLE}}</p>
-        </div>
-        <div class="rda">
-            <div class="rem-dest">
+    <div class="rowctecontainer">
+        <div class="row" *ngFor="let cte of report.CTE_FPag" >
+            <div class="ncontrole">
+                <p>N&#176; Controle<br>
+                {{cte.CTE.NR_CONTROLE}}</p>
+            </div>
+            <div class="rda">
+                <div class="rem-dest">
+                    <p>
+                        Remetente: {{cte.CTE.REMETENTE}}
+                        <br>
+                        Destinatario: {{cte.CTE.DESTINATARIO}}
+                        <br>
+                        Volumes: {{cte.CTE.VOLUMES}} ¦ NFe: {{cte.CTE.NFE}}
+                    </p>
+                </div>
+            </div>
+            <div class="pag">
                 <p>
-                    Remetente:<br>{{cte.CTE.REMETENTE}}
-                    <br>
-                    Destinatario:<br>{{cte.CTE.DESTINATARIO}}
+                    Receber<br>
+                    R$ {{cte.CTE.VALOR}}<br>
+                    {{cte.F_PAGAMENTO.metodo}}<br>
                 </p>
             </div>
-            <div class="assinatura">
-                <p>Assinatura:</p>
+            <div class="pag">
+                <p> Chegada <br> ___:___ </p>
+                <p>| Saida<br> ___:___ </p>
             </div>
         </div>
-        <div class="pag">
+    </div>
+    <div class='obs'>
+        <p>
+            {{report.OBS}}
+        </p>
+    </div>
+    <div class="aviso">
+        <p>
+            {{ aviso.valor }}
+        </p>
+    </div>
+    <div class="assinatura">
+        <div class="funcionario"  *ngFor="let func of report.FUNCIONARIOS">
+            <hr>
             <p>
-                Receber<br>
-                R$ {{cte.CTE.VALOR}}<br>
-                {{cte.F_PAGAMENTO.metodo}}<br>
+            <br>
+            {{ func.FUNCIONARIO.NOME }} {{ func.FUNCIONARIO.SOBRENOME }}<br>
+            {{ func.FUNCAO.CARGO }}
             </p>
+
         </div>
     </div>
 </div>
