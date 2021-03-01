@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1607569399046,
+  "timestamp": 1614629569622,
   "index": "https://vinicius795.github.io/fronttvt/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "https://vinicius795.github.io/fronttvt/favicon.ico",
         "https://vinicius795.github.io/fronttvt/index.html",
-        "https://vinicius795.github.io/fronttvt/main.882928132739a6870615.js",
+        "https://vinicius795.github.io/fronttvt/main.js",
         "https://vinicius795.github.io/fronttvt/manifest.webmanifest",
-        "https://vinicius795.github.io/fronttvt/polyfills.35a5ca1855eb057f016a.js",
-        "https://vinicius795.github.io/fronttvt/runtime.acf0dec4155e77772545.js",
-        "https://vinicius795.github.io/fronttvt/styles.bc2a02f8fb5ed8676887.css"
+        "https://vinicius795.github.io/fronttvt/polyfills.js",
+        "https://vinicius795.github.io/fronttvt/runtime.js",
+        "https://vinicius795.github.io/fronttvt/styles.css"
       ],
       "patterns": []
     },
@@ -52,12 +52,12 @@
     "https://vinicius795.github.io/fronttvt/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://vinicius795.github.io/fronttvt/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://vinicius795.github.io/fronttvt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://vinicius795.github.io/fronttvt/index.html": "c50c83ee654a07947aaae7effde004930ed87293",
-    "https://vinicius795.github.io/fronttvt/main.882928132739a6870615.js": "f84615a652c7c0fed681aca8a8a78463426df001",
+    "https://vinicius795.github.io/fronttvt/index.html": "ab2f6cedbdbc5b5cd6e253186a35dec9d4f2cf94",
+    "https://vinicius795.github.io/fronttvt/main.js": "87168bd58bfab5ae26e6d5bb0c9fd5f3cef97e6b",
     "https://vinicius795.github.io/fronttvt/manifest.webmanifest": "087658d5cc0ff3217c740452c8c300074072f9dc",
-    "https://vinicius795.github.io/fronttvt/polyfills.35a5ca1855eb057f016a.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
-    "https://vinicius795.github.io/fronttvt/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://vinicius795.github.io/fronttvt/styles.bc2a02f8fb5ed8676887.css": "c18ca19c032fdd3059a657bad97b386e41c3d7de"
+    "https://vinicius795.github.io/fronttvt/polyfills.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
+    "https://vinicius795.github.io/fronttvt/runtime.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://vinicius795.github.io/fronttvt/styles.css": "591c538ee27be1200681a78516efafd151b52640"
   },
   "navigationUrls": [
     {
