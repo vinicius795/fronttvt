@@ -1,28 +1,27 @@
-<div class="selects">
-    <div class="funcionarios">
-        <mat-form-field appearance="fill">
-            <mat-label>Selecione o Motorista</mat-label>
-            <mat-select [(value)]="select_motorista">
-                <mat-option *ngFor="let motorista of motoristas" value="{{ motorista.id }}">{{ motorista.NOME }} {{ motorista.SOBRENOME }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+<div class="container">
+    <div class="selectors">
+        <form #f='ngForm'>
+            <mat-slide-toggle *ngFor="let cargo of cargos" name="{{cargo.CARGO}}" (change)='onchange(f)' ngModel >{{ cargo.CARGO }} </mat-slide-toggle><br>
+        </form>
+        <div class="selects">
+            <div class="funcionarios" *ngFor="let select_cargo of selected_cargos">
+                <mat-form-field appearance="fill">
+                    <mat-label>Selecione o {{ select_cargo.cargo }}</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let motorista of select_cargo.funcionarios" value="{{ motorista.id }}" >{{ motorista.NOME }} {{ motorista.SOBRENOME }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
     </div>
-    <div class="funcionarios">
-        <mat-form-field appearance="fill">
-            <mat-label>Selecione o Ajudante</mat-label>
-            <mat-select [(value)]="select_ajudante">
-                <mat-option *ngFor="let ajudante of ajudantes" value="{{ ajudante.id }}">{{ ajudante.NOME }} {{ ajudante.SOBRENOME }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <div class="cte">
+        <form class="example-form" autocomplete="off">
+            <mat-form-field class="example-full-width">
+                <mat-label>DACTe</mat-label>
+                <input matInput placeholder="Codigo DACTe de 44 digitos" type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cte" name="cte" (change)='getCTE()'>
+            </mat-form-field>
+        </form>
+        <p></p>
     </div>
+    <app-tablectes [all_cte]='all_cte'></app-tablectes>
 </div>
-<div class="cte">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <mat-label>DACTe</mat-label>
-            <input matInput placeholder="Codigo DACTe de 44 digitos" type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cte" name="cte" (change)='getCTE()'>
-        </mat-form-field>
-    </form>
-    <p>{{ cte }}</p>
-</div>
-<app-tablectes [all_cte]='all_cte'></app-tablectes>

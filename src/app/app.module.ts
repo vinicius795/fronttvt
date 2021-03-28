@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 //components
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
@@ -77,6 +78,7 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSlideToggleModule,
     FormsModule,
   ],
   providers: [],

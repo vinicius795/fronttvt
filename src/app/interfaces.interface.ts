@@ -1,14 +1,7 @@
-export interface Funcionario {
-    id: number,
-    NOME: string,
-    SOBRENOME: string,
-    CARGO: Cargos,
-    SITUACAO: number
-}
-
-export interface Cargos{
+/*export interface Cargos{
     id: number
-}
+    CARGO: string
+}*/
 
 export interface CTE{
     id: number,
@@ -24,4 +17,23 @@ export interface TablectesItem {
     VALOR: number
     VOLUMES: number
     NFE: string
+}
+export class Cargos {
+    [x: string]: any;
+    constructor(
+        public id:number,
+        public CARGO:string,
+        public checked: false
+    ){}
+    
+}
+
+export class Funcionario {
+    constructor(
+        public id: number,
+        public NOME: string,
+        public SOBRENOME: string,
+        public CARGO: Cargos,
+        public SITUACAO: number
+    ) { }
 }

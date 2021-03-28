@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cargos } from './interfaces.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +56,7 @@ export class SystemSetings {
   valor: string
 }
 
-const baseUrl = '/api';
+const baseUrl = 'http://localhost:8000/api';
 @Injectable({
   providedIn: 'root'
 })
@@ -72,11 +73,11 @@ export class ApiService {
   }
   sincsp(): Observable<any> {
     this.funcao = 'cte/add'
-    return this.http.get<any>(`${baseUrl}/${this.funcao}`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
   }
   getcte(tipo: string, value: number ): Observable<any>{
     this.funcao = "cte"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}?format=json`)
   }
   addcte(dados: any): Observable<any>{
     this.funcao = 'cte/add'
@@ -86,19 +87,23 @@ export class ApiService {
     if (("cargo" in args) !== ("id" in args)){
       if ("cargo" in args){
        this.funcao = 'funcionarios/cargos'
-       return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.cargo}`)
+       return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.cargo}?format=json`)
       }else if("id" in args){
         this.funcao = 'funcionarios/id'
-        return this.http.get < any > (`${baseUrl}/${this.funcao}/${args.id}`)
+        return this.http.get < any > (`${baseUrl}/${this.funcao}/${args.id}?format=json`)
       }
       }else if(Object.entries(args).length === 0){
         this.funcao = 'funcionarios'
-       return this.http.get<any>(`${baseUrl}/${this.funcao}`)
+       return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
     }
+  }
+  getcargos(): Observable<Cargos>{
+    this.funcao = 'funcionarios/cargos'
+    return this.http.get<Cargos>(`${baseUrl}/${this.funcao}?format=json`)
   }
   getrelatorioentrega(id): Observable<any>{
     this.funcao = 'relatorios/entrega'
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}?format=json`)
   }
   saverelatorioentrega(dados: any): Observable<any>{
     this.funcao = 'relatorios/entrega/save'

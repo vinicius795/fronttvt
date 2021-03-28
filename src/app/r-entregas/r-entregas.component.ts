@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ApiService } from '../api.service';
-import { CTE, Funcionario } from '../interfaces.interface';
+import { Funcionario, Cargos } from '../interfaces.interface';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-r-entregas',
@@ -9,41 +12,66 @@ import { CTE, Funcionario } from '../interfaces.interface';
 })
 export class REntregasComponent implements OnInit {
 
+  funcionarios: Funcionario
+  selected_func: Funcionario
   motoristas = []
   select_motorista: string
   ajudantes = []
   select_ajudante: Funcionario
   all_cte = []
+  cargos: Cargos
+  selected_cargos = []
   cte: number
 
   constructor(
     private api: ApiService,
-  ) { }
+  ) {
+    this.getcargos();
+    this.getfunc();
+  }
+
   getCTE(){
-    console.log(this.cte)
+    //console.log(this.cte)
     if (this.cte.toString().length == 44 ){
-      this.api.getcte("dacte", this.cte).subscribe(res => this.all_cte.push(res))
+      this.api.getcte("dacte", this.cte).subscribe(res => {
+        this.all_cte.push(res); 
+        console.log(this.all_cte);
+        this.cte = null
+      })
     }
-    console.log(this.all_cte)
   }
-  getFuncionarios(){
-    var x: any
-    this.api.getfunc({}).subscribe(res => {
-      res.forEach((element: Funcionario) => {
-        for (x in element.CARGO){
-          if (element.CARGO[x] == 1){
-            this.motoristas.push(element)
-          } else if (element.CARGO[x] == 2){
-            this.ajudantes.push(element)
+
+  onchange(f:NgForm){
+    this.selected_cargos=[]
+    var x,y,z,w, _selected_funcionario
+    for (x in f.value){
+      if(f.value[x] == true){
+        for(y in this.cargos){
+          if(this.cargos[y].CARGO == x){
+            _selected_funcionario = []
+            for(z in this.funcionarios){
+              for(w in this.funcionarios[z].CARGO){
+                if(this.funcionarios[z].CARGO[w].CARGO == x)
+                _selected_funcionario.push(this.funcionarios[z])
+              }
+            }
           }
-        }
-      });
-    })
-
+        } this.selected_cargos.push({ "cargo": x, "funcionarios": _selected_funcionario})
+      }
+    }
   }
 
+  getcargos(){
+    this.api.getcargos().subscribe(res => {res.forEach(element => {
+        element.CARGO == "Motorista" ? element.checked = true : element.checked = false
+    }); this.cargos = res
+    })
+  }
+  getfunc(){
+    this.api.getfunc({}).subscribe(res => this.funcionarios = res)
+  }
+  
   ngOnInit(): void {
-    this.getFuncionarios()
   }
 
 }
