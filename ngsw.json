@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1614629569622,
-  "index": "https://vinicius795.github.io/fronttvt/index.html",
+  "timestamp": 1616901683054,
+  "index": "/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://vinicius795.github.io/fronttvt/favicon.ico",
-        "https://vinicius795.github.io/fronttvt/index.html",
-        "https://vinicius795.github.io/fronttvt/main.js",
-        "https://vinicius795.github.io/fronttvt/manifest.webmanifest",
-        "https://vinicius795.github.io/fronttvt/polyfills.js",
-        "https://vinicius795.github.io/fronttvt/runtime.js",
-        "https://vinicius795.github.io/fronttvt/styles.css"
+        "/favicon.ico",
+        "/index.html",
+        "/main.js",
+        "/manifest.webmanifest",
+        "/polyfills.js",
+        "/runtime.js",
+        "/styles.css"
       ],
       "patterns": []
     },
@@ -29,35 +29,35 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-128x128.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-144x144.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-152x152.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-192x192.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-384x384.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-512x512.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-72x72.png",
-        "https://vinicius795.github.io/fronttvt/assets/icons/icon-96x96.png"
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "https://vinicius795.github.io/fronttvt/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "https://vinicius795.github.io/fronttvt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://vinicius795.github.io/fronttvt/index.html": "ab2f6cedbdbc5b5cd6e253186a35dec9d4f2cf94",
-    "https://vinicius795.github.io/fronttvt/main.js": "87168bd58bfab5ae26e6d5bb0c9fd5f3cef97e6b",
-    "https://vinicius795.github.io/fronttvt/manifest.webmanifest": "087658d5cc0ff3217c740452c8c300074072f9dc",
-    "https://vinicius795.github.io/fronttvt/polyfills.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
-    "https://vinicius795.github.io/fronttvt/runtime.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://vinicius795.github.io/fronttvt/styles.css": "591c538ee27be1200681a78516efafd151b52640"
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "e8ce97b9ee7dec466ae574c7c3cae9f169718e98",
+    "/main.js": "007d88d9759eb2698926ca98a8e3fbf4f6e3d321",
+    "/manifest.webmanifest": "087658d5cc0ff3217c740452c8c300074072f9dc",
+    "/polyfills.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
+    "/runtime.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/styles.css": "591c538ee27be1200681a78516efafd151b52640"
   },
   "navigationUrls": [
     {
