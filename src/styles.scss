@@ -106,3 +106,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .isPrinting > * { display: none; }
   .isPrinting app-print-layout { display: block; }
 }
+
+td.mat-cell:first-of-type{
+  padding-right: 1em;
+}

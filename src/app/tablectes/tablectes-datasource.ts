@@ -4,12 +4,13 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { TablectesItem } from '../interfaces.interface';
+import { TablectesComponent } from "./tablectes.component"
 
 // TODO: Replace this with your own data model type
 
 
 // TODO: replace this with real data from your application
-
+const EXAMPLE_DATA: TablectesItem[] = []
 /**
  * Data source for the Tablectes view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
@@ -17,7 +18,7 @@ import { TablectesItem } from '../interfaces.interface';
  */
 export class TablectesDataSource extends DataSource<TablectesItem> {
   
-  data: []
+  data: TablectesItem[] = []
   paginator: MatPaginator;
   sort: MatSort;
 

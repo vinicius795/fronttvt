@@ -35,7 +35,6 @@ export class REntregasComponent implements OnInit {
     if (this.cte.toString().length == 44 ){
       this.api.getcte("dacte", this.cte).subscribe(res => {
         this.all_cte.push(res); 
-        console.log(this.all_cte);
         this.cte = null
       })
     }
