@@ -1,18 +1,18 @@
 <div class="container">
     <div class="selectors">
         <form #f='ngForm'>
-            <mat-slide-toggle *ngFor="let cargo of cargos" name="{{cargo.CARGO}}" (change)='onchange(f)' ngModel >{{ cargo.CARGO }} </mat-slide-toggle><br>
+            <mat-slide-toggle *ngFor="let cargo of cargos" name="{{cargo.CARGO}}" (change)='showfunc(f)' ngModel >{{ cargo.CARGO }} </mat-slide-toggle><br>
         </form>
-        <div class="selects">
+        <form class="selects" #funcselected = "ngForm">
             <div class="funcionarios" *ngFor="let select_cargo of selected_cargos">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill" >
                     <mat-label>Selecione o {{ select_cargo.cargo }}</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let motorista of select_cargo.funcionarios" value="{{ motorista.id }}" >{{ motorista.NOME }} {{ motorista.SOBRENOME }}</mat-option>
+                    <mat-select name ="{{select_cargo.cargo}}" ngModel>
+                        <mat-option *ngFor="let funcionario of select_cargo.funcionarios" value="{{funcionario.id}}" >{{ funcionario.NOME }} {{ funcionario.SOBRENOME }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-        </div>
+        </form>
     </div>
     <div class="cte">
         <form class="example-form" autocomplete="off">
@@ -25,3 +25,5 @@
     </div>
     <app-tablectes [teste]= 'cte' [dados]='all_cte'></app-tablectes>
 </div>
+<input type="text" name="obs" id="obs" [(ngModel)]="obs">
+<button (click)="saverel(funcselected)">envia</button><button (click)="console()">console</button>

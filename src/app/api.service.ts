@@ -105,8 +105,8 @@ export class ApiService {
     this.funcao = 'relatorios/entrega'
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}?format=json`)
   }
-  saverelatorioentrega(dados: any): Observable<any>{
+  saverelatorioentrega(dados: any){
     this.funcao = 'relatorios/entrega/save'
-    return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
+    return this.http.post(`${baseUrl}/${this.funcao}`, dados)
   }
 }

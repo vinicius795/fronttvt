@@ -13,15 +13,11 @@ import { NgForm } from '@angular/forms';
 export class REntregasComponent implements OnInit {
 
   funcionarios: Funcionario
-  selected_func: Funcionario
-  motoristas = []
-  select_motorista: string
-  ajudantes = []
-  select_ajudante: Funcionario
   all_cte = []
   cargos: Cargos
   selected_cargos = []
   cte: number
+  obs: string
 
   constructor(
     private api: ApiService,
@@ -37,10 +33,12 @@ export class REntregasComponent implements OnInit {
         this.all_cte.push(res); 
         this.cte = null
       })
+      this.formatcte()
     }
+    
   }
 
-  onchange(f:NgForm){
+  showfunc(f:NgForm){
     this.selected_cargos=[]
     var x,y,z,w, _selected_funcionario
     for (x in f.value){
@@ -56,7 +54,7 @@ export class REntregasComponent implements OnInit {
             }
           }
         } this.selected_cargos.push({ "cargo": x, "funcionarios": _selected_funcionario})
-      }
+      } 
     }
   }
 
@@ -69,7 +67,47 @@ export class REntregasComponent implements OnInit {
   getfunc(){
     this.api.getfunc({}).subscribe(res => this.funcionarios = res)
   }
-  
+  saverel(funcionarios: NgForm){
+    let datarel = {}
+    datarel["USUARIO"] = 1
+    datarel["VEICULO"] = 1
+    datarel["FUNCIONARIOS"] = this.formatfunc(funcionarios)
+    datarel["OBS"] = this.obs
+    datarel["CTE_FPag"] = this.formatcte()
+    this.api.saverelatorioentrega(datarel).subscribe(res => console.log(res))
+  }
+  formatfunc(funcionarios: NgForm){
+    let _func: Array<any> =[], _obj, funcid = {}
+    for (let y in this.cargos) {
+      funcid[this.cargos[y]['CARGO']] = this.cargos[y]['id']
+    }
+    for (let x in funcionarios.value) {
+      _obj = { "FUNCAO": funcid[x], "FUNCIONARIO": funcionarios.value[x] }
+      _func.push(_obj)
+    }
+    return _func
+  }
+  formatcte(){
+    let _cte=[], _obj
+    for(let x in this.all_cte){
+      _obj = { "CTE": this.all_cte[x]["id"], "F_PAGAMENTO": 1 }
+      _cte.push(_obj)
+    }
+    return _cte
+  }
+  console(){
+    
+   
+  }
+  /*
+{
+    "USUARIO": 1,
+    "VEICULO": 1,
+    "FUNCIONARIOS": [{"FUNCAO": 1, "FUNCIONARIO":3}],
+    "OBS": "teste",
+    "CTE_FPag": [{"CTE": 999, "F_PAGAMENTO": 1}, {"CTE": 998, "F_PAGAMENTO": 2}, {"CTE": 997, "F_PAGAMENTO": 1}]
+}
+*/
   ngOnInit(): void {
   }
 
