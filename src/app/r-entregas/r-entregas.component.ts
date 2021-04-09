@@ -1,9 +1,10 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Funcionario, Cargos } from '../interfaces.interface';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-r-entregas',
@@ -16,16 +17,18 @@ export class REntregasComponent implements OnInit {
   all_cte = []
   cargos: Cargos
   selected_cargos = []
+  all_veiculos = []
   cte: number
   obs: string
+
 
   constructor(
     private api: ApiService,
   ) {
     this.getcargos();
     this.getfunc();
+    this.getveiculos();
   }
-
   getCTE(){
     //console.log(this.cte)
     if (this.cte.toString().length == 44 ){
@@ -37,7 +40,6 @@ export class REntregasComponent implements OnInit {
     }
     
   }
-
   showfunc(f:NgForm){
     this.selected_cargos=[]
     var x,y,z,w, _selected_funcionario
@@ -57,7 +59,6 @@ export class REntregasComponent implements OnInit {
       } 
     }
   }
-
   getcargos(){
     this.api.getcargos().subscribe(res => {res.forEach(element => {
         element.CARGO == "Motorista" ? element.checked = true : element.checked = false
@@ -67,6 +68,9 @@ export class REntregasComponent implements OnInit {
   getfunc(){
     this.api.getfunc({}).subscribe(res => this.funcionarios = res)
   }
+  getveiculos(){
+    this.api.getveiculo().subscribe(res => this.all_veiculos=res)
+  }
   saverel(funcionarios: NgForm){
     let datarel = {}
     datarel["USUARIO"] = 1
@@ -74,7 +78,7 @@ export class REntregasComponent implements OnInit {
     datarel["FUNCIONARIOS"] = this.formatfunc(funcionarios)
     datarel["OBS"] = this.obs
     datarel["CTE_FPag"] = this.formatcte()
-    this.api.saverelatorioentrega(datarel).subscribe(res => console.log(res))
+    this.api.saverelatorioentrega(datarel).subscribe(res => [])
   }
   formatfunc(funcionarios: NgForm){
     let _func: Array<any> =[], _obj, funcid = {}
@@ -96,8 +100,6 @@ export class REntregasComponent implements OnInit {
     return _cte
   }
   console(){
-    
-   
   }
   /*
 {
@@ -110,5 +112,13 @@ export class REntregasComponent implements OnInit {
 */
   ngOnInit(): void {
   }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialogbox.html',
+})
+export class Dialogbox {
 
 }

@@ -61,11 +61,10 @@ const baseUrl = 'http://localhost:8000/api';
   providedIn: 'root'
 })
 export class ApiService {
-  private funcao: string;
+  private funcao: string =``
   constructor(
     private http: HttpClient,
     ) { }
-  
 
   getseting(parametro: string): Observable<any> {
     this.funcao = "parametros"
@@ -100,6 +99,10 @@ export class ApiService {
   getcargos(): Observable<Cargos>{
     this.funcao = 'funcionarios/cargos'
     return this.http.get<Cargos>(`${baseUrl}/${this.funcao}?format=json`)
+  }
+  getveiculo(): Observable<any>{
+    this.funcao = 'veiculos'
+    return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
   }
   getrelatorioentrega(id): Observable<any>{
     this.funcao = 'relatorios/entrega'

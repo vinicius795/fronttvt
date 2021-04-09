@@ -25,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 //components
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
@@ -79,6 +80,7 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
     MatPaginatorModule,
     MatSortModule,
     MatSlideToggleModule,
+    MatDialogModule,
     FormsModule,
   ],
   providers: [],
