@@ -18,7 +18,7 @@ export class AddCTe {
   
   constructor (
     private header = [],
-    private line = []
+    //private line = []
     ){}
     
   xml(arquivo: any){
@@ -101,7 +101,7 @@ export class ApiService {
     return this.http.get<Cargos>(`${baseUrl}/${this.funcao}?format=json`)
   }
   getveiculo(): Observable<any>{
-    this.funcao = 'veiculos'
+    this.funcao = 'funcionarios/veiculos'
     return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
   }
   getrelatorioentrega(id): Observable<any>{

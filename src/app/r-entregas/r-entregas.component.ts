@@ -109,7 +109,7 @@ export class REntregasComponent implements OnInit {
     "OBS": "teste",
     "CTE_FPag": [{"CTE": 999, "F_PAGAMENTO": 1}, {"CTE": 998, "F_PAGAMENTO": 2}, {"CTE": 997, "F_PAGAMENTO": 1}]
 }
-*/
+*/ 
   ngOnInit(): void {
   }
 

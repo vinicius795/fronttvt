@@ -9,11 +9,10 @@ import { ApiService, AddCTe} from '../api.service'
 export class UpdatecteComponent implements OnInit {
   teste: any
   constructor(
-    private apiservice : ApiService, 
-    private addcte : AddCTe
+    //private api : ApiService,
+    private newcte: AddCTe
   ) { }
   updatecsv(file: FileList){
-    console.log(this.addcte.csv(file))
   }
   ngOnInit(): void {
   }
