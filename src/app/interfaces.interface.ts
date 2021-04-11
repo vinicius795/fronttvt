@@ -9,7 +9,7 @@ export interface CTE{
 
 }
 export interface TablectesItem {
-    id: number
+    //id: number
     NR_DACTE: number
     REMETENTE: string
     DESTINATARIO: string
