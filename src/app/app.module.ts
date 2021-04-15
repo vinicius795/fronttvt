@@ -43,6 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
+import { NgxCsvParserModule } from 'ngx-csv-parser';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
     MatSlideToggleModule,
     MatDialogModule,
     FormsModule,
+    NgxCsvParserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
