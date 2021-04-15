@@ -13,19 +13,24 @@ export class UpdatecteComponent implements OnInit {
   constructor(
     private api : ApiService,
   ) { }
-  updatecsv(file: FileList){
-    let arq = this.api.csv(file)
-    console.log(arq)
-    /**for (let x in arq) console.log(arq)
-      /*ctedata.DESTINATARIO = arq[x]['Cliente Destinatario']
-      ctedata.NFE = arq[x]['']
-      ctedata.NR_CONTROLE = arq[x]['CTRC']
-      ctedata.NR_DACTE = arq[x]['Chave CTe']
-      ctedata.REMETENTE = arq[x]['Cliente Remetente']
-      ctedata.VALOR = arq[x]['Valor do Frete']
-      ctedata.VOLUMES = arq[x]['']
-      console.log(arq[x]['Cliente Destinatario'])
-    */
+  async updatecsv(file: FileList){
+    console.log('aguarde')
+    this.api.csv(file).then((value) => {
+      let arq=value
+      let ctedata:TablectesItem
+      for (let x in arq){
+        //console.log(arq)
+        ctedata.DESTINATARIO = arq[x]['Cliente Destinatario']
+        ctedata.NFE = arq[x]['']
+        ctedata.NR_CONTROLE = arq[x]['CTRC']
+        ctedata.NR_DACTE = arq[x]['Chave CTe']
+        ctedata.REMETENTE = arq[x]['Cliente Remetente']
+        ctedata.VALOR = arq[x]['Valor do Frete']
+        ctedata.VOLUMES = arq[x]['']
+        console.log(ctedata)
+      }
+    })
+    console.log('depois')
   }
   ngOnInit(): void {
   }

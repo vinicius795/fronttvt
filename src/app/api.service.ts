@@ -65,7 +65,7 @@ export class ApiService{
     private http: HttpClient,
     ) {
   }
-  csv(arquivo: FileList) {
+  async csv(arquivo: FileList) {
     let file: File = arquivo.item(0);
     let reader: FileReader = new FileReader();
     reader.readAsText(file);
@@ -86,7 +86,7 @@ export class ApiService{
           if (line[0] == 2) {
             dados[this.header[0][x]] = line[x]
           }
-        } if (line[0] == 2) this.ctes.push(dados)
+        } if (line[0] == 2){this.ctes.push(dados)}
       }
     }
     return this.ctes;
