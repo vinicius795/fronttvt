@@ -65,7 +65,7 @@ export class ApiService{
     private http: HttpClient,
     ) {
   }
-  async csv(arquivo: FileList) {
+  csv(arquivo: FileList) {
     let file: File = arquivo.item(0);
     let reader: FileReader = new FileReader();
     reader.readAsText(file);
