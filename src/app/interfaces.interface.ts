@@ -8,15 +8,18 @@ export interface CTE{
     n_cte: number,
 
 }
-export interface TablectesItem {
+export class TablectesItem {
     //id: number
-    NR_DACTE: number
-    REMETENTE: string
-    DESTINATARIO: string
-    NR_CONTROLE: string
-    VALOR: number
-    VOLUMES: number
-    NFE: string
+    constructor(
+        public NR_DACTE: number,
+        public REMETENTE: string,
+        public DESTINATARIO: string,
+        public NR_CONTROLE: string,
+        public VALOR: number,
+        public VOLUMES: number,
+        public NFE: string
+
+    ){}
 }
 export class Cargos {
     [x: string]: any;
