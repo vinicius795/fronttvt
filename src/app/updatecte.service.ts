@@ -12,7 +12,7 @@ export class UpdatecteService {
   ) { }
 
   updatecsv(fileList: FileList) {
-    let teste = (fileList) =>{
+    let parsecsv = (fileList) =>{
       return new Promise((resolve, reject) => {
         var blob = fileList[0].slice(0, fileList[0].size, fileList[0].type);
         const newFile: File = new File([blob], 'csvFile.csv');
@@ -38,10 +38,8 @@ export class UpdatecteService {
         });
       })
     }
-    return teste(fileList)
-    
+    return parsecsv(fileList)
   }
-
   private parseCsvArray(csvArray: any[]): any[] {
     var parsedData = [];
 
