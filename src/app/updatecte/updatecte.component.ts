@@ -15,6 +15,7 @@ export class UpdatecteComponent implements OnInit {
 
   _totctes: number;
   _ctenow: number;
+  _progress: number;
 
 
   constructor(
@@ -27,6 +28,7 @@ export class UpdatecteComponent implements OnInit {
         data.forEach((element) => {
           this.Api.addcte(element).subscribe((res) => {
             this._ctenow = this._ctenow+1
+            this._progress = (this._ctenow / data.length) * 100
           })
         });
       });

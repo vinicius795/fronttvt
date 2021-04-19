@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 //components
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
@@ -83,7 +84,8 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     MatSlideToggleModule,
     MatDialogModule,
     FormsModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

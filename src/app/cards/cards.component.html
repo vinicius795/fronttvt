@@ -12,6 +12,12 @@
                 </mat-card>
             </a>
         </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <p>Cards fixos</p>
+    <mat-divider></mat-divider> 
+    <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxFlexFill>
         <div class="sec1" fxFlex.xs="55" style="padding: 20px;">
             <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}">
                 <mat-card-header>
@@ -22,7 +28,24 @@
                     Ultima Sincronizacao: {{ lastupdatesp ? lastupdatesp.valor : "" }}
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <button mat-button (click) ="sincsp()" >Atualizar Agora</button>
+                    <button mat-button (click)="sincsp()">Atualizar Agora</button>
+                </mat-card-actions>
+                <mat-card-footer>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="sec1" fxFlex.xs="55" style="padding: 20px;">
+            <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}">
+                <mat-card-header>
+                    <mat-card-title>Sincronizar com SSW</mat-card-title>
+                    <mat-card-subtitle>Sincronizar o Banco de dados com os dados do SSW sistema</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-progress-bar mode="determinate" value="{{_progress}}"></mat-progress-bar>
+                    Ultima Sincronizacao: {{ lastupdatessw ? lastupdatessw.valor : "" }}
+                </mat-card-content>
+                <mat-card-actions align="start">
+                    <input type="file" (change)="sincssw($event.target.files)">
                 </mat-card-actions>
                 <mat-card-footer>
                 </mat-card-footer>

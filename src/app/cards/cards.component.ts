@@ -5,6 +5,7 @@ import { from, Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ApiService, SystemSetings } from '../api.service'
+import { UpdatecteService } from '../updatecte.service';
 
 @Component({
   selector: 'app-cards',
@@ -17,7 +18,8 @@ export class CardsComponent implements OnInit {
   _cardlist = cardlist;
   cardbase: card;
   lastupdatesp: SystemSetings;
-  teste: any;
+  lastupdatessw: SystemSetings;
+  _progress: number = 0;
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -28,16 +30,33 @@ export class CardsComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private apiservice: ApiService,
+    private UpdateCTE: UpdatecteService,
     ) { }
 
   ngOnInit(): void {
     this.getlastsincsp()
+    this.getlastsincssw()
   }
   sincsp(): void{
     this.apiservice.sincsp().subscribe(res => { if (res == null) this.getlastsincsp()});
   }
-  
+  sincssw(fileList: FileList){
+    let _ctenow = 0
+    this.UpdateCTE.updatecsv(fileList).then((data: any[]) => {
+      data.forEach((element) => {
+        this.apiservice.addcte(element).subscribe((res) => {
+          _ctenow = _ctenow + 1
+          this._progress = (_ctenow/data.length)*100
+        })
+      });
+      this.getlastsincssw()
+
+    });
+  }
   getlastsincsp(): void{
     this.apiservice.getseting("lastsincsp").subscribe(res => { this.lastupdatesp = res });
+  }
+  getlastsincssw(): void {
+    this.apiservice.getseting("lastsincssw").subscribe(res => { this.lastupdatessw = res });
   }
 }
