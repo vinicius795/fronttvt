@@ -75,7 +75,7 @@ export class ApiService {
 
   getseting(parametro: string): Observable<any> {
     this.funcao = "parametros"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}?format=json`,{headers: this.header})
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}?format=json`)
   }
 
   sincsp(): Observable<any> {
