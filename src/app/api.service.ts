@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cargos, TablectesItem } from './interfaces.interface'
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
@@ -61,15 +61,21 @@ const baseUrl = 'http://localhost:8000/api';
 
 export class ApiService {
   private funcao: string = ``
-  header = []
   ctes: Array<any> = []
   constructor(
     private http: HttpClient
   ) { }
+  get header() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders();
+    headers.set(`Authorization`, `JWT ${token}`);
+    console.log(headers);
+    return headers
+  }
 
   getseting(parametro: string): Observable<any> {
     this.funcao = "parametros"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}?format=json`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}?format=json`,{headers: this.header})
   }
 
   sincsp(): Observable<any> {

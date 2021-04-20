@@ -1,7 +1,7 @@
 //Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 //addins
@@ -45,6 +45,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,8 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     TablectesComponent,
     PrintLayoutComponent,
     PrintREntregasComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +92,15 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     NgxCsvParserModule,
     MatProgressBarModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
