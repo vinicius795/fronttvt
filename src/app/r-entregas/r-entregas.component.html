@@ -12,8 +12,19 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div></div>
+            <div class="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Selecione o Veiculo</mat-label>
+                    <mat-select name="veiculos" ngModel>
+                        <mat-option *ngFor="let veiculo of all_veiculos" value="{{veiculo.id}}">
+                            {{veiculo.REFERENCIA }} | {{ veiculo.PLACA }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </form>
+        <!-- <form class="selects" #funcselected="ngForm">
+            
+        </form> -->
     </div>
     <div class="cte">
         <form class="example-form" autocomplete="off">

@@ -10,7 +10,6 @@ import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './auth.service';
 
 
@@ -21,7 +20,6 @@ const routes: Routes = [
     component: LoginComponent,
     children:[
       { path: '', component: LoginComponent},
-      { path: 'logout', component: LogoutComponent},
     ]
   },
   {

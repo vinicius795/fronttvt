@@ -30,7 +30,6 @@ export class REntregasComponent implements OnInit {
     this.getveiculos();
   }
   getCTE(){
-    //console.log(this.cte)
     if (this.cte.toString().length == 44 ){
       this.api.getcte("dacte", this.cte).subscribe(res => {
         this.all_cte.push(res); 
@@ -42,14 +41,14 @@ export class REntregasComponent implements OnInit {
   }
   showfunc(f:NgForm){
     this.selected_cargos=[]
-    var x,y,z,w, _selected_funcionario
-    for (x in f.value){
+    let _selected_funcionario
+    for (let x in f.value){
       if(f.value[x] == true){
-        for(y in this.cargos){
+        for(let y in this.cargos){
           if(this.cargos[y].CARGO == x){
             _selected_funcionario = []
-            for(z in this.funcionarios){
-              for(w in this.funcionarios[z].CARGO){
+            for(let z in this.funcionarios){
+              for(let w in this.funcionarios[z].CARGO){
                 if(this.funcionarios[z].CARGO[w].CARGO == x)
                 _selected_funcionario.push(this.funcionarios[z])
               }
@@ -69,7 +68,8 @@ export class REntregasComponent implements OnInit {
     this.api.getfunc({}).subscribe(res => this.funcionarios = res)
   }
   getveiculos(){
-    this.api.getveiculo().subscribe(res => this.all_veiculos=res)
+    this.api.getveiculo().subscribe(res => {this.all_veiculos=res; console.log(res);
+    })
   }
   saverel(funcionarios: NgForm){
     let datarel = {}
