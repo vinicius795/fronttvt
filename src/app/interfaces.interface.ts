@@ -26,7 +26,7 @@ export class Cargos {
     constructor(
         public id:number,
         public CARGO:string,
-        public checked: boolean = false,
+        //public checked: boolean = false,
         public SHOW_RELATORIO: boolean
     ){}
     

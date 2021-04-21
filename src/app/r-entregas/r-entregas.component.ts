@@ -17,7 +17,8 @@ export class REntregasComponent implements OnInit {
 
   funcionarios: Funcionario
   all_cte = []
-  cargos: Cargos
+  cargos: Cargos[]
+  all_cargos: Cargos
   selected_cargos = []
   all_veiculos = []
   cte: number
@@ -64,10 +65,13 @@ export class REntregasComponent implements OnInit {
   }
 
   getcargos(){
-    this.api.getcargos().subscribe(res => {res.forEach((element: Cargos)=> {
-        !element.SHOW_RELATORIO ? delete res.element : 
-        element.CARGO == "Motorista" ? element.checked = true : element.checked = false
-    }); this.cargos = res
+    this.api.getcargos().subscribe((res: Cargos) => {
+      let showcargos: Cargos[] = res.slice()
+      res.forEach((element: Cargos)=> {
+        if (!element.SHOW_RELATORIO)  showcargos.splice(showcargos.indexOf(element), 1);
+      })
+      this.all_cargos = res
+      this.cargos = showcargos
     })
   }
 
