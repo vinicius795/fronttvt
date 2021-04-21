@@ -64,7 +64,8 @@ export class REntregasComponent implements OnInit {
   }
 
   getcargos(){
-    this.api.getcargos().subscribe(res => {res.forEach(element => {
+    this.api.getcargos().subscribe(res => {res.forEach((element: Cargos)=> {
+        !element.SHOW_RELATORIO ? delete res.element : 
         element.CARGO == "Motorista" ? element.checked = true : element.checked = false
     }); this.cargos = res
     })
