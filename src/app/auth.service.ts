@@ -10,6 +10,7 @@ import jwtDecode from 'jwt-decode';
 import * as moment from 'moment';
 
 import { environment } from '../environments/environment';
+import { JWTPayload } from './interfaces.interface';
 
 @Injectable()
 export class AuthService {
@@ -125,9 +126,4 @@ export class AuthGuard implements CanActivate {
   }
 }
 
-interface JWTPayload {
-  user_id: number;
-  username: string;
-  email: string;
-  exp: number;
-}
+

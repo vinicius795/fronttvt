@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { menus, submenus } from "./navigation.inteface";
 import { menulist, submenuslist } from "../mocks/menus"
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -20,6 +21,14 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private auth: AuthService,
+    ) {}
+
+  logout(){
+    this.auth.logout();
+    window.location.reload();
+  }
 
 }

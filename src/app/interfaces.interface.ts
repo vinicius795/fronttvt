@@ -40,3 +40,9 @@ export class Funcionario {
         public SITUACAO: number
     ) { }
 }
+export interface JWTPayload {
+    user_id: number;
+    username: string;
+    email: string;
+    exp: number;
+}

@@ -25,7 +25,7 @@ export class UpdatecteService {
               DESTINATARIO: element['Cliente Destinatario'],
               NFE: element['Numero da Nota Fiscal'],
               NR_CONTROLE: element['Serie/Numero CTRC'],
-              NR_DACTE: element['Chave CT-e'].slice(0, 43),
+              NR_DACTE: element['Chave CT-e'].slice(0, 44),
               REMETENTE: element['Cliente Remetente'],
               VALOR: parseFloat(element['Valor do Frete'].replace(",", ".")),
               VOLUMES: parseInt(element['Quantidade de Volumes'])

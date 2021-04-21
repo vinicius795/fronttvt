@@ -14,7 +14,7 @@ import { AuthGuard } from './auth.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: "login", pathMatch: 'full' },
+  { path: '', redirectTo: "sistema", pathMatch: 'full' },
   {
     path:'login',
     component: LoginComponent,
