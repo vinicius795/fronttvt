@@ -5,29 +5,35 @@
     justify-content: center;
     align-items: center;
 }
-.selectors{
+
+.toglers{
     display: flex;
-    flex-direction: row-reverse;
     width: 100%;
-    overflow: auto;
-    form{
+    margin: 1em;
+    justify-content:space-evenly;
+    mat-slide-toggle{
+        margin: 0.5em;
+    }
+}
+.fv{
+    width: 100%;
+    .selects{
         display: flex;
         flex-direction: column;
-        /* position: absolute; */
-        float: right;
-        mat-slide-toggle{
+        .fix_selects, .dinamic_selects{
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+            text-align: center;
+        }
+        .veiculo,.motorista{
+            mat-form-field{
+                width: 100%;
+            }
             margin: 5px;
         }
-    }
-    .selects{
-        display: grid;
-        align-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-        text-align: center;
-        width: -webkit-fill-available;
-        width: 100%;
-        .funcionarios{
-            margin: 10px;
+        .cargos{
+            margin: 5px;
         }
     }
 }

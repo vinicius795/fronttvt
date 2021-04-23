@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Funcionario, Cargos, JWTPayload } from '../interfaces.interface';
+import { Funcionario, Cargos, JWTPayload, Carg_Func } from '../interfaces.interface';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
@@ -15,7 +15,7 @@ import { AuthService } from '../auth.service';
 })
 export class REntregasComponent implements OnInit {
 
-  funcionarios: Funcionario
+  funcionarios: Funcionario[]
   all_cte = []
   cargos: Cargos[]
   all_cargos: Cargos
@@ -23,16 +23,16 @@ export class REntregasComponent implements OnInit {
   all_veiculos = []
   cte: number
   obs: string =""
+  motoristas: Funcionario[]
 
   constructor(
     private api: ApiService,
     private authService: AuthService
   ) {
     this.getcargos();
-    this.getfunc();
     this.getveiculos();
-
   }
+
   getCTE(){
     if (this.cte.toString().length == 44 ){
       this.api.getcte("dacte", this.cte).subscribe(res => {
@@ -64,19 +64,35 @@ export class REntregasComponent implements OnInit {
     }
   }
 
+  private parseCF() {
+    let parsedata: Carg_Func
+    this.all_cargos.forEach((cargo: Cargos) => {
+      let parse_f = []
+      this.funcionarios.forEach((funcionario: Funcionario) => {
+        funcionario.CARGO.forEach((f_cargo: Cargos) => {
+          if (cargo.id == f_cargo.id )  parse_f.push(funcionario);
+        });
+      });
+      parsedata[cargo.CARGO] = parse_f
+    });
+    this.motoristas = parsedata.Motorista
+  }
+
   getcargos(){
     this.api.getcargos().subscribe((res: Cargos) => {
       let showcargos: Cargos[] = res.slice()
       res.forEach((element: Cargos)=> {
-        if (!element.SHOW_RELATORIO)  showcargos.splice(showcargos.indexOf(element), 1);
+        if (!element.SHOW_RELATORIO || element.CARGO == "Motorista")  showcargos.splice(showcargos.indexOf(element), 1);
       })
       this.all_cargos = res
       this.cargos = showcargos
+      this.getfunc()
     })
+    
   }
 
   getfunc(){
-    this.api.getfunc({}).subscribe(res => this.funcionarios = res)
+    this.api.getfunc({}).subscribe(res => {this.funcionarios = res; this.parseCF()})
   }
 
   getveiculos(){
@@ -86,6 +102,8 @@ export class REntregasComponent implements OnInit {
   }
 
   saverel(funcionarios: NgForm){
+    console.log(funcionarios.value);
+    
     let datarel = {}
     const payload = <JWTPayload>jwtDecode(this.authService.token);
     let veiculo = funcionarios.value.veiculos
@@ -94,16 +112,18 @@ export class REntregasComponent implements OnInit {
     datarel["VEICULO"] = veiculo
     datarel["FUNCIONARIOS"] = this.formatfunc(funcionarios)
     datarel["OBS"] = this.obs
-    datarel["CTE_FPag"] = this.formatcte() 
-    this.api.saverelatorioentrega(datarel).subscribe(res => {console.log(res);})
+    datarel["CTE_FPag"] = this.formatcte()
+    console.log(datarel);
+    
+    //this.api.saverelatorioentrega(datarel).subscribe(res => {console.log(res);})
     
     
   }
 
   formatfunc(funcionarios: NgForm){
     let _func: Array<any> =[], _obj, funcid = {}
-    for (let y in this.cargos) {
-      funcid[this.cargos[y]['CARGO']] = this.cargos[y]['id']
+    for (let y in this.all_cargos) {
+      funcid[this.all_cargos[y]['CARGO']] = this.all_cargos[y]['id']
     }
     for (let x in funcionarios.value) {
       _obj = { "FUNCAO": funcid[x], "FUNCIONARIO": funcionarios.value[x] }

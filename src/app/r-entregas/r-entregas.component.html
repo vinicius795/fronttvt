@@ -1,25 +1,41 @@
 <div class="container">
-    <div class="selectors">
+    <div class="toglers">
         <form #f='ngForm'>
-            <mat-slide-toggle *ngFor="let cargo of cargos" name="{{cargo.CARGO}}" (change)='showfunc(f)' ngModel >{{ cargo.CARGO }} </mat-slide-toggle><br>
+            <mat-slide-toggle *ngFor="let cargo of cargos" name="{{cargo.CARGO}}" (change)='showfunc(f)' ngModel>{{ cargo.CARGO}} </mat-slide-toggle>
         </form>
+    </div>
+    <div class="fv">
         <form class="selects" #funcselected = "ngForm">
-            <div class="funcionarios" *ngFor="let select_cargo of selected_cargos">
-                <mat-form-field appearance="fill" >
-                    <mat-label>Selecione o {{ select_cargo.cargo }}</mat-label>
-                    <mat-select name ="{{select_cargo.cargo}}" ngModel>
-                        <mat-option *ngFor="let funcionario of select_cargo.funcionarios" value="{{funcionario.id}}" >{{ funcionario.NOME }} {{ funcionario.SOBRENOME }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="fix_selects">
+                <div class="veiculo">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Selecione o Veiculo</mat-label>
+                        <mat-select name="veiculos" ngModel required>
+                            <mat-option *ngFor="let veiculo of all_veiculos" value="{{veiculo.id}}">
+                                {{veiculo.REFERENCIA }} | {{ veiculo.PLACA }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="motorista" >
+                    <mat-form-field appearance="fill">
+                        <mat-label>Selecione o Motorista</mat-label>
+                        <mat-select name="Motorista" ngModel required>
+                            <mat-option *ngFor="let funcionario of motoristas" value="{{funcionario.id}}">{{
+                            funcionario.NOME }} {{ funcionario.SOBRENOME }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Selecione o Veiculo</mat-label>
-                    <mat-select name="veiculos" ngModel>
-                        <mat-option *ngFor="let veiculo of all_veiculos" value="{{veiculo.id}}">
-                            {{veiculo.REFERENCIA }} | {{ veiculo.PLACA }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class='dinamic_selects'>
+                <div class="cargos" *ngFor="let select_cargo of selected_cargos">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Selecione o {{ select_cargo.cargo }}</mat-label>
+                        <mat-select name="{{select_cargo.cargo}}" ngModel>
+                            <mat-option *ngFor="let funcionario of select_cargo.funcionarios" value="{{funcionario.id}}">{{
+                                funcionario.NOME }} {{ funcionario.SOBRENOME }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </form>
     </div>

@@ -3,6 +3,10 @@
     CARGO: string
 }*/
 
+export interface Carg_Func{
+    Motorista?: Funcionario[]
+}
+
 export interface CTE{
     id: number,
     n_cte: number,
