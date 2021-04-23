@@ -1,10 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Funcionario, Cargos, JWTPayload, Carg_Func } from '../interfaces.interface';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from '../auth.service';
 
@@ -65,17 +62,21 @@ export class REntregasComponent implements OnInit {
   }
 
   private parseCF() {
+    
     let parsedata: Carg_Func
-    this.all_cargos.forEach((cargo: Cargos) => {
-      let parse_f = []
-      this.funcionarios.forEach((funcionario: Funcionario) => {
-        funcionario.CARGO.forEach((f_cargo: Cargos) => {
-          if (cargo.id == f_cargo.id )  parse_f.push(funcionario);
-        });
-      });
-      parsedata[cargo.CARGO] = parse_f
+
+    this.all_cargos.forEach(item => {
+      parsedata = { ...parsedata, [item.CARGO]: [] }
     });
-    this.motoristas = parsedata.Motorista
+
+    this.funcionarios.forEach(funcionario => {
+      funcionario.CARGO.forEach(item => {
+        parsedata[item.CARGO].push(funcionario)
+      });
+    });
+
+    this.motoristas = parsedata.Motorista;
+
   }
 
   getcargos(){
@@ -85,6 +86,8 @@ export class REntregasComponent implements OnInit {
         if (!element.SHOW_RELATORIO || element.CARGO == "Motorista")  showcargos.splice(showcargos.indexOf(element), 1);
       })
       this.all_cargos = res
+      //console.log(JSON.stringify(res));
+      
       this.cargos = showcargos
       this.getfunc()
     })
@@ -92,7 +95,11 @@ export class REntregasComponent implements OnInit {
   }
 
   getfunc(){
-    this.api.getfunc({}).subscribe(res => {this.funcionarios = res; this.parseCF()})
+    this.api.getfunc({}).subscribe(res => {
+      this.funcionarios = res
+      //console.log(JSON.stringify(res))
+      this.parseCF();
+    })
   }
 
   getveiculos(){
@@ -102,7 +109,7 @@ export class REntregasComponent implements OnInit {
   }
 
   saverel(funcionarios: NgForm){
-    console.log(funcionarios.value);
+    //console.log(funcionarios.value);
     
     let datarel = {}
     const payload = <JWTPayload>jwtDecode(this.authService.token);
@@ -113,9 +120,9 @@ export class REntregasComponent implements OnInit {
     datarel["FUNCIONARIOS"] = this.formatfunc(funcionarios)
     datarel["OBS"] = this.obs
     datarel["CTE_FPag"] = this.formatcte()
-    console.log(datarel);
+    //console.log(datarel);
     
-    //this.api.saverelatorioentrega(datarel).subscribe(res => {console.log(res);})
+    this.api.saverelatorioentrega(datarel).subscribe(res => {console.log(res);})
     
     
   }
