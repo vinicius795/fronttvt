@@ -54,7 +54,10 @@ export class SystemSetings {
   valor: string
 }
 
-const baseUrl = 'http://localhost:8000/api';
+//const baseUrl = 'http://localhost:8000/api';
+//const baseUrl = 'http://192.168.0.107:8000/api';
+const baseUrl = 'http://200.195.182.36:8000/api';
+
 @Injectable({
   providedIn: 'root'
 })

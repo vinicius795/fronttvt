@@ -40,15 +40,23 @@
         </form>
     </div>
     <div class="cte">
-        <form class="example-form" autocomplete="off">
-            <mat-form-field class="example-full-width">
+        <form autocomplete="off">
+            <mat-form-field>
                 <mat-label>DACTe</mat-label>
                 <input matInput placeholder="Codigo DACTe de 44 digitos" type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cte" name="cte" (change)='getCTE()'>
             </mat-form-field>
         </form>
-        <p></p>
     </div>
     <app-tablectes [teste]= 'cte' [dados]='all_cte'></app-tablectes>
+    <div class="obs">
+        <mat-form-field class="obs-text">
+            <mat-label>Observacao</mat-label>
+            <textarea matInput name="obs" id="obs" [(ngModel)]="obs"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="bt-save">
+        <button mat-raised-button color="primary" (click)="saverel(funcselected)">Salvar</button>
+    </div>
 </div>
-<input type="text" name="obs" id="obs" [(ngModel)]="obs">
-<button (click)="saverel(funcselected)">envia</button><button (click)="console()">console</button>
+
+<button (click)="console()">console</button>

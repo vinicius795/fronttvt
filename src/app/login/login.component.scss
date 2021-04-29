@@ -1,6 +1,14 @@
+.ctn{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  
+}
+
+
 mat-card {
   max-width: 400px;
-  margin: 2em auto;
+  margin: auto;
   text-align: center;
 }
 
