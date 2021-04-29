@@ -11,13 +11,17 @@ import * as moment from 'moment';
 
 import { environment } from '../environments/environment';
 import { JWTPayload } from './interfaces.interface';
+import { ApiService } from './api.service'
 
 @Injectable()
 export class AuthService {
 
-  private apiRoot = 'http://localhost:8000/api/';
+  constructor(
+    private http: HttpClient,
+    private api: ApiService,
+    ) { }
 
-  constructor(private http: HttpClient) { }
+  apiRoot = this.api.baseurl
 
   private setSession(authResult) {
     const token = authResult["access"];
@@ -38,7 +42,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.http.post(
-      this.apiRoot.concat('token/'),
+      this.apiRoot.concat('/token/'),
       { username, password }
     ).pipe(
       tap(response => this.setSession(response)),
@@ -49,7 +53,7 @@ export class AuthService {
 
   signup(username: string, email: string, password1: string, password2: string) {
     return this.http.post(
-      this.apiRoot.concat('signup/'),
+      this.apiRoot.concat('/signup/'),
       { username, email, password1, password2 }
     ).pipe(
       tap(response => this.setSession(response)),
@@ -65,7 +69,7 @@ export class AuthService {
   refreshToken() {
     if (moment().isBetween(this.getExpiration().subtract(1, 'days'), this.getExpiration())) {
       return this.http.post(
-        this.apiRoot.concat('token/refresh/'),
+        this.apiRoot.concat('/token/refresh/'),
         { refresh : this.refreshtoken }
       ).pipe(
         tap(response => this.setSession(response)),

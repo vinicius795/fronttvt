@@ -4,8 +4,9 @@ import { cardlist} from '../mocks/cards'
 import { from, Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ApiService, SystemSetings } from '../api.service'
+import { ApiService } from '../api.service'
 import { UpdatecteService } from '../updatecte.service';
+import { SystemSetings } from '../interfaces.interface'
 
 @Component({
   selector: 'app-cards',

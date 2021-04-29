@@ -3,6 +3,13 @@
     CARGO: string
 }*/
 
+
+export class SystemSetings {
+    id: number
+    parametro: string
+    valor: string
+}
+
 export interface Carg_Func{
     Motorista?: Funcionario[]
 }
@@ -12,18 +19,15 @@ export interface CTE{
     n_cte: number,
 
 }
-export class TablectesItem {
+export interface TablectesItem {
     //id: number
-    constructor(
-        public NR_DACTE: number,
-        public REMETENTE: string,
-        public DESTINATARIO: string,
-        public NR_CONTROLE: string,
-        public VALOR: number,
-        public VOLUMES: number,
-        public NFE: string
-
-    ){}
+    NR_DACTE: number
+    REMETENTE: string
+    DESTINATARIO: string
+    NR_CONTROLE: string
+    VALOR: number
+    VOLUMES: number
+    NFE: string
 }
 export class Cargos {
     [x: string]: any;
@@ -36,14 +40,12 @@ export class Cargos {
     
 }
 
-export class Funcionario {
-    constructor(
-        public id: number,
-        public NOME: string,
-        public SOBRENOME: string,
-        public CARGO: Cargos,
-        public SITUACAO: number
-    ) { }
+export interface Funcionario {
+    id: number
+    NOME: string
+    SOBRENOME: string
+    CARGO: Cargos
+    SITUACAO: number
 }
 export interface JWTPayload {
     user_id: number;

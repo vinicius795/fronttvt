@@ -48,12 +48,6 @@ export class AddCTe {
   }
 }*/
 
-export class SystemSetings {
-  id: number
-  parametro: string
-  valor: string
-}
-
 //const baseUrl = 'http://localhost:8000/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
 const baseUrl = 'http://200.195.182.36:8000/api';
@@ -68,12 +62,9 @@ export class ApiService {
   constructor(
     private http: HttpClient
   ) { }
-  get header() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders();
-    headers.set(`Authorization`, `JWT ${token}`);
-    console.log(headers);
-    return headers
+  
+  get baseurl(){
+    return baseUrl
   }
 
   getseting(parametro: string): Observable<any> {
