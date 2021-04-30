@@ -42,11 +42,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    form{
-        width: 30em;
-    }
     .example-full-width{
         width: 100%;
+    }
+    form{
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        mat-form-field{
+            width: 30em;
+        }
     }
 }
 app-tablectes{
