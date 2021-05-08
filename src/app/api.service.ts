@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Cargos, TablectesItem } from './interfaces.interface'
+import { Cargos, Funcionario, TablectesItem } from './interfaces.interface'
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
+import { REntregas } from './r-entregas/r-entregas.interface';
 /*
 @Injectable({
   providedIn: 'root'
@@ -91,20 +92,20 @@ export class ApiService {
     if (("cargo" in args) !== ("id" in args)) {
       if ("cargo" in args) {
         this.funcao = 'funcionarios/cargos'
-        return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.cargo}?format=json`)
+        return this.http.get<Funcionario[]>(`${baseUrl}/${this.funcao}/${args.cargo}?format=json`)
       } else if ("id" in args) {
         this.funcao = 'funcionarios/id'
-        return this.http.get<any>(`${baseUrl}/${this.funcao}/${args.id}?format=json`)
+        return this.http.get<Funcionario>(`${baseUrl}/${this.funcao}/${args.id}?format=json`)
       }
     } else if (Object.entries(args).length === 0) {
       this.funcao = 'funcionarios'
-      return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
+      return this.http.get<Funcionario[]>(`${baseUrl}/${this.funcao}?format=json`)
     }
   }
 
-  getcargos(): Observable<Cargos> {
+  getcargos(): Observable<Cargos[]> {
     this.funcao = 'funcionarios/cargos'
-    return this.http.get<Cargos>(`${baseUrl}/${this.funcao}?format=json`)
+    return this.http.get<Cargos[]>(`${baseUrl}/${this.funcao}?format=json`)
   }
 
   getveiculo(): Observable<any> {
@@ -117,7 +118,7 @@ export class ApiService {
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}?format=json`)
   }
 
-  saverelatorioentrega(dados: any) {
+  saverelatorioentrega(dados: REntregas) {
     this.funcao = 'relatorios/entrega/save'
     return this.http.post(`${baseUrl}/${this.funcao}`, dados)
   }

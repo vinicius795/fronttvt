@@ -4,6 +4,9 @@ import { Funcionario, Cargos, JWTPayload, Carg_Func } from '../interfaces.interf
 import { NgForm } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from '../auth.service';
+import { REntregas } from './r-entregas.interface';
+import { Router } from "@angular/router"
+import { PrintService } from '../print.service';
 
 @Component({
   selector: 'app-r-entregas',
@@ -15,7 +18,7 @@ export class REntregasComponent implements OnInit {
   funcionarios: Funcionario[]
   all_cte = []
   cargos: Cargos[]
-  all_cargos: Cargos
+  all_cargos: Cargos[]
   selected_cargos = []
   all_veiculos = []
   cte: number
@@ -24,9 +27,11 @@ export class REntregasComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    public printService: PrintService
   ) {
-    this.getcargos();
+    this.getcargos();0
     this.getveiculos();
   }
 
@@ -80,14 +85,12 @@ export class REntregasComponent implements OnInit {
   }
 
   getcargos(){
-    this.api.getcargos().subscribe((res: Cargos) => {
+    this.api.getcargos().subscribe((res: Cargos[]) => {
       let showcargos: Cargos[] = res.slice()
       res.forEach((element: Cargos)=> {
         if (!element.SHOW_RELATORIO || element.CARGO == "Motorista")  showcargos.splice(showcargos.indexOf(element), 1);
       })
       this.all_cargos = res
-      //console.log(JSON.stringify(res));
-      
       this.cargos = showcargos
       this.getfunc()
     })
@@ -95,9 +98,8 @@ export class REntregasComponent implements OnInit {
   }
 
   getfunc(){
-    this.api.getfunc({}).subscribe(res => {
+    this.api.getfunc({}).subscribe((res: Funcionario[]) => {
       this.funcionarios = res
-      //console.log(JSON.stringify(res))
       this.parseCF();
     })
   }
@@ -109,38 +111,48 @@ export class REntregasComponent implements OnInit {
   }
 
   saverel(funcionarios: NgForm){
-    //console.log(funcionarios.value);
-    
-    let datarel = {}
+
     const payload = <JWTPayload>jwtDecode(this.authService.token);
-    let veiculo = funcionarios.value.veiculos
+    let veiculo: number = funcionarios.value.veiculos
     delete funcionarios.value.veiculos
-    datarel["USUARIO"] = payload.user_id
-    datarel["VEICULO"] = veiculo
-    datarel["FUNCIONARIOS"] = this.formatfunc(funcionarios)
-    datarel["OBS"] = this.obs
-    datarel["CTE_FPag"] = this.formatcte()
-    //console.log(datarel);
+    let datarel: REntregas = {
+    USUARIO : payload.user_id,
+    VEICULO : veiculo,
+    FUNCIONARIOS : this.formatfunc(funcionarios),
+    OBS : this.obs,
+    CTE_FPag : this.formatcte()
+    }
     
-    this.api.saverelatorioentrega(datarel).subscribe(res => {console.log(res);})
+    this.api.saverelatorioentrega(datarel).subscribe(res => {
+      // this.router.navigate([`/print/invoice/${res["id"]}`])
+      // this.printService.printDocument('invoice', res["id"]);
+      this.openInNewTab(this.router, `print/invoice/${res["id"]}`)
+    })
     
     
   }
 
+  openInNewTab(router: Router, namedRoute) {
+    let newRelativeUrl = router.createUrlTree([namedRoute]);
+    let baseUrl = window.location.href.replace(router.url, '');
+    debugger
+    window.open(baseUrl + newRelativeUrl, '_blank');
+  }
+
   formatfunc(funcionarios: NgForm){
-    let _func: Array<any> =[], _obj, funcid = {}
+    let _func: REntregas['FUNCIONARIOS'] = [], _obj, funcid = {}
     for (let y in this.all_cargos) {
       funcid[this.all_cargos[y]['CARGO']] = this.all_cargos[y]['id']
     }
     for (let x in funcionarios.value) {
-      _obj = { "FUNCAO": funcid[x], "FUNCIONARIO": funcionarios.value[x] }
+      _obj = {"FUNCAO": funcid[x], "FUNCIONARIO": funcionarios.value[x] }
       _func.push(_obj)
     }
     return _func
   }
 
   formatcte(){
-    let _cte=[], _obj
+    let _cte: REntregas['CTE_FPag'] = [], _obj
     for(let x in this.all_cte){
       _obj = { "CTE": this.all_cte[x]["id"], "F_PAGAMENTO": 1 }
       _cte.push(_obj)
@@ -150,15 +162,7 @@ export class REntregasComponent implements OnInit {
 
   console(){
   }
-  /*
-{
-    "USUARIO": 1,
-    "VEICULO": 1,
-    "FUNCIONARIOS": [{"FUNCAO": 1, "FUNCIONARIO":3}],
-    "OBS": "teste",
-    "CTE_FPag": [{"CTE": 999, "F_PAGAMENTO": 1}, {"CTE": 998, "F_PAGAMENTO": 2}, {"CTE": 997, "F_PAGAMENTO": 1}]
-}
-*/ 
+
   ngOnInit(): void {
     
   }

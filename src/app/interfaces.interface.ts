@@ -1,8 +1,3 @@
-/*export interface Cargos{
-    id: number
-    CARGO: string
-}*/
-
 
 export class SystemSetings {
     id: number
@@ -20,7 +15,7 @@ export interface CTE{
 
 }
 export interface TablectesItem {
-    //id: number
+    id?: number
     NR_DACTE: number
     REMETENTE: string
     DESTINATARIO: string
@@ -29,23 +24,21 @@ export interface TablectesItem {
     VOLUMES: number
     NFE: string
 }
-export class Cargos {
-    [x: string]: any;
-    constructor(
-        public id:number,
-        public CARGO:string,
-        //public checked: boolean = false,
-        public SHOW_RELATORIO: boolean
-    ){}
+
+export interface Cargos {
+    id?:number,
+    CARGO:string,
+    SHOW_RELATORIO: boolean
     
 }
 
-export interface Funcionario {
-    id: number
-    NOME: string
-    SOBRENOME: string
-    CARGO: Cargos
-    SITUACAO: number
+export interface Funcionario{
+    id?: Number,
+    NOME: String,
+    SOBRENOME: String,
+    CARGO: [Cargos],
+    USUARIO?: Number,
+    SITUACAO: boolean
 }
 export interface JWTPayload {
     user_id: number;
