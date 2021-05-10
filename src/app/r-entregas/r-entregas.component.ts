@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
 import { REntregas } from './r-entregas.interface';
 import { Router } from "@angular/router"
 import { PrintService } from '../print.service';
+import validate from "./validator/r-entregas.interface.validator"
 
 @Component({
   selector: 'app-r-entregas',
@@ -31,7 +32,7 @@ export class REntregasComponent implements OnInit {
     private router: Router,
     public printService: PrintService
   ) {
-    this.getcargos();0
+    this.getcargos();
     this.getveiculos();
   }
 
@@ -41,7 +42,6 @@ export class REntregasComponent implements OnInit {
         this.all_cte.push(res); 
         this.cte = null
       })
-      this.formatcte()
     }
     
   }
@@ -110,45 +110,66 @@ export class REntregasComponent implements OnInit {
     })
   }
 
-  saverel(funcionarios: NgForm){
-
+  async saverel(funcionarios: NgForm) {
     const payload = <JWTPayload>jwtDecode(this.authService.token);
-    let veiculo: number = funcionarios.value.veiculos
-    delete funcionarios.value.veiculos
-    let datarel: REntregas = {
-    USUARIO : payload.user_id,
-    VEICULO : veiculo,
-    FUNCIONARIOS : this.formatfunc(funcionarios),
-    OBS : this.obs,
-    CTE_FPag : this.formatcte()
+    const veiculo = () => { 
+      let veiculo: string
+      try {
+        veiculo = funcionarios.value.veiculos
+        delete funcionarios.value.veiculos
+        return JSON.parse(veiculo)
+      } catch (error) {
+        console.log(error);
+        return ""
+      }
     }
-    
-    this.api.saverelatorioentrega(datarel).subscribe(res => {
-      // this.router.navigate([`/print/invoice/${res["id"]}`])
+    let datarel: REntregas = {
+      USUARIO: payload.user_id,
+      VEICULO: veiculo(),
+      FUNCIONARIOS: this.formatfunc(funcionarios),
+      OBS: this.obs,
+      CTE_FPag: this.formatcte()
+    }
+    const getBiped = async () => {
+      const data = validate(datarel);
+      return data
+    }
+    this.api.saverelatorioentrega(await getBiped()).subscribe(res => {
+      // this.router.navigate([`/print/invoice/${res["id"]}`])  
       // this.printService.printDocument('invoice', res["id"]);
       this.openInNewTab(this.router, `print/invoice/${res["id"]}`)
     })
-    
-    
+
   }
 
-  openInNewTab(router: Router, namedRoute) {
+  private openInNewTab(router: Router, namedRoute) {
     let newRelativeUrl = router.createUrlTree([namedRoute]);
     let baseUrl = window.location.href.replace(router.url, '');
-    debugger
     window.open(baseUrl + newRelativeUrl, '_blank');
   }
 
-  formatfunc(funcionarios: NgForm){
+  formatfunc(funcionarios: NgForm) {
     let _func: REntregas['FUNCIONARIOS'] = [], _obj, funcid = {}
     for (let y in this.all_cargos) {
       funcid[this.all_cargos[y]['CARGO']] = this.all_cargos[y]['id']
     }
     for (let x in funcionarios.value) {
-      _obj = {"FUNCAO": funcid[x], "FUNCIONARIO": funcionarios.value[x] }
-      _func.push(_obj)
+      try {
+        _obj = { "FUNCAO": funcid[x], "FUNCIONARIO": JSON.parse(funcionarios.value[x]) }
+        _func.push(_obj)
+      } catch (error) {
+        window.alert("Selecao de Funcionarios nao permitida, confira")
+        throw new Error
+      }
     }
-    return _func
+    let ok: boolean = false;
+    _func.forEach((element) => {
+      if (element["FUNCAO"] == 3) ok = true
+    });
+    if (ok) { return _func } else {
+      window.alert("Selecao de Funcionarios nao permitida, confira")
+      throw new Error
+    }
   }
 
   formatcte(){
@@ -157,10 +178,22 @@ export class REntregasComponent implements OnInit {
       _obj = { "CTE": this.all_cte[x]["id"], "F_PAGAMENTO": 1 }
       _cte.push(_obj)
     }
-    return _cte
+    if (_cte.length == 0){
+      window.alert("Nenhum DACTe selecionado, imposivel salvar")
+      throw new Error
+    }else return _cte
   }
 
-  console(){
+  console(funcionarios?: NgForm){
+    try {
+      let veiculo: number = funcionarios.value.veiculos
+    } catch (e) {
+      if (e instanceof TypeError){
+      console.log(e);
+      }
+      
+      
+    }
   }
 
   ngOnInit(): void {
