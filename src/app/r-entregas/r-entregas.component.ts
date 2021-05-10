@@ -25,6 +25,7 @@ export class REntregasComponent implements OnInit {
   cte: number
   obs: string =""
   motoristas: Funcionario[]
+  cteid = []
 
   constructor(
     private api: ApiService,
@@ -39,8 +40,14 @@ export class REntregasComponent implements OnInit {
   getCTE(){
     if (this.cte.toString().length == 44 ){
       this.api.getcte("dacte", this.cte).subscribe(res => {
+        if(this.cteid.includes(res.id)){
+          window.alert("DACTe ja inserido")
+          this.cte = null
+        }else{
+        this.cteid.push(res.id)
         this.all_cte.push(res); 
         this.cte = null
+        }
       })
     }
     
@@ -134,6 +141,8 @@ export class REntregasComponent implements OnInit {
       const data = validate(datarel);
       return data
     }
+    console.log(datarel);
+    
     this.api.saverelatorioentrega(await getBiped()).subscribe(res => {
       // this.router.navigate([`/print/invoice/${res["id"]}`])  
       // this.printService.printDocument('invoice', res["id"]);
@@ -164,7 +173,7 @@ export class REntregasComponent implements OnInit {
     }
     let ok: boolean = false;
     _func.forEach((element) => {
-      if (element["FUNCAO"] == 3) ok = true
+      if (element["FUNCAO"] == funcid["Motorista"]) ok = true
     });
     if (ok) { return _func } else {
       window.alert("Selecao de Funcionarios nao permitida, confira")
