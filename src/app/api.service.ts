@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cargos, Funcionario, TablectesItem } from './interfaces.interface'
-import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
 import { REntregas } from './r-entregas/r-entregas.interface';
 /*
 @Injectable({
@@ -87,6 +86,10 @@ export class ApiService {
     this.funcao = 'cte/add'
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
+  addctenf(dados: any): Observable<any>{
+    this.funcao = 'relatorios/entrega/ctenf/add'
+    return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
+  }
 
   getfunc(args: any): Observable<any> {
     if (("cargo" in args) !== ("id" in args)) {
@@ -121,5 +124,9 @@ export class ApiService {
   saverelatorioentrega(dados: REntregas) {
     this.funcao = 'relatorios/entrega/save'
     return this.http.post(`${baseUrl}/${this.funcao}`, dados)
+  }
+  checknf(){
+    this.funcao = 'relatorios/entrega/checkmissing'
+    return this.http.get(`${baseUrl}/${this.funcao}`)
   }
 }

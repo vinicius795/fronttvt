@@ -10,6 +10,7 @@ export interface REntregas {
         CTE: number,
         F_PAGAMENTO: number,
     }>
+    printable?: boolean
 }
 /* export interface Funcionarios{
     id? : Number,

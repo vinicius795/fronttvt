@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Funcionario, Cargos, JWTPayload, Carg_Func } from '../interfaces.interface';
+import { Funcionario, Cargos, JWTPayload, Carg_Func, TablectesItem } from '../interfaces.interface';
 import { NgForm } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from '../auth.service';
@@ -25,7 +25,8 @@ export class REntregasComponent implements OnInit {
   cte: number
   obs: string =""
   motoristas: Funcionario[]
-  cteid = []
+  cteid: Array<number> =[]
+  ctenf: REntregas['CTE_FPag'] = []
 
   constructor(
     private api: ApiService,
@@ -38,17 +39,40 @@ export class REntregasComponent implements OnInit {
   }
 
   getCTE(){
-    if (this.cte.toString().length == 44 ){
-      this.api.getcte("dacte", this.cte).subscribe(res => {
-        if(this.cteid.includes(res.id)){
+    var observer = {
+      next: (res: any) => {
+        if (this.cteid.includes(res.id)) {
           window.alert("DACTe ja inserido")
           this.cte = null
-        }else{
-        this.cteid.push(res.id)
-        this.all_cte.push(res); 
-        this.cte = null
+        } else {
+          this.cteid.push(res.id)
+          this.all_cte.push(res);
+          this.cte = null
         }
-      })
+      },
+      error: (error: any) => {
+        if (error.status == 404){
+          console.log(error.error);
+          var conf = confirm(`${error.error} \n ${error.error["Msg"]} \n Deseja adicionar este DACT mesmo assim? \n Este relatorio ficara desativado para impressao até que este numero de DACT conste no banco de dados`)
+          if (conf) {
+            var ctenf: TablectesItem ={
+              id: 0,
+              NR_DACTE: this.cte,
+              REMETENTE: "Nao encontrado",
+              DESTINATARIO: "Nao encontrado",
+              NR_CONTROLE: this.cte.toString().slice(25, 34),
+              VALOR: 0,
+              VOLUMES: 0,
+              NFE: " ",
+            }
+            this.all_cte.push(ctenf);
+            this.cte = null
+          }
+        }
+      }
+    }
+    if (this.cte.toString().length == 44 ){
+      this.api.getcte("dacte", this.cte).subscribe(observer)
     }
     
   }
@@ -137,6 +161,9 @@ export class REntregasComponent implements OnInit {
       OBS: this.obs,
       CTE_FPag: this.formatcte()
     }
+    if (this.ctenf.length != 0){
+      datarel.printable= false
+    }
     const getBiped = async () => {
       const data = validate(datarel);
       return data
@@ -144,8 +171,9 @@ export class REntregasComponent implements OnInit {
     console.log(datarel);
     
     this.api.saverelatorioentrega(await getBiped()).subscribe(res => {
-      // this.router.navigate([`/print/invoice/${res["id"]}`])  
-      // this.printService.printDocument('invoice', res["id"]);
+      if(!datarel.printable){
+        this.api.addctenf({rel_id: res["id"], ctes: this.ctenf}).subscribe()
+      }
       this.openInNewTab(this.router, `print/invoice/${res["id"]}`)
     })
 
@@ -181,34 +209,32 @@ export class REntregasComponent implements OnInit {
     }
   }
 
-  formatcte(){
+  formatcte() {
     let _cte: REntregas['CTE_FPag'] = [], _obj
-    for(let x in this.all_cte){
-      _obj = { "CTE": this.all_cte[x]["id"], "F_PAGAMENTO": 1 }
-      _cte.push(_obj)
-    }
-    if (_cte.length == 0){
+    if (this.all_cte.length == 0) {
       window.alert("Nenhum DACTe selecionado, imposivel salvar")
       throw new Error
-    }else return _cte
+    } else {
+      this.all_cte.forEach((dacte: TablectesItem) => {
+        if (dacte.id == 0){
+          _obj = _obj = { "CTE": dacte.id, "F_PAGAMENTO": 1 }
+          this.ctenf.push(_obj)
+        }else{
+        _obj = _obj = { "CTE": dacte.id, "F_PAGAMENTO": 1 }
+        _cte.push(_obj)
+        }
+      });
+      return _cte
+    }
   }
 
-  console(funcionarios?: NgForm){
-    try {
-      let veiculo: number = funcionarios.value.veiculos
-    } catch (e) {
-      if (e instanceof TypeError){
-      console.log(e);
-      }
-      
-      
-    }
+  console(x?){
+    this.api.checknf().subscribe(res => console.log(res))
   }
 
   ngOnInit(): void {
     
   }
-
 }
 
 @Component({
