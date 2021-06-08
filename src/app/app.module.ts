@@ -2,13 +2,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //addins
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MediaQueryStatusComponent } from './cards/media-query-status.component';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 //material 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -49,6 +51,8 @@ import { LoginComponent } from './login/login.component';
 import { TablectesComponent } from './tablectes/tablectes.component';
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
+import { ManageEmployeesComponent } from './manage-employees/manage-employees.component';
+
 
 
 @NgModule({
@@ -64,6 +68,7 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
     PrintLayoutComponent,
     PrintREntregasComponent,
     LoginComponent,
+    ManageEmployeesComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +97,9 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
     FormsModule,
     NgxCsvParserModule,
     MatProgressBarModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot({ extras: { lazyRender: true } }),
+    FormlyMaterialModule,
   ],
   providers: [
     AuthService,

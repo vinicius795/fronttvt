@@ -3,50 +3,6 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cargos, Funcionario, TablectesItem } from './interfaces.interface'
 import { REntregas } from './r-entregas/r-entregas.interface';
-/*
-@Injectable({
-  providedIn: 'root'
-})
-export class AddCTe {
-  ctes = []
-  constructor (
-    
-    ){}
-    
-  xml(arquivo: any){
-    
-  }
-  csv(arquivo: FileList){
-    let file: File = arquivo.item(0);
-    let reader: FileReader = new FileReader();
-    reader.readAsText(file);
-    reader.onloadend = (e) => {
-      let csv: any = reader.result;
-      let allTextLines = [];
-      allTextLines = csv.split(/\r|\r/);
-      let headers = allTextLines[1].split(';');
-      let data = headers;
-      let tarr = [];
-      for (let j = 0; j < headers.length; j++){
-        tarr.push(data[j]);
-      }
-      this.header.push(tarr);
-      for(let y in allTextLines){
-        let dados = {}, line = allTextLines[y].split(';')
-        for(let x in line){
-          if(line[0] == 2){
-            dados[this.header[0][x]] = line[x]
-          }
-        } if (line[0] == 2) this.ctes.push(dados)
-      }
-    }
-    return this.ctes;
-  }
-  sswweb(arquivo: any){
-    return this.csv(arquivo)
-    
-  }
-}*/
 
 //const baseUrl = 'http://localhost:8000/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
