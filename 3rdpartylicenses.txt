@@ -94,6 +94,12 @@ MIT
 @angular/service-worker
 MIT
 
+@ngx-formly/core
+MIT
+
+@ngx-formly/material
+MIT
+
 ajv
 MIT
 The MIT License (MIT)
