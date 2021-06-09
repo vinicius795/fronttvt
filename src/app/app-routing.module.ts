@@ -11,6 +11,7 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.service';
+import { ManageEmployeesComponent } from './manage-employees/manage-employees.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'relatorio-entrega', component: REntregasComponent, canActivate: [AuthGuard] },
       { path: 'etiquetas', component: EtiquetaComponent, canActivate: [AuthGuard] },
       { path: 'atualizar', component: UpdatecteComponent, canActivate: [AuthGuard] },
+      { path: 'editfunc', component: ManageEmployeesComponent, canActivate: [AuthGuard]},
       { path: 'home', redirectTo: 'cards', pathMatch: 'full' },
       { path: '', redirectTo: 'cards', pathMatch: 'full' },
     ],

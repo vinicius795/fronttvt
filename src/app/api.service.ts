@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { Cargos, Funcionario, TablectesItem } from './interfaces.interface'
 import { REntregas } from './r-entregas/r-entregas.interface';
 
-//const baseUrl = 'http://localhost:8000/api';
+const baseUrl = 'http://localhost:8000/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
-const baseUrl = 'http://200.195.182.36:8000/api';
+//const baseUrl = 'http://200.195.182.36:8000/api';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,16 @@ export class ApiService {
     } else if (Object.entries(args).length === 0) {
       this.funcao = 'funcionarios'
       return this.http.get<Funcionario[]>(`${baseUrl}/${this.funcao}?format=json`)
+    }
+  }
+  add_edit_employee(add?: any, edit?: any, id?: number){
+    if(add != null){
+      this.funcao = "funcionarios/novo"
+      return this.http.post(`${baseUrl}/${this.funcao}`, add)
+    }
+    if(edit != null){
+      this.funcao = "funcionarios/id"
+      return this.http.patch(`${baseUrl}/${this.funcao}/${edit.id}`, edit)
     }
   }
 

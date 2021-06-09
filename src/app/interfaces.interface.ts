@@ -46,3 +46,11 @@ export interface JWTPayload {
     email: string;
     exp: number;
 }
+
+export interface Cars {
+    id?: number,
+    REFERENCIA: string,
+    MODELO: string,
+    PLACA: string,
+    status: boolean
+}
