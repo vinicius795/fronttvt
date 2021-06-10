@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Cargos, Funcionario, TablectesItem } from './interfaces.interface'
+import { Cargos, Cars, Employee, TablectesItem } from './interfaces.interface'
 import { REntregas } from './r-entregas/r-entregas.interface';
+import { NgForm } from '@angular/forms';
 
 const baseUrl = 'http://localhost:8000/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
@@ -47,39 +48,52 @@ export class ApiService {
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
 
-  getfunc(args: any): Observable<any> {
+  get_employee(args: any): Observable<any> {
     if (("cargo" in args) !== ("id" in args)) {
       if ("cargo" in args) {
         this.funcao = 'funcionarios/cargos'
-        return this.http.get<Funcionario[]>(`${baseUrl}/${this.funcao}/${args.cargo}?format=json`)
+        return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}/${args.cargo}?format=json`)
       } else if ("id" in args) {
         this.funcao = 'funcionarios/id'
-        return this.http.get<Funcionario>(`${baseUrl}/${this.funcao}/${args.id}?format=json`)
+        return this.http.get<Employee>(`${baseUrl}/${this.funcao}/${args.id}?format=json`)
       }
     } else if (Object.entries(args).length === 0) {
       this.funcao = 'funcionarios'
-      return this.http.get<Funcionario[]>(`${baseUrl}/${this.funcao}?format=json`)
+      return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}?format=json`)
     }
   }
-  add_edit_employee(add?: any, edit?: any, id?: number){
-    if(add != null){
+  add_edit_employee(data: Employee, edit: boolean): Observable<Employee>{
+    if(!edit){
       this.funcao = "funcionarios/novo"
-      return this.http.post(`${baseUrl}/${this.funcao}`, add)
+      return this.http.post<Employee>(`${baseUrl}/${this.funcao}/`, data)
     }
-    if(edit != null){
+    if(edit){
       this.funcao = "funcionarios/id"
-      return this.http.patch(`${baseUrl}/${this.funcao}/${edit.id}`, edit)
+      return this.http.patch<Employee>(`${baseUrl}/${this.funcao}/${data.id}/`, data)
     }
   }
 
-  getcargos(): Observable<Cargos[]> {
+  get_position(): Observable<Cargos[]> {
     this.funcao = 'funcionarios/cargos'
     return this.http.get<Cargos[]>(`${baseUrl}/${this.funcao}?format=json`)
   }
+  add_position(data: Cargos): Observable<Cargos>{
+    this.funcao = 'funcionarios/cargos/add'
+    return this.http.post<Cargos>(`${baseUrl}/${this.funcao}`, data)
+  }
 
-  getveiculo(): Observable<any> {
+  get_car(): Observable<any> {
     this.funcao = 'funcionarios/veiculos'
     return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
+  }
+
+  add_edit_car(data: Cars, edit: boolean): Observable<Cars>{
+    this.funcao = 'funcionarios/veiculos'
+    if(edit){
+      return this.http.patch<Cars>(`${baseUrl}/${this.funcao}`, data)
+    }if(!edit){
+      return this.http.post<Cars>(`${baseUrl}/${this.funcao}?format=json`, data)
+    }
   }
 
   getrelatorioentrega(id): Observable<any> {

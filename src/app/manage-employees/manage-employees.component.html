@@ -1,22 +1,43 @@
 <div class="body">
     <div class="add_employee">
-        <title>Novo Funcionario</title>
-        <form class="add_emp_form"></form>
+        <h1>Novo Funcionario</h1>
+        <form (ngSubmit)="add_employee(add_emp_form)" #add_emp_form="ngForm">
+            <mat-form-field appearance='standard'>
+                <mat-label>Nome</mat-label>
+                <input type="text" matInput placeholder="Nome" name="name" ngModel>
+                <mat-hint>Primeiro Nome</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Sobrenome</mat-label>
+                <input type="text" matInput palaceholder="Sobrenome" name="surname" ngModel>
+                <mat-hint>Segundo Nome</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Funcao</mat-label>
+                <mat-select name="position" multiple ngModel>
+                    <mat-option *ngFor="let position of positions" [value]='position.id'>{{position.CARGO}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button type="submit">
+                Gravar
+            </button>
+        </form>
     </div>
     <div class="manage_employee">
-        <title>Gerenciar Funcionarios</title>
+        <h1>Gerenciar Funcionarios</h1>
         <form class="mng_emp_form"></form>
     </div>
+    <mat-divider></mat-divider>
     <div class="add_position">
-        <title>Novo Cargo</title>
+        <h1>Nova Funcao</h1>
         <form class="add_pos_form"></form>
     </div>
     <div class="add_car">
-        <title>Novo Veiculo</title>
+        <h1>Novo Veiculo</h1>
         <form action="" class="add_car_form"></form>
     </div>
     <div class="manage_car">
-        <title>Gerenciar Veiculos</title>
+        <h1>Gerenciar Veiculos</h1>
         <form action="" class="mng_car_form"></form>
     </div>
 </div>

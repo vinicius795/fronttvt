@@ -6,7 +6,7 @@ export class SystemSetings {
 }
 
 export interface Carg_Func{
-    Motorista?: Funcionario[]
+    Motorista?: Employee[]
 }
 
 export interface CTE{
@@ -32,7 +32,7 @@ export interface Cargos {
     
 }
 
-export interface Funcionario{
+export interface Employee{
     id?: Number,
     NOME: String,
     SOBRENOME: String,

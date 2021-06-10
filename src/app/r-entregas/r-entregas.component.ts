@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Funcionario, Cargos, JWTPayload, Carg_Func, TablectesItem } from '../interfaces.interface';
+import { Employee, Cargos, JWTPayload, Carg_Func, TablectesItem } from '../interfaces.interface';
 import { NgForm } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from '../auth.service';
@@ -16,7 +16,7 @@ import validate from "./validator/r-entregas.interface.validator"
 })
 export class REntregasComponent implements OnInit {
 
-  funcionarios: Funcionario[]
+  funcionarios: Employee[]
   all_cte = []
   cargos: Cargos[]
   all_cargos: Cargos[]
@@ -24,7 +24,7 @@ export class REntregasComponent implements OnInit {
   all_veiculos = []
   cte: number
   obs: string =""
-  motoristas: Funcionario[]
+  motoristas: Employee[]
   cteid: Array<number> =[]
   ctenf: REntregas['CTE_FPag'] = []
 
@@ -116,7 +116,7 @@ export class REntregasComponent implements OnInit {
   }
 
   getcargos(){
-    this.api.getcargos().subscribe((res: Cargos[]) => {
+    this.api.get_position().subscribe((res: Cargos[]) => {
       let showcargos: Cargos[] = res.slice()
       res.forEach((element: Cargos)=> {
         if (!element.SHOW_RELATORIO || element.CARGO == "Motorista")  showcargos.splice(showcargos.indexOf(element), 1);
@@ -129,14 +129,14 @@ export class REntregasComponent implements OnInit {
   }
 
   getfunc(){
-    this.api.getfunc({}).subscribe((res: Funcionario[]) => {
+    this.api.get_employee({}).subscribe((res: Employee[]) => {
       this.funcionarios = res
       this.parseCF();
     })
   }
 
   getveiculos(){
-    this.api.getveiculo().subscribe(res => {
+    this.api.get_car().subscribe(res => {
       this.all_veiculos=res
     })
   }
