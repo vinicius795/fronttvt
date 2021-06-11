@@ -21,7 +21,7 @@ export class AuthService {
     private api: ApiService,
     ) { }
 
-  apiRoot = this.api.baseurl
+  apiRoot = `${this.api.baseurl}/login`
 
   private setSession(authResult) {
     const token = authResult["access"];

@@ -62,14 +62,14 @@ export class ApiService {
       return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}?format=json`)
     }
   }
-  add_edit_employee(data: Employee, edit: boolean): Observable<Employee>{
+  add_edit_employee(data: Employee, edit: boolean, id: number = undefined): Observable<Employee>{
     if(!edit){
       this.funcao = "funcionarios/novo"
       return this.http.post<Employee>(`${baseUrl}/${this.funcao}/`, data)
     }
     if(edit){
       this.funcao = "funcionarios/id"
-      return this.http.patch<Employee>(`${baseUrl}/${this.funcao}/${data.id}/`, data)
+      return this.http.patch<Employee>(`${baseUrl}/${this.funcao}/${id}/update`, data)
     }
   }
 
@@ -78,7 +78,7 @@ export class ApiService {
     return this.http.get<Cargos[]>(`${baseUrl}/${this.funcao}?format=json`)
   }
   add_position(data: Cargos): Observable<Cargos>{
-    this.funcao = 'funcionarios/cargos/add'
+    this.funcao = 'funcionarios/cargos/add/'
     return this.http.post<Cargos>(`${baseUrl}/${this.funcao}`, data)
   }
 
@@ -87,12 +87,12 @@ export class ApiService {
     return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
   }
 
-  add_edit_car(data: Cars, edit: boolean): Observable<Cars>{
+  add_edit_car(data: Cars, edit: boolean, id: number = undefined): Observable<Cars>{
     this.funcao = 'funcionarios/veiculos'
     if(edit){
-      return this.http.patch<Cars>(`${baseUrl}/${this.funcao}`, data)
+      return this.http.patch<Cars>(`${baseUrl}/${this.funcao}/edit/${id}`, data)
     }if(!edit){
-      return this.http.post<Cars>(`${baseUrl}/${this.funcao}?format=json`, data)
+      return this.http.post<Cars>(`${baseUrl}/${this.funcao}/?format=json`, data)
     }
   }
 
