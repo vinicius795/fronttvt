@@ -5,10 +5,10 @@ import { Cargos, Cars, Employee, TablectesItem } from './interfaces.interface'
 import { REntregas } from './r-entregas/r-entregas.interface';
 import { NgForm } from '@angular/forms';
 
-//const baseUrl = 'http://localhost:8000/api';
+const baseUrl = 'http://localhost:8000/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
 //const baseUrl = 'http://200.195.182.36:8000/api';
-const baseUrl = 'http://10.1.1.8:8000/api';
+//const baseUrl = 'http://10.1.1.8:8000/api';
 
 @Injectable({
   providedIn: 'root'

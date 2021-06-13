@@ -47,28 +47,33 @@ export class ManageEmployeesComponent implements OnInit {
     }
     this.api.add_edit_employee(data, false).subscribe((res: Employee) => {
       form.resetForm()
+      this.get_employees()
     })
   }
 
-  fill_edit_emp_form(form:NgForm){
-    let employee: Employee
-    let position : Array<Number> =[]
-    this.employees.forEach(emp => {
-      
-      if (emp.id == this.selected_emp) {
-        employee = emp
-        emp.CARGO.forEach(pos => {
-          position.push(pos.id)
-        });
-      }
-      
-    });
-    form.setValue({
-      name: employee.NOME,
-      surname: employee.SOBRENOME,
-      position: position,
-      status: employee.SITUACAO,
-    })
+  fill_edit_emp_form($event, form:NgForm){
+    
+    if ($event){
+      let employee: Employee
+      let position : Array<Number> =[]
+      this.employees.forEach(emp => {
+        if (emp.id == $event) {
+          employee = emp
+          emp.CARGO.forEach(pos => {
+            position.push(pos.id)
+          });
+        }
+
+      });
+      form.setValue({
+        name: employee.NOME,
+        surname: employee.SOBRENOME,
+        position: position,
+        status: employee.SITUACAO,
+        edit_em_select: "",
+      })
+    }
+    
   }
 
   edit_employee(form:NgForm){
@@ -110,19 +115,20 @@ export class ManageEmployeesComponent implements OnInit {
     })
   }
 
-  fill_edit_car(form:NgForm){
-    let car: Cars
-    this.cars.forEach($car => {
-      if($car.id == this.selected_car) car=$car
-      console.log(car);
-      
-    });
-    form.setValue({
-      model: car.MODELO,
-      plate: car.PLACA,
-      ref: car.REFERENCIA,
-      status: car.status,
-    })
+  fill_edit_car($event, form:NgForm){
+    if($event){
+      let car: Cars
+      this.cars.forEach($car => {
+        if($car.id == this.selected_car) car=$car
+      });
+      form.setValue({
+        model: car.MODELO,
+        plate: car.PLACA,
+        ref: car.REFERENCIA,
+        status: car.status,
+        edit_car_select: "",
+      })
+    }
   }
 
   add_position(form:NgForm){
@@ -130,11 +136,8 @@ export class ManageEmployeesComponent implements OnInit {
       CARGO: form.value.position,
       SHOW_RELATORIO: form.value.show,
     }
-    console.log(data);
-    
     this.api.add_position(data).subscribe((res: Cargos) => {
-      console.log(res);
-      
+      this.get_position()
     })
 
   }
