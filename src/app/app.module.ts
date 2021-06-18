@@ -33,6 +33,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 //pwa
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -100,6 +101,7 @@ import { ManageEmployeesComponent } from './manage-employees/manage-employees.co
     ReactiveFormsModule,
     FormlyModule.forRoot({ extras: { lazyRender: true } }),
     FormlyMaterialModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     AuthService,

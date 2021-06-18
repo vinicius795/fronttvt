@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { ApiService } from '../api.service';
+import { Card } from '../cards/cards.interface';
 import { Cargos, Cars, Employee } from '../interfaces.interface';
+
+const card: Card = { 
+  id: 4, 
+  name: "Gerenciar Funcionarios", 
+  description: "Adiciona/ Gerencia Funcionarios, Caminhoes e Cargo", 
+  url: "../editfunc", 
+  state: true 
+}
 
 @Component({
   selector: 'app-manage-employees',

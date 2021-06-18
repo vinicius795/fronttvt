@@ -8,6 +8,15 @@ import { REntregas } from './r-entregas.interface';
 import { Router } from "@angular/router"
 import { PrintService } from '../print.service';
 import validate from "./validator/r-entregas.interface.validator"
+import { Card } from '../cards/cards.interface';
+
+const card: Card = { 
+  id: 11, 
+  name: "Relatorio", 
+  description: "Emicao de relatorios de viagem", 
+  url: "../relatorio-entrega", 
+  state: true
+}
 
 @Component({
   selector: 'app-r-entregas',

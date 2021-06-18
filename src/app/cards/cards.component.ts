@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { card } from "./cards.interface"
+import { Card } from "./cards.interface"
 import { cardlist} from '../mocks/cards'
 import { from, Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
@@ -15,9 +15,9 @@ import { SystemSetings } from '../interfaces.interface'
 })
 
 export class CardsComponent implements OnInit {
-
+  
   _cardlist = cardlist;
-  cardbase: card;
+  cardbase: Card;
   lastupdatesp: SystemSetings;
   lastupdatessw: SystemSetings;
   _progress: number = 0;
