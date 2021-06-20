@@ -33,7 +33,7 @@ const routes: Routes = [
       { path: 'etiquetas', component: EtiquetaComponent, canActivate: [AuthGuard] },
       { path: 'atualizar', component: UpdatecteComponent, canActivate: [AuthGuard] },
       { path: 'editfunc', component: ManageEmployeesComponent, canActivate: [AuthGuard]},
-      { path: 'seach', component: SearchComponent, canActivate: [AuthGuard]},
+      { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
       { path: 'home', redirectTo: 'cards', pathMatch: 'full' },
       { path: '', redirectTo: 'cards', pathMatch: 'full' },
     ],

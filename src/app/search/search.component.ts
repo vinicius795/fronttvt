@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Card } from '../cards/cards.interface';
+
+const card: Card = {
+  id: 10,
+  description: "Buscar cte, nota fiscal, relatorio por data",
+  name: "Buscar",
+  state: true,
+  url: "../search"
+}
 
 @Component({
   selector: 'app-search',
