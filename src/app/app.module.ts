@@ -53,6 +53,7 @@ import { TablectesComponent } from './tablectes/tablectes.component';
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
 import { ManageEmployeesComponent } from './manage-employees/manage-employees.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -70,6 +71,7 @@ import { ManageEmployeesComponent } from './manage-employees/manage-employees.co
     PrintREntregasComponent,
     LoginComponent,
     ManageEmployeesComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

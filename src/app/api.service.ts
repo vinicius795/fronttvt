@@ -110,4 +110,8 @@ export class ApiService {
     this.funcao = 'relatorios/entrega/checkmissing'
     return this.http.get(`${baseUrl}/${this.funcao}`)
   }
+  search(term: string){
+    this.funcao = 'search'
+    return this.http.get(`${baseUrl}/${this.funcao}/${term}`)
+  }
 }
