@@ -22,13 +22,34 @@ export class SearchComponent implements OnInit {
   ) { }
   search($event, value: string){
     if($event.keyCode == 13 || $event.type=="click") {
-      this.api.search(value).subscribe(res => {this.data = res})
+      this.api.search(value).subscribe(res => {
+        if("rel" in res){
+          this.shownfe(res)
+        }else{
+          this.listrel(res)
+        }
+      })
+    }
   }
-    
-    
+  listrel(res: Object) {
+    throw new Error('Method not implemented.');
+  }
+  shownfe(res: Object) {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
   }
 
+}
+
+@Component({
+  selector: 'show-list-rel',
+  templateUrl: './show-list-rel.html'
+})
+export class ShowListRel{
+
+  constructor(
+
+  ){}
 }

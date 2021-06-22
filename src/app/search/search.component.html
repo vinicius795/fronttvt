@@ -1,13 +1,15 @@
 <div class="body">
-    <form autocomplete="off">
-        <mat-form-field appearance="outline">
-            <mat-label>Busca</mat-label>
-            <input matInput #term (keypress)="search($event, term.value)">
-            <mat-icon (click)="search($event, term.value)" matSuffix>search</mat-icon>
-        </mat-form-field>
-    </form>
+    <div class="search_field">
+        <form autocomplete="off">
+            <mat-form-field appearance="outline">
+                <mat-label>Busca</mat-label>
+                <input matInput #term (keypress)="search($event, term.value)">
+                <mat-icon (click)="search($event, term.value)" matSuffix>search</mat-icon>
+            </mat-form-field>
+        </form>
+    </div>
     <br>
-    <div>
+    <div class="result">
         <pre>{{ data | json}}</pre>
     </div>
 </div>
