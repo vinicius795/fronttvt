@@ -16,7 +16,6 @@ import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: "sistema", pathMatch: 'full' },
   {
     path:'login',
     component: LoginComponent,
@@ -34,6 +33,7 @@ const routes: Routes = [
       { path: 'atualizar', component: UpdatecteComponent, canActivate: [AuthGuard] },
       { path: 'editfunc', component: ManageEmployeesComponent, canActivate: [AuthGuard]},
       { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
+      { path: 'print', redirectTo: "/print", pathMatch: 'full'},
       { path: 'home', redirectTo: 'cards', pathMatch: 'full' },
       { path: '', redirectTo: 'cards', pathMatch: 'full' },
     ],
@@ -43,9 +43,15 @@ const routes: Routes = [
     path: 'print',
     component: PrintLayoutComponent,
     children: [
-      { path: 'invoice/:invoiceIds', component: PrintREntregasComponent, canActivate: [AuthGuard] }
+      { path: 'invoice/:invoiceIds', component: PrintREntregasComponent, canActivate: [AuthGuard] },
+      { path: "", redirectTo: 'sistema/home', pathMatch:'full'}
     ],
     canActivate: [AuthGuard]
+  },
+  {
+    path: '',
+    redirectTo: "sistema/home",
+    pathMatch: 'full'
   },
 ];
 

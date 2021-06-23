@@ -177,7 +177,6 @@ export class REntregasComponent implements OnInit {
       const data = validate(datarel);
       return data
     }
-    console.log(datarel);
     
     this.api.saverelatorioentrega(await getBiped()).subscribe(res => {
       if(!datarel.printable){
