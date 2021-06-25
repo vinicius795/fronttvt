@@ -17,7 +17,7 @@ export const menulist: menus [] = [
     {
         id: 0,
         title: "Minha Conta",
-        submenus: [submenuslist[8]],
+        submenus: [],
     },
     {    
         id: 1,
@@ -27,7 +27,7 @@ export const menulist: menus [] = [
     {
         id: 2,
         title: "Banco de Dados",
-        submenus: [submenuslist[3], submenuslist[4], submenuslist[5]],
+        submenus: [submenuslist[3], submenuslist[4], submenuslist[5], submenuslist[8]],
     },
     {
         id: 3,
