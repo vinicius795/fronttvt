@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="aviso != undefined">
     <div class="titulo">
         <p>Relatorio N&#176; {{report.id}}</p>
     </div>
@@ -8,14 +8,14 @@
         </div>
         <div class="data">
             <p>
-                Data: {{ reldate | date}}
+                Data: {{ report.DATA | date:'dd/MM/yyyy'}}
             </p>
             <p>
                 Operador: {{ report.USUARIO.username }}
             </p>
         </div>
     </div>
-    <div class="rowctecontainer">
+    <!-- <div class="rowctecontainer">
         <div class="row" *ngFor="let cte of report.CTE_FPag" >
             <div class="ncontrole">
                 <p>N&#176; Controle<br>
@@ -44,6 +44,32 @@
                 <p>| Saida<br> ___:___ </p>
             </div>
         </div>
+    </div> -->
+    <div class='tablecte'>
+        <table mat-table [dataSource]='ctelist'>
+            <ng-container matColumnDef='controle'>
+                <th mat-header-cell *matHeaderCellDef> Controle </th>
+                <td mat-cell *matCellDef="let element"> {{element.NR_CONTROLE}} </td>
+            </ng-container>
+            <ng-container matColumnDef='destinatario'>
+                <th mat-header-cell *matHeaderCellDef> Destinatario </th>
+                <td mat-cell *matCellDef="let element"> {{element.DESTINATARIO}} </td>
+            </ng-container>
+            <ng-container matColumnDef='remetente'>
+                <th mat-header-cell *matHeaderCellDef> Remetente </th>
+                <td mat-cell *matCellDef="let element"> {{element.REMETENTE}} </td>
+            </ng-container>
+            <ng-container matColumnDef='volumes'>
+                <th mat-header-cell *matHeaderCellDef> Vol. </th>
+                <td mat-cell *matCellDef="let element"> {{element.VOLUMES}} </td>
+            </ng-container>
+            <ng-container matColumnDef='valor'>
+                <th mat-header-cell *matHeaderCellDef> Valor </th>
+                <td mat-cell *matCellDef="let element"> {{element.VALOR}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </div>
     <div class='obs'>
         <p>

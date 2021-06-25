@@ -1,0 +1,27 @@
+<div class="body">
+    <form [formGroup]='new_u_form' autocomplete="off">
+        <mat-form-field appearence="fill">
+            <mat-label>Usuario</mat-label>
+            <input type="text" formControlName="username" matInput required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Primeiro Nome</mat-label>
+            <input type="text" formControlName="first_name" matInput required>
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Segundo Nome</mat-label>
+            <input type="text" formControlName="last_name" matInput required>
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input type="password" formControlName="password" matInput required>
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+        <mat-checkbox formControlName="is_staff">Administrador</mat-checkbox>
+        <button mat-raised-button color="primary" (click)="save()">Gravar</button>
+    </form>
+    <h1>Apenas usuarios administradores podem criar novos usuarios</h1>
+</div>

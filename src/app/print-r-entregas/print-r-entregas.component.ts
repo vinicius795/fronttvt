@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
-import { PrintService } from '../print.service';
+import { ResRel, SysParameters, TablectesItem } from '../interfaces.interface'
 
 @Component({
   selector: 'app-print-r-entregas',
@@ -9,49 +9,30 @@ import { PrintService } from '../print.service';
   styleUrls: ['./print-r-entregas.component.scss']
 })
 export class PrintREntregasComponent implements OnInit {
-  invoiceIds: string[];
-  invoiceDetails: Promise<any>[];
-  report: any;
-  report2: Promise<any>[];
-  reldate: any
-  aviso: any 
+  invoiceIds: Number
+  report: ResRel
+  aviso: String
+  ctelist: TablectesItem[] = []
+  displayedColumns: string[] = ['controle', 'destinatario', 'remetente', 'volumes', 'valor'];
 
-  constructor(route: ActivatedRoute,
-    private api: ApiService,
-    private printService: PrintService) {
-    this.invoiceIds = route.snapshot.params['invoiceIds']
-      .split(',');
+  constructor(
+    route: ActivatedRoute,
+    private api: ApiService
+    ) {
+    this.invoiceIds = route.snapshot.params['invoiceIds'];
   }
-
+  getInfRela(id: Number) {
+    this.api.getrelatorioentrega(id).subscribe((res: ResRel) => {
+      this.report = res
+      this.report.CTE_FPag.forEach(element => {
+        this.ctelist.push(element.CTE);
+      })
+      this.api.getseting("aviso-rel-entregas").subscribe((res: SysParameters) => {
+        this.aviso = res.valor;/* setTimeout(window.print) */
+      })
+    })
+  }
   ngOnInit() {
-/*     this.invoiceDetails = this.invoiceIds
-      .map(id => this.getInvoiceDetails(id));
-    Promise.all(this.invoiceDetails)
-      .then(() => setTimeout(window.print)); */
-    this.report2 = this.invoiceIds
-    .map(id => this.getInfRela(id));
-    Promise.all(this.report2).then()
-    
-
+    this.getInfRela(this.invoiceIds)
   }
-  getInfRela(id){
-    return new Promise(resolve =>
-      setTimeout(() => resolve(
-        this.api.getrelatorioentrega(id).subscribe(res => {
-          this.report = res
-          this.reldate = Date.parse(res.DATA)
-          this.api.getseting("aviso-rel-entregas").subscribe(res => { this.aviso = res; setTimeout(window.print)})
-          })
-        )
-      )
-    )
-  }
-
-  getInvoiceDetails(invoiceId) {
-    const amount = Math.floor((Math.random() * 100));
-    return new Promise(resolve =>
-      setTimeout(() => resolve({ amount }), 1000)
-    );
-  }
-
 }

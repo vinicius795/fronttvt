@@ -34,6 +34,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //pwa
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -54,6 +56,7 @@ import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.component';
 import { ManageEmployeesComponent } from './manage-employees/manage-employees.component';
 import { SearchComponent } from './search/search.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -72,6 +75,7 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     ManageEmployeesComponent,
     SearchComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,8 @@ import { SearchComponent } from './search/search.component';
     FormlyModule.forRoot({ extras: { lazyRender: true } }),
     FormlyMaterialModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
   ],
   providers: [
     AuthService,

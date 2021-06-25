@@ -54,3 +54,31 @@ export interface Cars {
     PLACA: string,
     status: boolean
 }
+
+export interface SysParameters{
+    id?: Number,
+    parametros: String,
+    valor: String
+}
+
+
+export interface ResRel {
+    CTE_FPag: [{
+        CTE: TablectesItem,
+        F_PAGAMENTO: Fpagamento
+    }],
+    DATA: string,
+    FUNCIONARIOS: [{
+        FUNCAO: Cargos,
+        FUNCIONARIO: Employee
+    }],
+    OBS: String,
+    USUARIO: { id: Number, username: String },
+    VEICULO: Cars,
+    id?: number
+}
+
+export interface Fpagamento {
+    id: number,
+    metodo: String
+}

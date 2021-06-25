@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cargos, Cars, Employee, TablectesItem } from './interfaces.interface'
 import { REntregas } from './r-entregas/r-entregas.interface';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 
 //const baseUrl = 'http://localhost:8000/api';
 const baseUrl = 'http://localhost:5241/api';
@@ -114,5 +114,9 @@ export class ApiService {
   search(term: string){
     this.funcao = 'search'
     return this.http.get(`${baseUrl}/${this.funcao}/${term}`)
+  }
+  create_user(form: FormGroup){
+    this.funcao="users"
+    return this.http.post(`${baseUrl}/${this.funcao}/`, form)
   }
 }

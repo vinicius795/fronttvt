@@ -10,13 +10,14 @@ export const submenuslist: submenus[] = [
     { id: 5, title: "Carregar XML", url: "#" },
     { id: 6, title: "Gerar arquivo do SSWsistema", url: "#" },
     { id: 7, title: "Gerando relatório de entrega", url: "#" },
+    { id: 8, title: "Gerenciar Usuarios", url: "users/"}
 ]
 
 export const menulist: menus [] = [
     {
         id: 0,
         title: "Minha Conta",
-        submenus: [],
+        submenus: [submenuslist[8]],
     },
     {    
         id: 1,

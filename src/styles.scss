@@ -1,8 +1,7 @@
-html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  /* https://codepen.io/mrrocks/pen/EiplA */
-  html,
-  body {
+html,body {
     height: 100%;
     margin: 0px;
   }
@@ -101,11 +100,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       transform: rotate(450deg);
     }
   }
-
-@media print {
-  .isPrinting > * { display: none; }
-  .isPrinting app-print-layout { display: block; }
-}
 
 td.mat-cell:first-of-type{
   padding-right: 1em;

@@ -15,6 +15,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ng b --prod --output-hashing none --output-path /usr/share/tvtprod --service-worker true --watch
+ng b --prod --base-href "http://192.168.0.112:8000/" --output-hashing none --output-path "D:\miniweb\htdocs" --service-worker true --watch
 ng build --prod --base-href "https://vinicius795.github.io/fronttvt/" --output-hashing none
 npx angular-cli-ghpages dir=dist/fronttvt
 
