@@ -28,7 +28,7 @@ export class ApiService {
 
   getseting(parametro: string): Observable<any> {
     this.funcao = "parametros"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}/`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}`)
   }
 
   sincsp(): Observable<any> {
@@ -38,7 +38,7 @@ export class ApiService {
 
   getcte(tipo: string, value: number): Observable<any> {
     this.funcao = "cte"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}/`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}`)
   }
 
   addcte(dados: TablectesItem): Observable<any> {
@@ -54,10 +54,10 @@ export class ApiService {
     if (("cargo" in args) !== ("id" in args)) {
       if ("cargo" in args) {
         this.funcao = 'funcionarios/cargos'
-        return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}/${args.cargo}/`)
+        return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}/${args.cargo}`)
       } else if ("id" in args) {
         this.funcao = 'funcionarios/id'
-        return this.http.get<Employee>(`${baseUrl}/${this.funcao}/${args.id}/`)
+        return this.http.get<Employee>(`${baseUrl}/${this.funcao}/${args.id}`)
       }
     } else if (Object.entries(args).length === 0) {
       this.funcao = 'funcionarios'
@@ -67,7 +67,7 @@ export class ApiService {
   add_edit_employee(data: Employee, edit: boolean, id: number = undefined): Observable<Employee>{
     if(!edit){
       this.funcao = "funcionarios/novo"
-      return this.http.post<Employee>(`${baseUrl}/${this.funcao}/`, data)
+      return this.http.post<Employee>(`${baseUrl}/${this.funcao}`, data)
     }
     if(edit){
       this.funcao = "funcionarios/id"
