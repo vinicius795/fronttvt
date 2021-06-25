@@ -67,7 +67,7 @@ export class ApiService {
   add_edit_employee(data: Employee, edit: boolean, id: number = undefined): Observable<Employee>{
     if(!edit){
       this.funcao = "funcionarios/novo"
-      return this.http.post<Employee>(`${baseUrl}/${this.funcao}`, data)
+      return this.http.post<Employee>(`${baseUrl}/${this.funcao}/`, data)
     }
     if(edit){
       this.funcao = "funcionarios/id"
