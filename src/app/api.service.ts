@@ -28,17 +28,17 @@ export class ApiService {
 
   getseting(parametro: string): Observable<any> {
     this.funcao = "parametros"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}?format=json`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}/`)
   }
 
   sincsp(): Observable<any> {
     this.funcao = 'cte/add'
-    return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/`)
   }
 
   getcte(tipo: string, value: number): Observable<any> {
     this.funcao = "cte"
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}?format=json`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}/`)
   }
 
   addcte(dados: TablectesItem): Observable<any> {
@@ -54,14 +54,14 @@ export class ApiService {
     if (("cargo" in args) !== ("id" in args)) {
       if ("cargo" in args) {
         this.funcao = 'funcionarios/cargos'
-        return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}/${args.cargo}?format=json`)
+        return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}/${args.cargo}/`)
       } else if ("id" in args) {
         this.funcao = 'funcionarios/id'
-        return this.http.get<Employee>(`${baseUrl}/${this.funcao}/${args.id}?format=json`)
+        return this.http.get<Employee>(`${baseUrl}/${this.funcao}/${args.id}/`)
       }
     } else if (Object.entries(args).length === 0) {
       this.funcao = 'funcionarios'
-      return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}?format=json`)
+      return this.http.get<Employee[]>(`${baseUrl}/${this.funcao}/`)
     }
   }
   add_edit_employee(data: Employee, edit: boolean, id: number = undefined): Observable<Employee>{
@@ -77,7 +77,7 @@ export class ApiService {
 
   get_position(): Observable<Cargos[]> {
     this.funcao = 'funcionarios/cargos'
-    return this.http.get<Cargos[]>(`${baseUrl}/${this.funcao}?format=json`)
+    return this.http.get<Cargos[]>(`${baseUrl}/${this.funcao}/`)
   }
   add_position(data: Cargos): Observable<Cargos>{
     this.funcao = 'funcionarios/cargos/add/'
@@ -86,7 +86,7 @@ export class ApiService {
 
   get_car(): Observable<any> {
     this.funcao = 'funcionarios/veiculos'
-    return this.http.get<any>(`${baseUrl}/${this.funcao}?format=json`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}/`)
   }
 
   add_edit_car(data: Cars, edit: boolean, id: number = undefined): Observable<Cars>{
