@@ -43,7 +43,7 @@
         <form autocomplete="off">
             <mat-form-field>
                 <mat-label>DACTe</mat-label>
-                <input matInput placeholder="Codigo DACTe de 44 digitos" type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cte" name="cte" (change)='getCTE()'>
+                <input matInput placeholder="Codigo DACTe de 44 digitos" type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cte" name="cte" (ngModelChange)='getCTE()'>
             </mat-form-field>
         </form>
     </div>
@@ -58,5 +58,4 @@
         <button mat-raised-button color="primary" (click)="saverel(funcselected)">Salvar</button>
     </div>
 </div>
-
-<button (click)="console(funcselected)">console</button>
+<!-- <button (click)="console(funcselected)">console</button> -->

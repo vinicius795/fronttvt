@@ -75,6 +75,7 @@ export interface ResRel {
     OBS: String,
     USUARIO: { id: Number, username: String },
     VEICULO: Cars,
+    printable?: boolean
     id?: number
 }
 

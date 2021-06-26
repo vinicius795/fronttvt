@@ -26,6 +26,7 @@ export class ManageEmployeesComponent implements OnInit {
   positions: Cargos[]
   cars: Cars[]
   selected_car: number
+  checked = true;
 
   constructor(
     private api: ApiService

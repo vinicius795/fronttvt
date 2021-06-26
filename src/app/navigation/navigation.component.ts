@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { menus, submenus } from "./navigation.inteface";
-import { menulist, submenuslist } from "../mocks/menus"
+import { menus} from "./navigation.inteface";
+import { menulist} from "../mocks/menus"
 import { AuthService } from '../auth.service';
 
 @Component({

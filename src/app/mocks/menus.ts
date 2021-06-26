@@ -2,41 +2,61 @@ import { menus, submenus } from "../navigation/navigation.inteface"
 
 
 export const submenuslist: submenus[] = [
-    { id: 0, title: "Novo Relatório de entregas", url: "relatorio-entrega/" },
-    { id: 1, title: "Reimprimir relatorio", url: "#" },
-    { id: 2, title: "Buscar relatorio", url: "search/" },
-    { id: 3, title: "Gerenciar funcionários", url: "editfunc/" },
-    { id: 4, title: "Atualizar Banco de dados", url: "atualizar/" },
-    { id: 5, title: "Carregar XML", url: "#" },
-    { id: 6, title: "Gerar arquivo do SSWsistema", url: "#" },
-    { id: 7, title: "Gerando relatório de entrega", url: "#" },
-    { id: 8, title: "Gerenciar Usuarios", url: "users/"}
+    { id: 0, title: "Novo Relatório de entregas", url: "relatorio-entrega/" , status: true},
+    { id: 1, title: "Reimprimir relatorio", url: "#" , status: true},
+    { id: 2, title: "Buscar relatorio", url: "search/" , status: true},
+    { id: 3, title: "Gerenciar funcionários", url: "editfunc/" , status: true},
+    { id: 4, title: "Atualizar Banco de dados", url: "atualizar/" , status: true},
+    { id: 5, title: "Carregar XML", url: "#" , status: false},
+    { id: 6, title: "Gerar arquivo do SSWsistema", url: "#" , status: true},
+    { id: 7, title: "Gerando relatório de entrega", url: "#" , status: true},
+    { id: 8, title: "Gerenciar Usuarios", url: "users/", status: true}
 ]
 
 export const menulist: menus [] = [
     {
         id: 0,
         title: "Minha Conta",
-        submenus: [],
+        submenus: [
+
+        ],
+        status: false,
     },
     {    
         id: 1,
         title: "Relatorios",
-        submenus: [submenuslist[0], submenuslist[1], submenuslist[2]],
+        submenus: [
+            submenuslist[0], 
+            submenuslist[1], 
+            submenuslist[2]
+        ],
+        status: true,
     },
     {
         id: 2,
         title: "Banco de Dados",
-        submenus: [submenuslist[3], submenuslist[4], submenuslist[5], submenuslist[8]],
+        submenus: [
+            submenuslist[3], 
+            submenuslist[5], 
+            submenuslist[8]
+        ],
+        status: true,
     },
     {
         id: 3,
         title: "Ajuda",
-        submenus: [submenuslist[6], submenuslist[7]],
+        submenus: [
+            submenuslist[6], 
+            submenuslist[7]
+        ],
+        status: false,
     },
     {
         id: 4,
         title: "Links Uteis",
-        submenus: [],
+        submenus: [
+
+        ],
+        status: true,
     },
 ]

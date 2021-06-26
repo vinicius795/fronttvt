@@ -5,20 +5,18 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <p class="mat-elevation-z">
-        <a routerLink="" routerLinkActive="router-link-active"> Inicio </a>
-      </p>
-      <mat-expansion-panel *ngFor="let menus of _menulist" class="mat-elevation-z">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{ menus.title }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p *ngFor="let submenus of menus?.submenus">
-          <a routerLink="{{ submenus.url }}">
-            {{ submenus.title }}
-          </a>
-        </p>
+      <a mat-list-item routerLink="" routerLinkActive="router-link-active"> Inicio </a>
+      <mat-expansion-panel *ngFor="let menus of _menulist" class="mat-elevation-z" >
+          <mat-expansion-panel-header *ngIf='menus.status'>
+            <mat-panel-title>
+              {{ menus.title }} 
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <span *ngFor="let submenus of menus?.submenus">
+            <a *ngIf='submenus.status' mat-list-item routerLink="{{ submenus.url }}">
+              {{ submenus.title }}
+            </a>
+          </span>
       </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
