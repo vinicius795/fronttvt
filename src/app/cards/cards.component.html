@@ -29,7 +29,7 @@
                     <!-- <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> -->
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <button mat-button (click)="sincsp()">Atualizar Agora</button>
+                    <button class="pure-material-button-contained" (click)="sincsp()">Atualizar Agora</button>
                 </mat-card-actions>
                 <mat-card-footer>
                 </mat-card-footer>
@@ -46,7 +46,11 @@
                     Ultima Sincronizacao: {{ lastupdatessw ? lastupdatessw.valor : "" }}
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <input type="file" (change)="sincssw($event.target.files)">
+                    <p>
+                        {{filename}}
+                    </p>
+                    <label for="input_file" class="pure-material-button-contained"> Arquivo SSW </label>
+                    <input id="input_file" type="file" (change)="sincssw($event.target.files)" mat-raised-button>
                 </mat-card-actions>
                 <mat-card-footer>
                 </mat-card-footer>

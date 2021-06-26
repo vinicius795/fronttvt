@@ -33,7 +33,7 @@ export class ApiService {
 
   sincsp(): Observable<any> {
     this.funcao = 'cte/add'
-    return this.http.get<any>(`${baseUrl}/${this.funcao}/`)
+    return this.http.get<any>(`${baseUrl}/${this.funcao}`)
   }
 
   getcte(tipo: string, value: number): Observable<any> {

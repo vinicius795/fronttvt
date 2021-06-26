@@ -10,6 +10,11 @@
     </div>
     <br>
     <div class="result">
-        <pre>{{ data | json}}</pre>
+        <div *ngIf="res_is_rel">
+            <div *ngFor="let line of cte_list">
+                <a mat-list-item routerLink="{{ line.url }}"> {{line.cte.NR_CONTROLE}} - {{line.cte.DESTINATARIO}}
+                </a>
+            </div>
+        </div>
     </div>
 </div>

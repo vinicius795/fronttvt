@@ -21,6 +21,7 @@ export class CardsComponent implements OnInit {
   lastupdatesp: SystemSetings;
   lastupdatessw: SystemSetings;
   _progress: number = 0;
+  filename: String = ""
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -43,8 +44,10 @@ export class CardsComponent implements OnInit {
   }
   sincssw(fileList: FileList){
     let _ctenow = 0
+
     this.UpdateCTE.updatecsv(fileList).then((data: any[]) => {
-      data.forEach((element) => {
+      this.filename = data[1];
+      data[0].forEach((element) => {
         this.apiservice.addcte(element).subscribe((res) => {
           _ctenow = _ctenow + 1
           this._progress = (_ctenow/data.length)*100

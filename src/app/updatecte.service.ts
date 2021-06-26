@@ -32,7 +32,7 @@ export class UpdatecteService {
             }
             parsedData.push(ctedata)
           });
-          resolve(parsedData)
+          resolve([parsedData, response.find(row => row[0] == 0)[3]])
         }, (error: NgxCSVParserError) => {
           reject(`Error ${error}`);
         });

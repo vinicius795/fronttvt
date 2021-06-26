@@ -83,3 +83,4 @@ export interface Fpagamento {
     id: number,
     metodo: String
 }
+
