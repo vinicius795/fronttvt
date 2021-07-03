@@ -20,17 +20,24 @@ export class SearchComponent implements OnInit {
   
   data: any
   cte_list: Array<ctelist> = []
-  res_is_rel: boolean = true
+  res_is_rel: boolean = false
+  res_is_any: boolean = false
+  res_any: any
   constructor(
     private api: ApiService
   ) { }
   search($event, value: string){
     if($event.keyCode == 13 || $event.type=="click") {
-      this.api.search(value).subscribe((res: any) => {
-        if('rel' in res){
-          this.shownfe(res)
-        }else{
+      this.api.search(value).subscribe(res => {
+        
+        if(res[0]["rel"] === undefined ){
+          this.res_is_any = false
           this.listrel(res)
+          this.res_is_rel = true
+        }else{
+          this.res_is_rel = false
+          this.res_any = res
+          this.res_is_any = true
         }
 
       })
@@ -50,6 +57,7 @@ export class SearchComponent implements OnInit {
     });
   }
   shownfe(res) {
+
     throw new Error('Method not implemented.');
   }
 
@@ -67,6 +75,10 @@ export class ShowListRel{
   constructor(
 
   ){}
+}
+
+class rellist{
+
 }
 
 class ctelist {

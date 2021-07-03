@@ -16,5 +16,39 @@
                 </a>
             </div>
         </div>
+        <div *ngIf="res_is_any" class="res_is_any">
+            <div *ngFor="let cte of res_any">
+                <h1>Conhecimento</h1>
+                <table>
+                    <tr>
+                        <td>Nº Controle</td>
+                        <td>{{cte.cte.NR_CONTROLE}}</td>
+                    </tr>
+                    <tr>
+                        <td>Destinantario</td>
+                        <td>{{cte["cte"]["DESTINATARIO"]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Remetente</td>
+                        <td>{{cte.cte.REMETENTE}}</td>
+                    </tr>
+                    <tr>
+                        <td>NFe</td>
+                        <td>{{cte.cte.NFE}}</td>
+                    </tr>
+                </table>
+                <h1>Relatorios</h1>
+                <span *ngFor="let rel of cte['rel']">
+                    <table *ngIf="rel">
+                        <tr>
+                            <td>Relatorio Nº</td>
+                            <td><a mat-list-item routerLink="/print/invoice/{{rel['id']}}">{{rel.id}}</a></td>
+                            <td>Data</td>
+                            <td>{{rel.DATA | date:'dd/MM/yyyy'}} <input #data value="{{rel.DATA | date:'dd-MM-yyyy'}}" style="display: none;"> <mat-icon (click)="search($event, data.value)" >search</mat-icon></td>
+                        </tr>
+                    </table>
+                </span>
+            </div>
+        </div>
     </div>
 </div>

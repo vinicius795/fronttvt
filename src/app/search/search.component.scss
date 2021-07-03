@@ -9,3 +9,13 @@
 mat-form-field{
             width: 30em;
         }
+
+.res_is_any{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    div{
+    border-top: 5px solid #000000;
+    
+    }
+}
