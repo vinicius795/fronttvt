@@ -18,8 +18,7 @@ const card: Card = {
 })
 export class SearchComponent implements OnInit {
   
-  data: any
-  cte_list: Array<ctelist> = []
+  res_rel: any
   res_is_rel: boolean = false
   res_is_any: boolean = false
   res_any: any
@@ -32,7 +31,7 @@ export class SearchComponent implements OnInit {
         
         if(res[0]["rel"] === undefined ){
           this.res_is_any = false
-          this.listrel(res)
+          this.res_rel = res
           this.res_is_rel = true
         }else{
           this.res_is_rel = false
@@ -43,25 +42,27 @@ export class SearchComponent implements OnInit {
       })
     }
   }
-  listrel(res) {
+/*   listrel(res) {
     this.cte_list = []
-    let list: [ResRel]
-    list = res
+    let list: [ResRel] = res
+    console.log(res);
+    
     list.forEach(each_rel => {
       each_rel.CTE_FPag.forEach(element => {
         this.cte_list.push({
           url: `/print/invoice/${each_rel.id}`,
-          cte: element.CTE
+          remetente: element.CTE.REMETENTE,
         })
       });
     });
-  }
+  } */
   shownfe(res) {
 
     throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
+    
   }
 
 }

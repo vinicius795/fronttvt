@@ -11,9 +11,51 @@
     <br>
     <div class="result">
         <div *ngIf="res_is_rel">
-            <div *ngFor="let line of cte_list">
-                <a mat-list-item routerLink="{{ line.url }}"> {{line.cte.NR_CONTROLE}} - {{line.cte.DESTINATARIO}}
-                </a>
+                <p>Relatorios emitidos no dia {{res_rel[0]['DATA'] | date:'dd/MM/yyyy' }}</p>
+            <div *ngFor="let rel of res_rel">
+                <div class="info">
+                    <div>
+                        <p>Rel.</p>
+                        <p><a routerLink="/print/invoice/{{rel.id}}">{{rel.id}}</a></p>
+                    </div>
+                    <div class='usuario'>
+                        <p>Usuario</p>
+                        <p>{{rel.USUARIO.username}}</p>
+                    </div>
+                    <div class="veiculo">
+                        <p>Veiculo</p>
+                        <p>{{rel.VEICULO.PLACA}}</p>
+                    </div>
+                    <div *ngFor="let funcionario of rel.FUNCIONARIOS" class="funcionarios">
+                        <p>{{funcionario.FUNCAO.CARGO}}</p>
+                        <P>{{funcionario.FUNCIONARIO.NOME}} {{funcionario.FUNCIONARIO.SOBRENOME}}</P>
+                    </div>
+                    <div>
+                        <p>Hora</p>
+                        <p>{{rel.DATA | date:'shortTime' }}</p>
+                    </div>
+                </div>
+                <div class="info_cte">
+                    <p class="titulo">Conhecimentos</p>
+                    <div class="cte">
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>N. Controle</th>
+                                    <th>Destinatario</th>
+                                    <th>Remetente</th>
+                                    <th>NFe</th>
+                                </tr>
+                                <tr *ngFor="let item of rel['CTE_FPag']" >
+                                    <td>{{item.CTE.NR_CONTROLE}}</td>
+                                    <td>{{item.CTE.DESTINATARIO}}</td>
+                                    <td>{{item.CTE.REMETENTE}}</td>
+                                    <td>{{item.CTE.NFE}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                 </div>
             </div>
         </div>
         <div *ngIf="res_is_any" class="res_is_any">
@@ -38,12 +80,14 @@
                     </tr>
                 </table>
                 <h1>Relatorios</h1>
-                <span *ngFor="let rel of cte['rel']">
-                    <table *ngIf="rel">
+                <span >
+                    <table>
                         <tr>
-                            <td>Relatorio Nº</td>
+                            <th>Relatorio Nº</th>
+                            <th>Data</th>
+                        </tr>
+                        <tr *ngFor="let rel of cte['rel']">
                             <td><a mat-list-item routerLink="/print/invoice/{{rel['id']}}">{{rel.id}}</a></td>
-                            <td>Data</td>
                             <td>{{rel.DATA | date:'dd/MM/yyyy'}} <input #data value="{{rel.DATA | date:'dd-MM-yyyy'}}" style="display: none;"> <mat-icon (click)="search($event, data.value)" >search</mat-icon></td>
                         </tr>
                     </table>
