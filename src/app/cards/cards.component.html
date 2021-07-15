@@ -22,7 +22,10 @@
             <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}">
                 <mat-card-header>
                     <mat-card-title>Sincronizar com Sao Paulo</mat-card-title>
-                    <mat-card-subtitle>Sincronizar o Banco de dados com o Banco de Dados de Sao Paulo</mat-card-subtitle>
+                    <mat-card-subtitle>
+                        <p>Sincronizar o Banco de dados com o Banco de Dados de Sao Paulo</p>
+                        <p>Faça antes o processo do Wtransferencia</p>
+                    </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                     Ultima Sincronizacao: {{ lastupdatesp ? lastupdatesp.valor : "" }}
@@ -39,10 +42,22 @@
             <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}">
                 <mat-card-header>
                     <mat-card-title>Sincronizar com SSW</mat-card-title>
-                    <mat-card-subtitle>Sincronizar o Banco de dados com os dados do SSW sistema</mat-card-subtitle>
+                    <mat-card-subtitle>
+                        <p>Sincronizar o Banco de dados com os dados do SSW sistema</p>
+                        <p>Selecione os seguintes campos na opção 455:</p>
+                        <div class="list_fields">
+                                <p> Cliente Destinatario </p>
+                                <p> Numero da Nota Fiscal </p>
+                                <p> Serie/Numero CTRC </p>
+                                <p> Chave CT-e </p>
+                                <p> Cliente Remetente </p>
+                                <p> Valor do Frete </p>
+                                <p> Quantidade de Volumes </p>
+                        </div>
+                    </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-progress-bar mode="determinate" value="{{_progress}}"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" value="{{_progress}}" *ngIf="_showprogress"></mat-progress-bar>
                     Ultima Sincronizacao: {{ lastupdatessw ? lastupdatessw.valor : "" }}
                 </mat-card-content>
                 <mat-card-actions align="start">

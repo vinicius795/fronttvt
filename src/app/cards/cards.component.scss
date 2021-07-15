@@ -144,3 +144,9 @@ input[type='file']{
 .pure-material-button-contained:disabled::after {
     opacity: 0;
 }
+.list_fields{
+    display: flex;
+    line-height: 0.5;
+    align-items: flex-start;
+    flex-direction: column;
+}

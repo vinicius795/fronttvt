@@ -57,6 +57,6 @@ export const menulist: menus [] = [
         submenus: [
 
         ],
-        status: true,
+        status: false,
     },
 ]
