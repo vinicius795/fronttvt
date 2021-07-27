@@ -5,4 +5,10 @@ form{
 }
 .body{
     margin: 15px;
+    width: 100%;
+}
+.notice_form{
+    mat-form-field{
+        min-width: 500px;
+    }
 }

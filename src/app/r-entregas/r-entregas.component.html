@@ -11,6 +11,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Selecione o Veiculo</mat-label>
                         <mat-select name="veiculos" ngModel required>
+                            <mat-option>--</mat-option>
                             <mat-option *ngFor="let veiculo of all_veiculos" value="{{veiculo.id}}">
                                 {{veiculo.REFERENCIA }} | {{ veiculo.PLACA }}</mat-option>
                         </mat-select>
@@ -20,6 +21,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Selecione o Motorista</mat-label>
                         <mat-select name="Motorista" ngModel required>
+                            <mat-option>--</mat-option>
                             <mat-option *ngFor="let funcionario of motoristas" value="{{funcionario.id}}">{{
                             funcionario.NOME }} {{ funcionario.SOBRENOME }}</mat-option>
                         </mat-select>
@@ -31,6 +33,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Selecione o {{ select_cargo.cargo }}</mat-label>
                         <mat-select name="{{select_cargo.cargo}}" ngModel>
+                            <mat-option>--</mat-option>
                             <mat-option *ngFor="let funcionario of select_cargo.funcionarios" value="{{funcionario.id}}">{{
                                 funcionario.NOME }} {{ funcionario.SOBRENOME }}</mat-option>
                         </mat-select>

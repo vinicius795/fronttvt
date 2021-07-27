@@ -9,7 +9,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 //const baseUrl = 'http://localhost:5241/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
 //const baseUrl = 'http://200.195.182.36:8000/api';
-const baseUrl = 'http://10.1.1.8:5241/api';
+ const baseUrl = 'http://10.1.1.8:5241/api';
 
 @Injectable({
   providedIn: 'root'
@@ -26,21 +26,21 @@ export class ApiService {
     return baseUrl
   }
 
-  getseting(parametro: string): Observable<any> {
+  getseting(parametro: string, edit: boolean = false, data: any = ""): Observable<any> {
     this.funcao = "parametros"
+    if(edit){
+      return this.http.patch<any>(`${baseUrl}/${this.funcao}/${parametro}`, data)
+    }
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${parametro}`)
   }
-
   sincsp(): Observable<any> {
     this.funcao = 'cte/add'
     return this.http.get<any>(`${baseUrl}/${this.funcao}`)
   }
-
   getcte(tipo: string, value: number): Observable<any> {
     this.funcao = "cte"
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${tipo}/${value}`)
   }
-
   addcte(dados: TablectesItem): Observable<any> {
     this.funcao = 'cte/add'
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
@@ -49,7 +49,6 @@ export class ApiService {
     this.funcao = 'relatorios/entrega/ctenf/add'
     return this.http.post<any>(`${baseUrl}/${this.funcao}`, dados)
   }
-
   get_employee(args: any): Observable<any> {
     if (("cargo" in args) !== ("id" in args)) {
       if ("cargo" in args) {
@@ -74,21 +73,24 @@ export class ApiService {
       return this.http.patch<Employee>(`${baseUrl}/${this.funcao}/${id}/update`, data)
     }
   }
-
   get_position(): Observable<Cargos[]> {
     this.funcao = 'funcionarios/cargos'
     return this.http.get<Cargos[]>(`${baseUrl}/${this.funcao}/`)
   }
-  add_position(data: Cargos): Observable<Cargos>{
-    this.funcao = 'funcionarios/cargos/add/'
-    return this.http.post<Cargos>(`${baseUrl}/${this.funcao}`, data)
+  add_edit_position(data: Cargos, edit: boolean = false, id: number = undefined): Observable<Cargos>{
+    if(!edit){
+      this.funcao = 'funcionarios/cargos/add/'
+      return this.http.post<Cargos>(`${baseUrl}/${this.funcao}`, data)
+    }
+    if(edit){
+      this.funcao = 'funcionarios/cargos/';
+      return this.http.patch<Cargos>(`${baseUrl}/${this.funcao}/${id}`, data)
+    }
   }
-
   get_car(): Observable<any> {
     this.funcao = 'funcionarios/veiculos'
     return this.http.get<any>(`${baseUrl}/${this.funcao}/`)
   }
-
   add_edit_car(data: Cars, edit: boolean, id: number = undefined): Observable<Cars>{
     this.funcao = 'funcionarios/veiculos'
     if(edit){
@@ -97,12 +99,10 @@ export class ApiService {
       return this.http.post<Cars>(`${baseUrl}/${this.funcao}/?format=json`, data)
     }
   }
-
   getrelatorioentrega(id): Observable<any> {
     this.funcao = 'relatorios/entrega'
     return this.http.get<any>(`${baseUrl}/${this.funcao}/${id}?format=json`)
   }
-
   saverelatorioentrega(dados: REntregas) {
     this.funcao = 'relatorios/entrega/save'
     return this.http.post(`${baseUrl}/${this.funcao}`, dados)

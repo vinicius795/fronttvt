@@ -20,12 +20,13 @@ const card: Card = {
 })
 export class ManageEmployeesComponent implements OnInit {
 
-  employees: Employee[]
-  dms_employees: Employee[]
-  selected_emp: number
-  positions: Cargos[]
-  cars: Cars[]
-  selected_car: number
+  employees: Employee[];
+  dms_employees: Employee[];
+  selected_emp: number;
+  positions: Cargos[];
+  selected_pos: number;
+  cars: Cars[];
+  selected_car: number;
   checked = true;
 
   constructor(
@@ -58,6 +59,7 @@ export class ManageEmployeesComponent implements OnInit {
     this.api.add_edit_employee(data, false).subscribe((res: Employee) => {
       form.resetForm()
       this.get_employees()
+      window.alert("Funcionario Registrador")
     })
   }
 
@@ -96,6 +98,7 @@ export class ManageEmployeesComponent implements OnInit {
     this.api.add_edit_employee(data, true, this.selected_emp).subscribe((res: Employee) => {
       this.get_employees()
       form.resetForm()
+      window.alert("Funcionario editado")
     })
   }
 
@@ -109,6 +112,7 @@ export class ManageEmployeesComponent implements OnInit {
     this.api.add_edit_car(data, false).subscribe((res: Cars) => {
       form.resetForm();
       this.get_car()
+      window.alert("Carro Registrado")
     })
   }
 
@@ -122,6 +126,7 @@ export class ManageEmployeesComponent implements OnInit {
     this.api.add_edit_car(data, true, this.selected_car).subscribe((res: Cars) => {
       this.get_car()
       form.resetForm()
+      window.alert("Veiculo editado")
     })
   }
 
@@ -146,10 +151,41 @@ export class ManageEmployeesComponent implements OnInit {
       CARGO: form.value.position,
       SHOW_RELATORIO: form.value.show,
     }
-    this.api.add_position(data).subscribe((res: Cargos) => {
+    this.api.add_edit_position(data).subscribe((res: Cargos) => {
       this.get_position()
+      window.alert("Cargo adicionado")
     })
 
+  }
+
+  edit_position(form:NgForm){
+    let data: Cargos = {
+      CARGO: form.value.position,
+      SHOW_RELATORIO: form.value.show,
+      status: form.value.status
+    }
+    this.api.add_edit_position(data, true, this.selected_pos).subscribe((res: Cargos) => {
+      this.get_position()
+      form.resetForm()
+      window.alert("Cargo editado")
+    })
+  }
+
+  fill_edit_pos_form($event, form:NgForm){
+    if($event){
+      let position: Cargos
+      this.positions.forEach(($pos: Cargos) => {
+        if($pos.id == this.selected_pos) position = $pos
+      });
+      console.log(position);
+      
+      form.setValue({
+        position: position.CARGO,
+        show: position.SHOW_RELATORIO,
+        status: position.status,
+        edit_pos_select: "",
+      })
+    }
   }
 
   ngOnInit(): void {

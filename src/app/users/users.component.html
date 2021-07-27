@@ -1,27 +1,50 @@
 <div class="body">
-    <form [formGroup]='new_u_form' autocomplete="off" *ngIf="is_super">
-        <mat-form-field appearence="fill">
-            <mat-label>Usuario</mat-label>
-            <input type="text" formControlName="username" matInput required>
-            <mat-icon matSuffix>account_circle</mat-icon>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Primeiro Nome</mat-label>
-            <input type="text" formControlName="first_name" matInput required>
-            <mat-icon matSuffix>face</mat-icon>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Segundo Nome</mat-label>
-            <input type="text" formControlName="last_name" matInput required>
-            <mat-icon matSuffix>face</mat-icon>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Senha</mat-label>
-            <input type="password" formControlName="password" matInput required>
-            <mat-icon matSuffix>password</mat-icon>
-        </mat-form-field>
-        <mat-checkbox formControlName="is_staff">Administrador</mat-checkbox>
-        <button mat-raised-button color="primary" (click)="save()">Gravar</button>
-    </form>
+    <div class="is_super" *ngIf="is_super">
+        <div>
+            <form [formGroup]='new_u_form' autocomplete="off" >
+                <mat-form-field appearence="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input type="text" formControlName="username" matInput required>
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Primeiro Nome</mat-label>
+                    <input type="text" formControlName="first_name" matInput required>
+                    <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Segundo Nome</mat-label>
+                    <input type="text" formControlName="last_name" matInput required>
+                    <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Senha</mat-label>
+                    <input type="password" formControlName="password" matInput required>
+                    <mat-icon matSuffix>password</mat-icon>
+                </mat-form-field>
+                <mat-checkbox formControlName="is_staff">Administrador</mat-checkbox>
+                <button mat-raised-button color="primary" (click)="save()">Gravar</button>
+            </form>
+        </div>
+        <br>
+        <div class="notice_form">
+            <form  [formGroup]="notice_form">
+                <mat-form-field>
+                    <mat-label>Paragrafo de Ciencia</mat-label>
+                    <!-- <textarea formControlName="notice_term" matInput></textarea> -->
+                    <textarea 
+                        formControlName="valor"
+                        matInput 
+                        cdkTextareaAutosize 
+                        #autosize="cdkTextareaAutosize" 
+                        cdkAutosizeMinRows="1">
+                    </textarea>
+
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="save_term()">Gravar</button>
+            </form>
+        </div>
+
+    </div>
     <h1 *ngIf="!is_super">Apenas usuarios administradores podem criar novos usuarios</h1>
 </div>

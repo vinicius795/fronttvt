@@ -17,6 +17,36 @@
                 <button mat-raised-button color="accent" type="submit">Gravar</button>
             </form>
         </div>
+        <div class="manage_pos">
+            <h1>Editar Funçoes</h1>
+            <form #edit_pos_form="ngForm" (ngSubmit)="edit_position(edit_pos_form)">
+                <p>
+                    <mat-form-field>
+                        <mat-label>Funcao</mat-label>
+                        <mat-select name="edit_pos_select" [(value)]="selected_pos" [ngModel]="selected_pos" (ngModelChange)="fill_edit_pos_form($event, edit_pos_form)">
+                            <mat-option>--</mat-option>
+                            <mat-option [value]='position.id' *ngFor="let position of positions">{{position.CARGO}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <mat-label>Funcao</mat-label>
+                        <input type="text" matInput placeholder="Funcao" name="position" ngModel>
+                        <mat-hint>Cargo</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-checkbox name="status" ngModel> Ativo</mat-checkbox>
+                </p>
+                <p>
+                    <mat-checkbox name="show" ngModel> Exibir no relatorio</mat-checkbox>
+                </p>
+                <button mat-raised-button color="accent" type="submit">
+                    Gravar
+                </button>
+            </form>
+        </div>
     </div>
     <mat-divider></mat-divider>
     <div class="row">

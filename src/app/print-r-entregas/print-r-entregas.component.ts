@@ -28,6 +28,8 @@ export class PrintREntregasComponent implements OnInit {
         this.ctelist.push(element.CTE);
       })
       this.api.getseting("aviso-rel-entregas").subscribe((res: SysParameters) => {
+        console.log(res);
+        
         this.aviso = res.valor;/* setTimeout(window.print) */
       })
     })

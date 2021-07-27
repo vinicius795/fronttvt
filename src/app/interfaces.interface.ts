@@ -27,6 +27,7 @@ export interface TablectesItem {
 
 export interface Cargos {
     id?:number,
+    status?: boolean,
     CARGO:string,
     SHOW_RELATORIO: boolean
     

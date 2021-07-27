@@ -36,6 +36,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 //pwa
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -110,6 +111,7 @@ import { UsersComponent } from './users/users.component';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    TextFieldModule,
   ],
   providers: [
     AuthService,
