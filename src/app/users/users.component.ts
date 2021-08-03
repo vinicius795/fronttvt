@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit {
     is_staff: new FormControl(),
   })
   notice_form = new FormGroup({
+    parametro: new FormControl(),
     valor: new FormControl()
   })
 
@@ -52,8 +53,11 @@ export class UsersComponent implements OnInit {
   }
   save_term(){
     this.api.getseting("aviso-rel-entregas", true, this.notice_form.value).subscribe(res => {
-      console.log(res);
-      
+      window.alert("Texto Gravado")
+      this.notice_form.setValue({
+        parametro: "aviso-rel-entregas",
+        valor: res.valor
+      })
     })
   }
   get_users(){
@@ -71,6 +75,7 @@ export class UsersComponent implements OnInit {
   get_setting(){
     this.api.getseting("aviso-rel-entregas").subscribe(res => {
       this.notice_form.setValue({
+        parametro: "aviso-rel-entregas",
         valor: res.valor
       })
     })

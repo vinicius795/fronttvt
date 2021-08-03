@@ -75,6 +75,7 @@ export class TablectesDataSource extends DataSource<TablectesItem> {
         case 'DESTINATARIO': return compare(a.DESTINATARIO, b.DESTINATARIO, isAsc);
         case 'REMETENTE': return compare(a.REMETENTE, b.REMETENTE, isAsc);
         case 'NR_CONTROLE': return compare(a.NR_CONTROLE, b.NR_CONTROLE, isAsc);
+        case 'VALOE': return compare(a.VALOR, b.VALOR, isAsc);
         default: return 0;
       }
     });

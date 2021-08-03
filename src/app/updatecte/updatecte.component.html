@@ -1,3 +1,36 @@
-<p>Foram encontrados {{_totctes}} ctes</p>
-<p>{{_ctenow}} de {{_totctes}}</p>
-<input type="file" (change)="updatecsv($event.target.files)">
+<div>
+    <h1>Adicionar Conhecimento</h1>
+    <h4>Quando gravar o conhecimento, o mesmo não é incluido no relatorio, apenas é incluido no banco de dados</h4>
+    <h4>Todos os campos são obrigatorios</h4>
+    <form [formGroup]="cte_form" autocomplete="off">
+        <mat-form-field>
+            <mat-label>Codigo de Barras</mat-label>
+            <input type="text" formControlName="n_cte" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Remetente</mat-label>
+            <input type="text" formControlName="sender" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Destinatario</mat-label>
+            <input type="text" formControlName="receiver" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Numero Controle</mat-label>
+            <input type="text" formControlName="n_control" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Valor</mat-label>
+            <input type="number" formControlName="price" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Volumes</mat-label>
+            <input type="number" formControlName="volumes" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nota Fiscal</mat-label>
+            <input type="text" formControlName="nfe" matInput required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="save()">Gravar</button>
+    </form>
+</div>

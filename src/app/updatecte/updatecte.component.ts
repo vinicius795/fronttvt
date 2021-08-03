@@ -1,5 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, } from '../api.service';
 import { TablectesItem } from '../interfaces.interface';
 import { UpdatecteService } from '../updatecte.service';
@@ -12,27 +13,34 @@ import { UpdatecteService } from '../updatecte.service';
 })
 
 export class UpdatecteComponent implements OnInit {
-
-  _totctes: number;
-  _ctenow: number;
-  _progress: number;
-
+  cte_form = new FormGroup({
+    n_cte: new FormControl(),
+    sender: new FormControl(),
+    receiver: new FormControl(),
+    n_control: new FormControl(),
+    price: new FormControl(),
+    volumes: new FormControl(),
+    nfe: new FormControl(),
+  })
 
   constructor(
     private Api:ApiService,
-    private UpdateCTE: UpdatecteService,
   ) { }
-  updatecsv(fileList: FileList){
-    this.UpdateCTE.updatecsv(fileList).then((data: any[])=>{
-        this._totctes =  data.length
-        data.forEach((element) => {
-          this.Api.addcte(element).subscribe((res) => {
-            this._ctenow = this._ctenow+1
-            this._progress = (this._ctenow / data.length) * 100
-          })
-        });
-      });
-    }
+  save(){
+    let data: TablectesItem = ({
+      DESTINATARIO : this.cte_form.value.receiver,
+      NFE : this.cte_form.value.nfe,
+      NR_CONTROLE : this.cte_form.value.n_control,
+      NR_DACTE : this.cte_form.value.n_cte,
+      REMETENTE : this.cte_form.value.sender,
+      VALOR : this.cte_form.value.price,
+      VOLUMES : this.cte_form.value.volumes
+    })
+    this.Api.addcte(data).subscribe(res =>{
+      this.cte_form.reset()
+      window.alert("Conhecimento gravado")
+    })
+  }
   ngOnInit(): void {
   }
 }

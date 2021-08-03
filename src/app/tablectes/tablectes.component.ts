@@ -21,7 +21,7 @@ export class TablectesComponent implements OnChanges {
 
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['NR_CONTROLE', 'REMETENTE', 'DESTINATARIO'];
+  displayedColumns = ['NR_CONTROLE', 'REMETENTE', 'DESTINATARIO', 'VALOR'];
 
   ngOnChanges(){
     this.dataSource = new TablectesDataSource();
