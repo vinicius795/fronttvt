@@ -6,10 +6,10 @@ import { REntregas } from './r-entregas/r-entregas.interface';
 import { FormGroup, NgForm } from '@angular/forms';
 
 //const baseUrl = 'http://localhost:8000/api';
-const baseUrl = 'http://localhost:5241/api';
+//const baseUrl = 'http://localhost:5241/api';
 //const baseUrl = 'http://192.168.0.107:8000/api';
 //const baseUrl = 'http://200.195.182.36:8000/api';
-//const baseUrl = 'http://10.1.1.8:5241/api';
+const baseUrl = 'http://10.1.1.8:5241/api';
 
 // vpn port 56957
 

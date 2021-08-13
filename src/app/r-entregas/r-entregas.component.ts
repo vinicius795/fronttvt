@@ -64,6 +64,11 @@ export class REntregasComponent implements OnInit {
     //return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
+  removeRow(data: { index: number, status: boolean }){
+    
+
+  }
+
 
   getCTE(){
     if (this.cte.toString().length == 44 ){
