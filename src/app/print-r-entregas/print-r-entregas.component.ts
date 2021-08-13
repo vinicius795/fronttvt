@@ -13,7 +13,7 @@ export class PrintREntregasComponent implements OnInit {
   report: ResRel
   aviso: String
   ctelist: TablectesItem[] = []
-  displayedColumns: string[] = ['controle', 'destinatario', 'remetente', 'volumes', 'valor'];
+  displayedColumns: string[] = ['controle', 'destinatario', 'remetente', 'volumes', 'valor', 'pagamento'];
 
   constructor(
     route: ActivatedRoute,
@@ -25,6 +25,7 @@ export class PrintREntregasComponent implements OnInit {
     this.api.getrelatorioentrega(id).subscribe((res: ResRel) => {
       this.report = res
       this.report.CTE_FPag.forEach(element => {
+        element.CTE.f_pagamento = element.F_PAGAMENTO.metodo
         this.ctelist.push(element.CTE);
       })
       this.api.getseting("aviso-rel-entregas").subscribe((res: SysParameters) => {

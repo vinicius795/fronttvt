@@ -8,9 +8,10 @@ export const submenuslist: submenus[] = [
     { id: 3, title: "Gerenciar funcionários", url: "editfunc/" , status: true},
     { id: 4, title: "Atualizar Banco de dados", url: "atualizar/" , status: true},
     { id: 5, title: "Carregar XML", url: "#" , status: false},
-    { id: 6, title: "Gerar arquivo do SSWsistema", url: "#" , status: true},
-    { id: 7, title: "Gerando relatório de entrega", url: "#" , status: true},
-    { id: 8, title: "Gerenciar Usuarios", url: "users/", status: true}
+    { id: 6, title: "Gerar arquivo do SSWsistema", url: "#" , status: false},
+    { id: 7, title: "Gerando relatório de entrega", url: "#" , status: false},
+    { id: 8, title: "Gerenciar Usuarios", url: "users/", status: true},
+    { id: 9, title: "Configurações", url:"settings/", status: true},
 ]
 
 export const menulist: menus [] = [
@@ -18,9 +19,9 @@ export const menulist: menus [] = [
         id: 0,
         title: "Minha Conta",
         submenus: [
-
+            submenuslist[9]
         ],
-        status: false,
+        status: true,
     },
     {    
         id: 1,

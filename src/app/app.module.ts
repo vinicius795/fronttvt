@@ -58,6 +58,7 @@ import { PrintREntregasComponent } from './print-r-entregas/print-r-entregas.com
 import { ManageEmployeesComponent } from './manage-employees/manage-employees.component';
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -77,6 +78,7 @@ import { UsersComponent } from './users/users.component';
     ManageEmployeesComponent,
     SearchComponent,
     UsersComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

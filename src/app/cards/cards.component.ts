@@ -22,7 +22,7 @@ export class CardsComponent implements OnInit {
   lastupdatessw: SystemSetings;
   _progress: number = 0;
   filename: String = ""
-  _showprogress: boolean = false
+  showprogress: boolean = false
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -51,7 +51,7 @@ export class CardsComponent implements OnInit {
         return `Conhecimentos emitidos de ${_datearay[0]} a ${_datearay[1]}`
       }
       this.filename = periodo();
-      this._showprogress = true
+      this.showprogress = true
       data[0].forEach((element) => {
         this.apiservice.addcte(element).subscribe((res) => {
           _ctenow = _ctenow + 1
@@ -59,7 +59,7 @@ export class CardsComponent implements OnInit {
         })
       })
       this.getlastsincssw()
-      this._showprogress = false
+      this.showprogress = false
     });
     
   }

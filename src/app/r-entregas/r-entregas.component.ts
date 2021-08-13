@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Employee, Cargos, JWTPayload, Carg_Func, TablectesItem } from '../interfaces.interface';
 import { NgForm } from '@angular/forms';
@@ -9,6 +9,8 @@ import { Router } from "@angular/router"
 import { PrintService } from '../print.service';
 import validate from "./validator/r-entregas.interface.validator"
 import { Card } from '../cards/cards.interface';
+import { MatTable } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
 
 const card: Card = { 
   id: 11, 
@@ -18,6 +20,7 @@ const card: Card = {
   state: true
 }
 
+
 @Component({
   selector: 'app-r-entregas',
   templateUrl: './r-entregas.component.html',
@@ -26,7 +29,7 @@ const card: Card = {
 export class REntregasComponent implements OnInit {
 
   funcionarios: Employee[]
-  all_cte = []
+  all_cte: TablectesItem[] = []
   cargos: Cargos[]
   all_cargos: Cargos[]
   selected_cargos = []
@@ -36,7 +39,14 @@ export class REntregasComponent implements OnInit {
   motoristas: Employee[]
   cteid: Array<number> =[]
   ctenf: REntregas['CTE_FPag'] = []
+  payment_method_avista: number = 0
+  payment_method_praso: number = 0
 
+  selection = new SelectionModel<TablectesItem>(true, []);
+  displayedColumns: string[] = ['controle', 'destinatario', 'remetente', 'volumes', 'valor', 'select'];
+  
+  @ViewChild(MatTable) table: MatTable<TablectesItem>;
+  
   constructor(
     private api: ApiService,
     private authService: AuthService,
@@ -45,45 +55,58 @@ export class REntregasComponent implements OnInit {
   ) {
     this.getcargos();
     this.getveiculos();
+    this.getpaymentmethod();
   }
 
+  checkboxLabel(row?: TablectesItem): string {
+    let objIndex = this.all_cte.findIndex((obj => obj.id == row.id));
+    return `${objIndex}`;
+    //return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+
   getCTE(){
-    var observer = {
-      next: (res: any) => {
-        if (this.cteid.includes(res.id)) {
-          window.alert("DACTe ja inserido")
-          this.cte = null
-        } else {
-          this.cteid.push(res.id)
-          this.all_cte.push(res);
-          this.cte = null
-        }
-      },
-      error: (error: any) => {
-        if (error.status == 404){
-          console.log(error.error);
-          var conf = confirm(`${error.error} \n ${error.error["Msg"]} \n Deseja adicionar este DACT mesmo assim? \n Este relatorio ficara desativado para impressao até que este numero de DACT conste no banco de dados`)
-          if (conf) {
-            var ctenf: TablectesItem ={
-              id: 0,
-              NR_DACTE: this.cte,
-              REMETENTE: "Nao encontrado",
-              DESTINATARIO: "Nao encontrado",
-              NR_CONTROLE: this.cte.toString().slice(25, 34),
-              VALOR: 0,
-              VOLUMES: 0,
-              NFE: " ",
-            }
-            this.all_cte.push(ctenf);
+    if (this.cte.toString().length == 44 ){
+      this.api.getcte("dacte", this.cte).subscribe({
+        next: (res: TablectesItem) => {
+          res.f_pagamento = this.payment_method_praso
+          if (this.cteid.includes(res.id)) {
+            window.alert("CTE ja inserido")
             this.cte = null
+          } else {
+            this.cteid.push(res.id)
+            this.all_cte.push(res);
+            this.table.renderRows();
+            this.cte = null
+
+          }
+        },
+        error: (error: any) => {
+          if (error.status == 404) {
+            console.log(error.error);
+            var conf = confirm(`${error.error} \n ${error.error["Msg"]} \n Deseja adicionar este DACT mesmo assim? \n Este relatorio ficara desativado para impressao até que este numero de DACT conste no banco de dados`)
+            if (conf) {
+              var ctenf: TablectesItem = {
+                id: 0,
+                NR_DACTE: this.cte,
+                REMETENTE: "Nao encontrado",
+                DESTINATARIO: "Nao encontrado",
+                NR_CONTROLE: this.cte.toString().slice(25, 34),
+                VALOR: 0,
+                VOLUMES: 0,
+                NFE: " ",
+                f_pagamento: this.payment_method_praso
+              }
+              this.all_cte.push(ctenf);
+              this.table.renderRows();
+              this.cte = null
+            }else{
+              this.cte = null
+            }
           }
         }
-      }
+      })
     }
-    if (this.cte.toString().length == 44 ){
-      this.api.getcte("dacte", this.cte).subscribe(observer)
-    }
-    
   }
   
   showfunc(f:NgForm){
@@ -147,6 +170,19 @@ export class REntregasComponent implements OnInit {
   getveiculos(){
     this.api.get_car().subscribe(res => {
       this.all_veiculos=res
+    })
+  }
+
+  getpaymentmethod(){
+    this.api.getseting('fpagamento/').subscribe(res => {
+      res.forEach(element => {
+        if (element.metodo == "A Praso") {
+          this.payment_method_praso = element.id
+        }
+        if (element.metodo == "A Vista") {
+          this.payment_method_avista = element.id
+        }
+      });
     })
   }
 
@@ -225,10 +261,10 @@ export class REntregasComponent implements OnInit {
     } else {
       this.all_cte.forEach((dacte: TablectesItem) => {
         if (dacte.id == 0){
-          _obj = _obj = { "CTE": dacte.id, "F_PAGAMENTO": 1 }
+          _obj = _obj = { "CTE": dacte.id, "F_PAGAMENTO": dacte.f_pagamento }
           this.ctenf.push(_obj)
         }else{
-        _obj = _obj = { "CTE": dacte.id, "F_PAGAMENTO": 1 }
+        _obj = _obj = { "CTE": dacte.id, "F_PAGAMENTO": dacte.f_pagamento }
         _cte.push(_obj)
         }
       });
@@ -236,8 +272,18 @@ export class REntregasComponent implements OnInit {
     }
   }
 
+  payment(data : {index: number, status: boolean}){
+    if (data.status) {
+      this.all_cte[data.index].f_pagamento = this.payment_method_avista
+    } if (!data.status) {
+      this.all_cte[data.index].f_pagamento = this.payment_method_praso
+    }
+    
+  }
+
   console(x?){
-    this.api.checknf().subscribe(res => console.log(res))
+    console.log(x);
+    //this.api.checknf().subscribe(res => console.log(res))
   }
 
   ngOnInit(): void {

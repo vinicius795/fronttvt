@@ -14,6 +14,7 @@ import { AuthGuard } from './auth.service';
 import { ManageEmployeesComponent } from './manage-employees/manage-employees.component';
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: 'editfunc', component: ManageEmployeesComponent, canActivate: [AuthGuard]},
       { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
       { path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
+      { path: 'settings', component: SettingsComponent, canActivate:[AuthGuard]},
       { path: 'print', redirectTo: "/print", pathMatch: 'full'},
       { path: 'home', redirectTo: 'cards', pathMatch: 'full' },
       { path: '', redirectTo: 'cards', pathMatch: 'full' },

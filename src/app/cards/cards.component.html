@@ -57,7 +57,7 @@
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-progress-bar mode="determinate" value="{{_progress}}" *ngIf="_showprogress"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" value="{{_progress}}" *ngIf="showprogress"></mat-progress-bar>
                     Ultima Sincronizacao: {{ lastupdatessw ? lastupdatessw.valor : "" }}
                 </mat-card-content>
                 <mat-card-actions align="start">
