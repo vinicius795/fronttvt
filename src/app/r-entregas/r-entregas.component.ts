@@ -43,7 +43,7 @@ export class REntregasComponent implements OnInit {
   payment_method_praso: number = 0
 
   selection = new SelectionModel<TablectesItem>(true, []);
-  displayedColumns: string[] = ['controle', 'destinatario', 'remetente', 'volumes', 'valor', 'select'];
+  displayedColumns: string[] = ['removeRow', 'controle', 'destinatario', 'remetente', 'volumes', 'valor', 'select'];
   
   @ViewChild(MatTable) table: MatTable<TablectesItem>;
   
@@ -64,9 +64,10 @@ export class REntregasComponent implements OnInit {
     //return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  removeRow(data: { index: number, status: boolean }){
-    
-
+  removeRow(index){
+    this.cteid.splice(this.cteid.indexOf(this.all_cte[index].id), 1)
+    this.all_cte.splice(index, 1);
+    this.table.renderRows();
   }
 
 

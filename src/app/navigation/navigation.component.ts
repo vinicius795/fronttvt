@@ -14,6 +14,9 @@ import { AuthService } from '../auth.service';
 export class NavigationComponent {
   _menulist = menulist;
   menubase: menus;
+  utilits: Utilit[] = [
+    { link: "https://sistema.ssw.inf.br/", name: "SSW Sistema"}
+  ]
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -31,4 +34,9 @@ export class NavigationComponent {
     window.location.reload();
   }
 
+}
+
+interface Utilit {
+  link: string;
+  name: string;
 }

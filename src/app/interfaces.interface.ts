@@ -86,3 +86,7 @@ export interface Fpagamento {
     metodo: String
 }
 
+export interface Utilit {
+    link: string;
+    name: string;
+}

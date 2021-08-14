@@ -18,6 +18,16 @@
             </a>
           </span>
       </mat-expansion-panel>
+      <mat-expansion-panel  class="mat-elevation-z">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Links Uteis
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <span *ngFor="let utilit of utilits">
+          <a href="{{ utilit.link }}">{{utilit.name}}</a>
+        </span>
+      </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
