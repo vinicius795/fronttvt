@@ -182,7 +182,7 @@ export class REntregasComponent implements OnInit {
   getpaymentmethod(){
     this.api.getseting('fpagamento/').subscribe(res => {
       res.forEach(element => {
-        if (element.metodo == "A Praso") {
+        if (element.metodo == "A Prazo") {
           this.payment_method_praso = element.id
         }
         if (element.metodo == "A Vista") {
