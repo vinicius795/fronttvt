@@ -2,6 +2,17 @@ import { Injectable } from '@angular/core';
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
 import { TablectesItem } from './interfaces.interface';
 
+const compare_array: Array<string> = [
+  "Serie/Numero CTRC",
+  "Chave CT-e",
+  "Cliente Remetente",
+  "Cliente Destinatario",
+  "Numero da Nota Fiscal",
+  "Quantidade de Volumes",
+  "Valor do Frete"
+]
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -55,7 +66,19 @@ export class UpdatecteService {
 
       parsedData.push(parsedRow);
     });
-
-    return parsedData;
+    if (this.check_header(parsedData)){
+      return parsedData;
+    }
   }
+  check_header(header){
+    compare_array.forEach(element => {
+      if (!(element in header[0])){
+        window.alert(`Campo "${element}" não consta no arquivo, confira os itens selecionados na opção 455 no SSW sistemas e gere um novo arquivo`)
+        throw Error
+      }
+    });
+    return true
+
+  }
+  
 }
