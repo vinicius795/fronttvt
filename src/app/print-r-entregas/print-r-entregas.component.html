@@ -5,6 +5,7 @@
     <div class="rowinfos">
         <div class="funcionarios">
             <p *ngFor="let func of report.FUNCIONARIOS">{{ func.FUNCAO.CARGO }}: {{ func.FUNCIONARIO.NOME }} {{ func.FUNCIONARIO.SOBRENOME }}</p>
+            <p> Veiculo: {{ report.VEICULO.PLACA }} - {{ report.VEICULO.REFERENCIA }}</p>
         </div>
         <div class="data">
             <p>
