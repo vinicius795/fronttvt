@@ -23,6 +23,9 @@ export class CardsComponent implements OnInit {
   _progress: number = 0;
   filename: String = ""
   showprogress: boolean = false
+  report_l_today: Number = 2
+  ctes_n_listed: Number = 10
+  report_n_closed: Number = 5
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

@@ -16,6 +16,10 @@
 }
 .acard{
     text-decoration: none;
+    p:first-child{
+        color: black;
+    }
+    
 }
 .title{
     font-size: 24px;
@@ -149,4 +153,9 @@ input[type='file']{
     line-height: 0.5;
     align-items: flex-start;
     flex-direction: column;
+}
+
+.number_bad_ctes{
+    color: red;
+    font-size: xx-large;
 }

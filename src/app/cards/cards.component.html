@@ -12,6 +12,31 @@
                 </mat-card>
             </a>
         </div>
+        <div class="sec1" fxFlex.xs="55" style="padding: 20px;">
+            <mat-card [ngClass]="{'card-pc' : (ismobile$ | async ) === false, 'card-mobile': (ismobile$ | async )}">
+                <mat-card-header>
+                    <mat-card-title>Conhecimentos em Aberto</mat-card-title>
+                    <mat-card-subtitle>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content >
+                    <a class="acard" routerLink="#">
+                        <p>CTEs não relacionados:</p>
+                        <p class="number_bad_ctes">{{ctes_n_listed}}</p>
+                    </a>
+                    <a class="acard" routerLink="#">
+                        <p>Relatorios não baixados:</p>
+                        <p class="number_bad_ctes">{{report_n_closed}}</p>
+                    </a>
+                    <a class="acard" routerLink="#">
+                        <p>Relatorios emitidos hoje:</p>
+                        <p class="number_bad_ctes">{{report_l_today}}</p>
+                    </a>
+                </mat-card-content>
+                <mat-card-footer>
+                </mat-card-footer>
+            </mat-card>
+        </div>
     </div>
     <br>
     <mat-divider></mat-divider>
@@ -24,10 +49,11 @@
                     <mat-card-title>Sincronizar com Sao Paulo</mat-card-title>
                     <mat-card-subtitle>
                         <p>Sincronizar o Banco de dados com o Banco de Dados de Sao Paulo</p>
-                        <p>Faça antes o processo do Wtransferencia</p>
+                        
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
+                    <p>Faça antes o processo do Wtransferencia</p>
                     Ultima Sincronizacao: {{ lastupdatesp ? lastupdatesp.valor : "" }}
                     <!-- <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> -->
                 </mat-card-content>
@@ -44,19 +70,20 @@
                     <mat-card-title>Sincronizar com SSW</mat-card-title>
                     <mat-card-subtitle>
                         <p>Sincronizar o Banco de dados com os dados do SSW sistema</p>
-                        <p>Selecione os seguintes campos na opção 455:</p>
-                        <div class="list_fields">
-                                <p> Cliente Destinatario </p>
-                                <p> Numero da Nota Fiscal </p>
-                                <p> Serie/Numero CTRC </p>
-                                <p> Chave CT-e </p>
-                                <p> Cliente Remetente </p>
-                                <p> Valor do Frete </p>
-                                <p> Quantidade de Volumes </p>
-                        </div>
+                        
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
+                    <p>Selecione os seguintes campos na opção 455:</p>
+                    <div class="list_fields">
+                            <p> Cliente Destinatario </p>
+                            <p> Numero da Nota Fiscal </p>
+                            <p> Serie/Numero CTRC </p>
+                            <p> Chave CT-e </p>
+                            <p> Cliente Remetente </p>
+                            <p> Valor do Frete </p>
+                            <p> Quantidade de Volumes </p>
+                    </div>
                     <mat-progress-bar mode="determinate" value="{{_progress}}" *ngIf="showprogress"></mat-progress-bar>
                     Ultima Sincronizacao: {{ lastupdatessw ? lastupdatessw.valor : "" }}
                 </mat-card-content>
@@ -71,5 +98,6 @@
                 </mat-card-footer>
             </mat-card>
         </div>
+        
     </div>
 </div>
