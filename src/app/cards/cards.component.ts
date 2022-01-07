@@ -23,7 +23,7 @@ export class CardsComponent implements OnInit {
   _progress: number = 0;
   filename: String = ""
   showprogress: boolean = false
-  report_l_today: Number = 2
+  report_l_today: any
   ctes_n_listed: Number = 10
   report_n_closed: Number = 5
 
@@ -42,6 +42,7 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
     this.getlastsincsp()
     this.getlastsincssw()
+    this.apiservice.get_report_today().subscribe(res => {this.report_l_today = res})
   }
   sincsp(): void{
     this.apiservice.sincsp().subscribe(res => { if (res == null) this.getlastsincsp()});

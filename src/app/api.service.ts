@@ -125,4 +125,11 @@ export class ApiService {
     this.funcao = "users"
     return this.http.get(`${this.baseurl}/${this.funcao}/`)
   }
+  get_report_today(){
+    this.funcao = "reports/today"
+    return this.standard_get(this.funcao)
+  }
+  standard_get(funcao){
+    return this.http.get(`${this.baseurl}/${funcao}`)
+  }
 }
