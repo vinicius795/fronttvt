@@ -8,6 +8,14 @@ import { ApiService } from '../api.service'
 import { UpdatecteService } from '../updatecte.service';
 import { SystemSetings } from '../interfaces.interface'
 
+interface res_invoice{
+  id: number,
+  USUARIO: { id: Number, username: String },
+  DATA: Date
+}
+
+
+
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -23,9 +31,9 @@ export class CardsComponent implements OnInit {
   _progress: number = 0;
   filename: String = ""
   showprogress: boolean = false
-  report_l_today: any
-  ctes_n_listed: Number = 10
-  report_n_closed: Number = 5
+  report_l_today: Number = 0
+  ctes_n_listed: Number = 0
+  report_n_closed: number = 0
 
   ismobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -42,7 +50,7 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
     this.getlastsincsp()
     this.getlastsincssw()
-    this.apiservice.get_report_today().subscribe(res => {this.report_l_today = res})
+    this.update_missing()
   }
   sincsp(): void{
     this.apiservice.sincsp().subscribe(res => { if (res == null) this.getlastsincsp()});
@@ -72,5 +80,11 @@ export class CardsComponent implements OnInit {
   }
   getlastsincssw(): void {
     this.apiservice.getseting("lastsincssw").subscribe(res => { this.lastupdatessw = res });
+  }
+
+  update_missing():void{
+    this.apiservice.standard_get('reports/today').subscribe((res: res_invoice[]) => {this.report_l_today = res.length})
+    this.apiservice.standard_get('reports/unclosed').subscribe((res: res_invoice[]) => {this.report_n_closed = res.length})
+    this.apiservice.standard_get('missing/delayed').subscribe((res: any[]) => {this.ctes_n_listed=res.length})
   }
 }
