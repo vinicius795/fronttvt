@@ -12,6 +12,7 @@ export const submenuslist: submenus[] = [
     { id: 7, title: "Gerando relatório de entrega", url: "#" , status: false},
     { id: 8, title: "Gerenciar Usuarios", url: "users/", status: true},
     { id: 9, title: "Configurações", url:"settings/", status: true},
+    { id: 10, title: "CTEs em atraso", url:"delayed/", status: true}
 ]
 
 export const menulist: menus [] = [
@@ -39,7 +40,8 @@ export const menulist: menus [] = [
         submenus: [
             submenuslist[3], 
             submenuslist[5], 
-            submenuslist[8]
+            submenuslist[8],
+            submenuslist[10],
         ],
         status: true,
     },

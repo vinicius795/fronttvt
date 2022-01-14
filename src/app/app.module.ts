@@ -59,6 +59,7 @@ import { ManageEmployeesComponent } from './manage-employees/manage-employees.co
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DelayedcteComponent } from './delayedcte/delayedcte.component';
 
 
 
@@ -79,6 +80,7 @@ import { SettingsComponent } from './settings/settings.component';
     SearchComponent,
     UsersComponent,
     SettingsComponent,
+    DelayedcteComponent,
   ],
   imports: [
     BrowserModule,

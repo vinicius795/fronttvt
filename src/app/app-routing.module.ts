@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //modules
-import {REntregasComponent} from './r-entregas/r-entregas.component'
-import {CardsComponent} from './cards/cards.component'
+import { REntregasComponent} from './r-entregas/r-entregas.component'
+import { CardsComponent} from './cards/cards.component'
 import { EtiquetaComponent } from './etiqueta/etiqueta.component';
 import { UpdatecteComponent } from "./updatecte/updatecte.component"
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
@@ -15,6 +15,7 @@ import { ManageEmployeesComponent } from './manage-employees/manage-employees.co
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DelayedcteComponent } from './delayedcte/delayedcte.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
       { path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
       { path: 'settings', component: SettingsComponent, canActivate:[AuthGuard]},
+      { path: 'delayed', component: DelayedcteComponent, canActivate:[AuthGuard]},
       { path: 'print', redirectTo: "/print", pathMatch: 'full'},
       { path: 'home', redirectTo: 'cards', pathMatch: 'full' },
       { path: '', redirectTo: 'cards', pathMatch: 'full' },
