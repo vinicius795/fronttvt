@@ -15,51 +15,54 @@ export const submenuslist: submenus[] = [
     { id: 10, title: "CTEs em atraso", url:"delayed/", status: true}
 ]
 
+class getsubmenuarray{
+    private subarray: Array<submenus> =[]
+
+    /* constructor(sub: Array<Number>){
+        this.listarray(sub)
+    } */
+    listarray(sub: Array<Number>){
+        sub.forEach($id => {
+            submenuslist.forEach((element: submenus) => {
+                if (element.id == $id) this.subarray.push(element)
+            });
+        });
+        return this.subarray
+    }
+    
+}
+
+const submenu = new getsubmenuarray();
+
 export const menulist: menus [] = [
     {
         id: 0,
         title: "Minha Conta",
-        submenus: [
-            submenuslist[9]
-        ],
+        submenus: submenu.listarray([9,]),
         status: true,
     },
     {    
         id: 1,
         title: "Relatorios",
-        submenus: [
-            submenuslist[0], 
-            submenuslist[1], 
-            submenuslist[2]
-        ],
+        submenus: submenu.listarray([0,1,2]),
         status: true,
     },
     {
         id: 2,
         title: "Banco de Dados",
-        submenus: [
-            submenuslist[3], 
-            submenuslist[5], 
-            submenuslist[8],
-            submenuslist[10],
-        ],
+        submenus: submenu.listarray([3,5,8,10]),
         status: true,
     },
     {
         id: 3,
         title: "Ajuda",
-        submenus: [
-            submenuslist[6], 
-            submenuslist[7]
-        ],
+        submenus: submenu.listarray([6,7]),
         status: false,
     },
     {
         id: 4,
         title: "Links Uteis",
-        submenus: [
-
-        ],
+        submenus: submenu.listarray([]),
         status: false,
     },
 ]

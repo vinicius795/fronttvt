@@ -12,7 +12,7 @@ import { TablectesItem } from '../interfaces.interface';
 export class DelayedcteComponent implements OnInit {
 
   ctelist: TablectesItem[] = []
-  displayedColumns: string[] = ['NR_CONTROLE', "REMETENTE", 'DESTINATARIO', 'NFE'];
+  displayedColumns: string[] = ['NR_CONTROLE', "REMETENTE", 'DESTINATARIO', 'NFE', 'date_add'];
   dataSource = [...this.ctelist];
 
   @ViewChild(MatTable) table: MatTable<TablectesItem>;
@@ -26,6 +26,8 @@ export class DelayedcteComponent implements OnInit {
       res.forEach((element: TablectesItem) => {
         this.dataSource.push(element);
       });
+      console.log(res);
+      
       
       this.table.renderRows();
     })
