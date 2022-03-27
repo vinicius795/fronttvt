@@ -16,6 +16,7 @@ import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DelayedcteComponent } from './delayedcte/delayedcte.component';
+import { CloseReportComponent } from './close-report/close-report.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
       { path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
       { path: 'settings', component: SettingsComponent, canActivate:[AuthGuard]},
       { path: 'delayed', component: DelayedcteComponent, canActivate:[AuthGuard]},
+      { path: 'close-report', component: CloseReportComponent, canActivate:[AuthGuard]},
       { path: 'print', redirectTo: "/print", pathMatch: 'full'},
       { path: 'home', redirectTo: 'cards', pathMatch: 'full' },
       { path: '', redirectTo: 'cards', pathMatch: 'full' },

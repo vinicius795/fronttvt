@@ -1,0 +1,27 @@
+.body{
+    margin: 5px;
+}
+
+.search_field{
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+mat-form-field{
+            width: 30em;
+        }
+
+.info{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    .line{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}

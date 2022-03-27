@@ -1,0 +1,38 @@
+<div class="body">
+    <div class = "title">
+
+    </div>
+    <div class="barcode search_field">
+        <form autocomplete="off">
+            <mat-form-field appearance="outline">
+                <mat-label>Numero do relatorio</mat-label>
+                <input matInput type="tel" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="n_relatorio" name="n_relatorio" #term (keypress)="closereport($event, term.value)">
+                <mat-icon (click)="closereport($event, term.value)" matSuffix>search</mat-icon>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class = "info">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+
+        <div *ngIf="return">
+            <div class="line" style="justify-content: center;">
+                <p style="font-weight: bold; font-size: larger;">
+                    Relatorio {{ return.id }} fechado
+                </p>
+            </div>
+            <div class="line">
+                <p>Data do relatorio:</p>
+                <p>{{return.DATA | date:'dd/MM/yyyy HH:mm'}}</p>
+            </div>
+            <div class="line">
+                <p>N:</p>
+                <p>{{return.id}}</p>
+            </div>
+            <div class="line">
+                <p>Usuario:</p>
+                <p>{{return.USUARIO.username}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

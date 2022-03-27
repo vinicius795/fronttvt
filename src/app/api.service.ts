@@ -129,6 +129,10 @@ export class ApiService {
     this.funcao = "reports/today"
     return this.standard_get(this.funcao)
   }
+  close_report(id: number, data: any){
+    this.funcao = "reports/unclosed"
+    return this.http.patch(`${this.baseurl}/${this.funcao}/${id}/`, data)
+  }
   standard_get(funcao){
     return this.http.get(`${this.baseurl}/${funcao}`)
   }

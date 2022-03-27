@@ -12,19 +12,19 @@ export const submenuslist: submenus[] = [
     { id: 7, title: "Gerando relatório de entrega", url: "#" , status: false},
     { id: 8, title: "Gerenciar Usuarios", url: "users/", status: true},
     { id: 9, title: "Configurações", url:"settings/", status: true},
-    { id: 10, title: "CTEs em atraso", url:"delayed/", status: true}
+    { id: 10, title: "CTEs em atraso", url:"delayed/", status: true},
+    { id: 11, title: "Baixar relatorio", url:"close-report/", status: true}
 ]
 
 class getsubmenuarray{
     private subarray: Array<submenus> =[]
-
-    /* constructor(sub: Array<Number>){
-        this.listarray(sub)
-    } */
     listarray(sub: Array<Number>){
+        this.subarray = []
         sub.forEach($id => {
             submenuslist.forEach((element: submenus) => {
-                if (element.id == $id) this.subarray.push(element)
+                if (element.id == $id){
+                    this.subarray.push(element)
+                }
             });
         });
         return this.subarray
@@ -44,7 +44,7 @@ export const menulist: menus [] = [
     {    
         id: 1,
         title: "Relatorios",
-        submenus: submenu.listarray([0,1,2]),
+        submenus: submenu.listarray([0,1,2,11]),
         status: true,
     },
     {

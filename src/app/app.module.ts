@@ -60,6 +60,7 @@ import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DelayedcteComponent } from './delayedcte/delayedcte.component';
+import { CloseReportComponent } from './close-report/close-report.component';
 
 
 
@@ -81,6 +82,7 @@ import { DelayedcteComponent } from './delayedcte/delayedcte.component';
     UsersComponent,
     SettingsComponent,
     DelayedcteComponent,
+    CloseReportComponent,
   ],
   imports: [
     BrowserModule,
